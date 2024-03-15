@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:desktop_app/view/screens/home_screen.dart';
 import 'package:desktop_app/view/screens/main_screen.dart';
 import 'package:desktop_app/view_model/database/local/cache_helper.dart';
 import 'package:dio/dio.dart';
@@ -27,7 +28,7 @@ class LoginCubit extends Cubit<LoginMainState> {
       if (response.statusCode==200) {
 
 
-        navigatorAndRemove(context, MainScreen());
+        navigatorAndRemove(context, HomeScreen());
         await CacheHelper.put(key: "user", value: response.data["accessToken"]);
 
         emit(LoginSuccessState());

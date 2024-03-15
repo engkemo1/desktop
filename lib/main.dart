@@ -1,3 +1,4 @@
+import 'package:desktop_app/view/screens/home_screen.dart';
 import 'package:desktop_app/view/screens/login/login_screen.dart';
 import 'package:desktop_app/view/screens/main_screen.dart';
 import 'package:desktop_app/view_model/database/local/cache_helper.dart';
@@ -20,10 +21,12 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    final isSmallScreen = MediaQuery.of(context).size.width < 600;
+
     return MaterialApp(
               debugShowCheckedModeBanner: false,
               title: 'اولاد ابوسلطح',
-              home: CacheHelper.get(key: "user")==null?LoginScreen():MainScreen(),
+              home: CacheHelper.get(key: "user")==null?LoginScreen():HomeScreen(),
           navigatorObservers: [FlutterSmartDialog.observer],
           // here
           builder: FlutterSmartDialog.init(),
