@@ -2,6 +2,7 @@ import 'dart:ui' as ui;
 import 'package:desktop_app/Model/category_model.dart';
 import 'package:desktop_app/constants.dart';
 import 'package:desktop_app/view/category/add_category.dart';
+import 'package:desktop_app/view/screens/home_screen.dart';
 import 'package:desktop_app/view_model/cubit/products_cubit/add_state.dart';
 import 'package:desktop_app/view_model/cubit/products_cubit/products_cubit.dart';
 import 'package:empty_widget/empty_widget.dart';
@@ -54,122 +55,56 @@ class _StoreState extends State<Store> {
         .size
         .width < 700;
 
-    return Scaffold(
-      body: BlocProvider(
-        create: (context) =>
-        ProductCubit()
-          ..getDataCategory(),
-        child: BlocConsumer<ProductCubit, ProductsMainState>(
-            listener: (BuildContext context, state) async {
-              if (state is GetCategoryLoadingState) {
-                SmartDialog.showLoading();
-                await Future.delayed(Duration(seconds: 2));
-                SmartDialog.dismiss();
-              }
-            }, builder: (BuildContext context, state) {
-          var data = ProductCubit.get(context);
-
-          return state is GetCategoryLoadingState
-              ? const Center(
-            child: CircularProgressIndicator(),
-          )
-              : data.categoryList.isEmpty
-              ? Container(
-            margin: EdgeInsets.all(20),
-            alignment: Alignment.center,
-            child: EmptyWidget(
-              // Image from project assets
-              image: null,
-              packageImage: PackageImage.Image_3,
-              title: 'لا يوجد اصناف',
-              subTitle: 'No  Customers available yet',
-              titleTextStyle: TextStyle(
-                fontSize: isSmallScreen ? 13 : 22,
-                color: const Color(0xff9da9c7),
-                fontWeight: FontWeight.w500,
+    return SafeArea(
+      child: Scaffold(
+        body: BlocProvider(
+          create: (context) =>
+          ProductCubit()
+            ..getDataCategory(),
+          child: BlocConsumer<ProductCubit, ProductsMainState>(
+              listener: (BuildContext context, state) async {
+                if (state is GetCategoryLoadingState) {
+                  SmartDialog.showLoading();
+                  await Future.delayed(Duration(seconds: 2));
+                  SmartDialog.dismiss();
+                }
+              }, builder: (BuildContext context, state) {
+            var data = ProductCubit.get(context);
+      
+            return state is GetCategoryLoadingState
+                ? const Center(
+              child: CircularProgressIndicator(),
+            )
+                : data.categoryList.isEmpty
+                ? Container(
+              margin: EdgeInsets.all(20),
+              alignment: Alignment.center,
+              child: EmptyWidget(
+                // Image from project assets
+                image: null,
+                packageImage: PackageImage.Image_3,
+                title: 'لا يوجد اصناف',
+                subTitle: 'No  Customers available yet',
+                titleTextStyle: TextStyle(
+                  fontSize: isSmallScreen ? 13 : 22,
+                  color: const Color(0xff9da9c7),
+                  fontWeight: FontWeight.w500,
+                ),
+                subtitleTextStyle: TextStyle(
+                  fontSize: isSmallScreen ? 12 : 22,
+                  color: const Color(0xffabb8d6),
+                ),
+                // Uncomment below statement to hide background animation
+                // hideBackgroundAnimation: true,
               ),
-              subtitleTextStyle: TextStyle(
-                fontSize: isSmallScreen ? 12 : 22,
-                color: const Color(0xffabb8d6),
-              ),
-              // Uncomment below statement to hide background animation
-              // hideBackgroundAnimation: true,
-            ),
-          )
-              : Directionality(
-              textDirection: ui.TextDirection.rtl,
-              child: isSmallScreen
-                  ? Column(children: [
-                SizedBox(
-                  height: 25,
-                ),
-                Text(
-                  "اصناف القماش",
-                  style: TextStyle(fontSize: 25),
-                ),
-                SizedBox(
-                  width: 5,
-                ),
-                SizedBox(
-                  height: 5,
-                ),
-                Divider(),
-                SizedBox(
-                  height: 50,
-                  child: CustomTextField(
-                    controller: searchController,
-                    prefix: Icon(Icons.search),
-                    onChanged: (val) {
-                      setState(() {
-                        search(val, data.categoryList);
-                      });
-                    },
-                    suffixIcon: IconButton(
-                      icon: Icon(
-                        Icons.close,
-                        size: 15,
-                      ),
-                      onPressed: () {
-                        setState(() {
-                          searchController.clear();
-                          categorySearchList.clear();
-                        });
-                      },
-                    ),
-                    hintText: '  ',
-                  ),
-                ),
-                Expanded(
-                  child: categorySearchList.isEmpty
-                      ? searchController.text.isEmpty
-                      ? ListView.builder(
-                      itemCount:
-                      data.categoryList.length,
-                      itemBuilder: (context, index) {
-                        return buildCard(
-                            data,
-                            isSmallScreen,
-                            data.categoryList[
-                            index]);
-                      })
-                      : SizedBox(
-                    height: 300,
-                    child: EmptyWidget(
-                      packageImage:
-                      PackageImage.Image_2,
-                      title: "لا يوجد اصناف",
-                    ),
-                  )
-                      : ListView.builder(
-                      itemCount: categorySearchList.length,
-                      itemBuilder: (context, index) {
-                        return buildCard(data, isSmallScreen,
-                            categorySearchList[index]);
-                      }),
-                ),
-              ])
-                  : buildCardDesktop(data, context, isSmallScreen));
-        }),
+            )
+                : Directionality(
+                textDirection: ui.TextDirection.rtl,
+                child: isSmallScreen
+                    ? buildCardMobile(data, context, isSmallScreen)
+                    : buildCardDesktop(data, context, isSmallScreen));
+          }),
+        ),
       ),
     );
   }
@@ -310,7 +245,7 @@ class _StoreState extends State<Store> {
             child: SingleChildScrollView(
               child: Container(
                 width: double.infinity,
-               padding: EdgeInsets.all(20),
+                padding: EdgeInsets.all(20),
                 child: categorySearchList.isEmpty
                     ? searchController.text.isEmpty
                     ? DataTable(
@@ -401,6 +336,590 @@ class _StoreState extends State<Store> {
               ),
             ),
           ),
+        ],
+      ),
+    );
+  }
+
+  buildCardMobile(ProductCubit data, BuildContext context, var isSmallScreen) {
+    return Container(
+
+      width: double.infinity,
+      decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("images/login.jpg",), fit: BoxFit.cover,)),
+      child: Column(
+        children: [
+        Container(
+        width: double.infinity,
+        color: accentCanvasColor,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(
+              height: 10,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                InkWell(
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(
+                        builder: (_) => HomeScreen()));
+                  },
+                  child: HoverAnimatedContainer(
+                    hoverWidth: 140,
+                    hoverDecoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: Colors.red.withOpacity(0.8),
+                    ),
+                    margin: EdgeInsets.only(left: 10, right: 10),
+                    width: 130,
+                    height: 50,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: Color(0xffBCEFC2),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        SizedBox(width: 5,),
+
+                        Image.asset("images/home-button.png", height: 25,),
+                        Text(
+                          "الصفحة الرئيسية",
+                          style: TextStyle(
+                              fontSize: 14, fontWeight: FontWeight.bold
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                InkWell(
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (_) => AddCategory()));
+                  },
+                  child: HoverAnimatedContainer(
+                    hoverWidth: 140,
+                    hoverDecoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: Colors.red.withOpacity(0.8),
+                    ),
+                    margin: EdgeInsets.only(left: 10, right: 10),
+                    width: 130,
+                    height: 50,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: Color(0xffBCEFC2),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        SizedBox(width: 5,),
+                        Image.asset("images/fabric-pattern.png",
+                          height: 25,),
+                        Text(
+                          "  اضافة قماش ",
+                          style: TextStyle(
+                              fontSize: 14, fontWeight: FontWeight.bold
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            Divider(),
+            SizedBox(height: 10,),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  'بيانات القماش',
+                  style: TextStyle(
+                      fontSize: 35,
+                      wordSpacing: 2,
+                      color: Colors.white.withOpacity(0.8),
+                      fontWeight: FontWeight.w500),
+                ),
+                SizedBox(
+                  width: 5,
+                ),
+                Image.asset(
+                  "images/fabric-pattern.png",
+                  height: 50,
+                ),
+              ],
+            ),
+
+
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: SizedBox(
+                height: 50,
+                child: CustomTextField(
+
+                  controller: searchController,
+                  prefix: Icon(Icons.search),
+                  onChanged: (val) {
+                    setState(() {
+                      search(val, data.categoryList);
+                    });
+                  },
+                  hintText: 'ابحث عن نوع قماش',
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+          ],
+        ),
+      ),
+
+      Expanded(
+        child: categorySearchList.isEmpty
+            ? searchController.text.isEmpty
+            ?  ListView.builder(
+          itemCount: data.categoryList.length,
+          itemBuilder: (context,index) {
+            return Container(
+              margin: EdgeInsets.all(10),
+              decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),
+                  color: Colors.white.withOpacity(0.9))
+              , child: ListTile(
+              leading: Image.asset("images/fabric-pattern.png",height: 30,)
+              ,
+              trailing: IconButton(
+                  onPressed: () {
+                    SmartDialog.show(
+                        backDismiss: true,
+                        onDismiss: () {},
+                        builder: (context) {
+                          return Container(
+                            margin: EdgeInsets.only(left: 20,right: 20,top: 70,bottom: 70),
+                              padding: EdgeInsets.all(20),
+                              decoration: BoxDecoration(
+                                color: accentCanvasColor.withOpacity(0.9),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              alignment: Alignment.center,
+                              child: Directionality(
+                                textDirection: ui.TextDirection.rtl,
+                                child: Center(
+                                  child: SingleChildScrollView(
+                                    child: Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Form(
+                                          key: _formKey,
+                                          child: Column(
+                                            mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                            crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                            children: [
+                                              Image.asset("images/fabric-pattern.png",
+                                                height: 100,),
+                                              const Row(
+                                                mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                                children: [
+                                                  Text(
+                                                    'بيانات الصنف',
+                                                    style: TextStyle(
+                                                        color: Colors.white70,
+                                                        fontSize: 30,
+                                                        fontWeight:
+                                                        FontWeight.bold),
+                                                  ),
+                                                ],
+                                              ),
+                                              SizedBox(
+                                                width: isSmallScreen ? null : 400,
+                                                child: Padding(
+                                                  padding: const EdgeInsets.all(8.0),
+                                                  child: Column(
+                                                    mainAxisAlignment: MainAxisAlignment
+                                                        .start,
+                                                    crossAxisAlignment: CrossAxisAlignment
+                                                        .start,
+                                                    children: [
+                                                      const Text(
+                                                        'النوع',
+                                                        style: TextStyle(
+                                                            fontWeight: FontWeight
+                                                                .w500,
+                                                            fontSize: 18,
+                                                            color: Colors.white),
+                                                      ),
+                                                      CustomTextField(
+                                                        suffix: Icon(Icons.category),
+                                                        controller: typeController
+                                                          ..text = data.categoryList[index]
+                                                              .type!,
+                                                        isFormField: true,
+                                                        hintText: 'ادخل النوع ',
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                              ),
+                                              SizedBox(
+                                                width: isSmallScreen ? null : 400,
+                                                child: Padding(
+                                                  padding: const EdgeInsets.all(8.0),
+                                                  child: Column(
+                                                    mainAxisAlignment: MainAxisAlignment
+                                                        .start,
+                                                    crossAxisAlignment: CrossAxisAlignment
+                                                        .start,
+                                                    children: [
+                                                      const Text(
+                                                        'الكمية',
+                                                        style: TextStyle(
+                                                            fontWeight: FontWeight
+                                                                .w500,
+                                                            fontSize: 18,
+                                                            color: Colors.white),
+                                                      ),
+                                                      CustomTextField(
+                                                        suffix:
+                                                        Icon(Icons
+                                                            .production_quantity_limits),
+                                                        controller: quantityController
+                                                          ..text = data.categoryList[index]
+                                                              .quantity.toString(),
+                                                        isPhoneNumber: true,
+                                                        textInputType: TextInputType
+                                                            .number,
+                                                        hintText: 'ادخل الكمية',
+                                                        isFormField: true,
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                              ),
+                                              SizedBox(
+                                                width: isSmallScreen ? null : 400,
+                                                child: Padding(
+                                                  padding: const EdgeInsets.all(8.0),
+                                                  child: Column(
+                                                    mainAxisAlignment: MainAxisAlignment
+                                                        .start,
+                                                    crossAxisAlignment: CrossAxisAlignment
+                                                        .start,
+                                                    children: [
+                                                      const Text(
+                                                        'سعر المتر',
+                                                        style: TextStyle(
+                                                            fontWeight: FontWeight
+                                                                .w500,
+                                                            fontSize: 18,
+                                                            color: Colors.white),
+                                                      ),
+                                                      CustomTextField(
+                                                        suffix: Icon(Icons.money),
+                                                        controller: priceController
+                                                          ..text = data.categoryList[index]
+                                                              .price.toString(),
+                                                        textInputType: TextInputType
+                                                            .number,
+                                                        isFormField: true,
+                                                        hintText: 'ادخل سعر المتر ',
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                              ),
+                                              SizedBox(
+                                                height: 20,
+                                              ),
+                                              const SizedBox(
+                                                height: 20,
+                                              ),
+                                              SizedBox(
+                                                  width: 150,
+                                                  child: ElevatedButton(
+                                                    onPressed: () {
+                                                      var category = CategoryModel(
+                                                          type:
+                                                          typeController.text,
+                                                          price:
+                                                          priceController.text,
+
+                                                          quantity:
+                                                          quantityController
+                                                              .text);
+
+                                                      if (_formKey.currentState!
+                                                          .validate()) {
+                                                        data.
+                                                        UpdateCategory(
+                                                            context,
+                                                            category,
+                                                            data.categoryList[index]
+                                                                .sId!)
+                                                            .then((value) {
+                                                          data.getDataCategory();
+                                                          Navigator.of(context);
+                                                        });
+                                                      }
+                                                    },
+                                                    style: ButtonStyle(
+                                                        backgroundColor:
+                                                        MaterialStateProperty.all(
+                                                            backgroundColor)),
+                                                    child: const Text(
+                                                      'تحديث',
+                                                      style: TextStyle(
+                                                          color: Colors.white),
+                                                    ),
+                                                  ))
+                                            ],
+                                          ),
+                                        )),
+                                  ),
+                                ),
+                              ));
+                        });
+                  },
+                  icon: Icon(Icons.menu)),
+              subtitle: Text("الكمية: ${data.categoryList[index].quantity}") ,
+
+              title: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text("النوع: ${data.categoryList[index].type}")
+                ],
+              ),
+            ),);
+          }
+        ):SizedBox(
+          height: 300,
+          child: EmptyWidget(
+            packageImage: PackageImage.Image_2,
+            title: "لا يوجد فواتير",
+          ),
+        )
+            :  ListView.builder(
+            itemCount: categorySearchList.length,
+            itemBuilder: (context,index) {
+              return Container(
+                margin: EdgeInsets.all(10),
+                decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),
+                    color: Colors.white.withOpacity(0.9))
+                , child: ListTile(
+                leading: Image.asset("images/fabric-pattern.png",height: 30,)
+                ,
+                trailing: IconButton(
+                    onPressed: () {
+                      SmartDialog.show(
+                          backDismiss: true,
+                          onDismiss: () {},
+                          builder: (context) {
+                            return Container(
+                                margin: EdgeInsets.only(left: 20,right: 20,top: 70,bottom: 70),
+                                padding: EdgeInsets.all(20),
+                                decoration: BoxDecoration(
+                                  color: accentCanvasColor.withOpacity(0.9),
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                alignment: Alignment.center,
+                                child: Directionality(
+                                  textDirection: ui.TextDirection.rtl,
+                                  child: Center(
+                                    child: SingleChildScrollView(
+                                      child: Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: Form(
+                                            key: _formKey,
+                                            child: Column(
+                                              mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                              crossAxisAlignment:
+                                              CrossAxisAlignment.center,
+                                              children: [
+                                                Image.asset("images/fabric-pattern.png",
+                                                  height: 100,),
+                                                const Row(
+                                                  mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                                  children: [
+                                                    Text(
+                                                      'بيانات الصنف',
+                                                      style: TextStyle(
+                                                          color: Colors.white70,
+                                                          fontSize: 30,
+                                                          fontWeight:
+                                                          FontWeight.bold),
+                                                    ),
+                                                  ],
+                                                ),
+                                                SizedBox(
+                                                  width: isSmallScreen ? null : 400,
+                                                  child: Padding(
+                                                    padding: const EdgeInsets.all(8.0),
+                                                    child: Column(
+                                                      mainAxisAlignment: MainAxisAlignment
+                                                          .start,
+                                                      crossAxisAlignment: CrossAxisAlignment
+                                                          .start,
+                                                      children: [
+                                                        const Text(
+                                                          'النوع',
+                                                          style: TextStyle(
+                                                              fontWeight: FontWeight
+                                                                  .w500,
+                                                              fontSize: 18,
+                                                              color: Colors.white),
+                                                        ),
+                                                        CustomTextField(
+                                                          suffix: Icon(Icons.category),
+                                                          controller: typeController
+                                                            ..text = categorySearchList[index]
+                                                                .type!,
+                                                          isFormField: true,
+                                                          hintText: 'ادخل النوع ',
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                ),
+                                                SizedBox(
+                                                  width: isSmallScreen ? null : 400,
+                                                  child: Padding(
+                                                    padding: const EdgeInsets.all(8.0),
+                                                    child: Column(
+                                                      mainAxisAlignment: MainAxisAlignment
+                                                          .start,
+                                                      crossAxisAlignment: CrossAxisAlignment
+                                                          .start,
+                                                      children: [
+                                                        const Text(
+                                                          'الكمية',
+                                                          style: TextStyle(
+                                                              fontWeight: FontWeight
+                                                                  .w500,
+                                                              fontSize: 18,
+                                                              color: Colors.white),
+                                                        ),
+                                                        CustomTextField(
+                                                          suffix:
+                                                          Icon(Icons
+                                                              .production_quantity_limits),
+                                                          controller: quantityController
+                                                            ..text = categorySearchList[index]
+                                                                .quantity.toString(),
+                                                          isPhoneNumber: true,
+                                                          textInputType: TextInputType
+                                                              .number,
+                                                          hintText: 'ادخل الكمية',
+                                                          isFormField: true,
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                ),
+                                                SizedBox(
+                                                  width: isSmallScreen ? null : 400,
+                                                  child: Padding(
+                                                    padding: const EdgeInsets.all(8.0),
+                                                    child: Column(
+                                                      mainAxisAlignment: MainAxisAlignment
+                                                          .start,
+                                                      crossAxisAlignment: CrossAxisAlignment
+                                                          .start,
+                                                      children: [
+                                                        const Text(
+                                                          'سعر المتر',
+                                                          style: TextStyle(
+                                                              fontWeight: FontWeight
+                                                                  .w500,
+                                                              fontSize: 18,
+                                                              color: Colors.white),
+                                                        ),
+                                                        CustomTextField(
+                                                          suffix: Icon(Icons.money),
+                                                          controller: priceController
+                                                            ..text = categorySearchList[index]
+                                                                .price.toString(),
+                                                          textInputType: TextInputType
+                                                              .number,
+                                                          isFormField: true,
+                                                          hintText: 'ادخل سعر المتر ',
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                ),
+                                                SizedBox(
+                                                  height: 20,
+                                                ),
+                                                const SizedBox(
+                                                  height: 20,
+                                                ),
+                                                SizedBox(
+                                                    width: 150,
+                                                    child: ElevatedButton(
+                                                      onPressed: () {
+                                                        var category = CategoryModel(
+                                                            type:
+                                                            typeController.text,
+                                                            price:
+                                                            priceController.text,
+
+                                                            quantity:
+                                                            quantityController
+                                                                .text);
+
+                                                        if (_formKey.currentState!
+                                                            .validate()) {
+                                                          data.
+                                                          UpdateCategory(
+                                                              context,
+                                                              category,
+                                                              categorySearchList[index]
+                                                                  .sId!)
+                                                              .then((value) {
+                                                            data.getDataCategory();
+                                                            Navigator.of(context);
+                                                          });
+                                                        }
+                                                      },
+                                                      style: ButtonStyle(
+                                                          backgroundColor:
+                                                          MaterialStateProperty.all(
+                                                              backgroundColor)),
+                                                      child: const Text(
+                                                        'تحديث',
+                                                        style: TextStyle(
+                                                            color: Colors.white),
+                                                      ),
+                                                    ))
+                                              ],
+                                            ),
+                                          )),
+                                    ),
+                                  ),
+                                ));
+                          });
+                    },
+                    icon: Icon(Icons.menu)),
+                subtitle: Text("الكمية: ${categorySearchList[index].quantity}") ,
+
+                title: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text("النوع: ${categorySearchList[index].type}")
+                  ],
+                ),
+              ),);
+            }
+        )),
         ],
       ),
     );
@@ -623,249 +1142,5 @@ class _StoreState extends State<Store> {
     ]);
   }
 
-  Card buildCard(ProductCubit data, bool isSmallScreen,
-      CategoryModel category) {
-    return Card(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(5),
-      ),
-      clipBehavior: Clip.antiAlias,
-      margin: EdgeInsets.only(right: 10, bottom: 5, left: 10, top: 10),
-      child: SizedBox(
-        child: ListTile(
-          leading: Image.asset(
-            "images/fabric-pattern.png",
-            height: 40,
-          ),
-          trailing: IconButton(
-            icon: Icon(Icons.more_horiz_outlined),
-            onPressed: () {
-              SmartDialog.show(
-                  backDismiss: true,
-                  onDismiss: () {},
-                  builder: (context) {
-                    return Container(
-                        padding: EdgeInsets.all(20),
-                        width: 300,
-                        height: 600,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        alignment: Alignment.center,
-                        child: Directionality(
-                          textDirection: ui.TextDirection.rtl,
-                          child: Center(
-                            child: SingleChildScrollView(
-                              child: Padding(
-                                  padding: const EdgeInsets.all(3.0),
-                                  child: Form(
-                                    key: _formKey,
-                                    child: Column(
-                                      mainAxisAlignment:
-                                      MainAxisAlignment.center,
-                                      crossAxisAlignment:
-                                      CrossAxisAlignment.center,
-                                      children: [
-                                        Image.asset(
-                                          "images/fabric-pattern.png",
-                                          height: 70,
-                                        ),
-                                        SizedBox(
-                                          height: 5,
-                                        ),
-                                        Text(
-                                          'بيانات القماش',
-                                          style: TextStyle(
-                                              fontSize: 16,
-                                              fontWeight: FontWeight.w500),
-                                        ),
-                                        SizedBox(
-                                          width: isSmallScreen ? null : 400,
-                                          child: Padding(
-                                            padding: const EdgeInsets.all(8.0),
-                                            child: Column(
-                                              mainAxisAlignment: MainAxisAlignment
-                                                  .start,
-                                              crossAxisAlignment: CrossAxisAlignment
-                                                  .start,
-                                              children: [
-                                                const Text(
-                                                  'النوع',
-                                                  style: TextStyle(
-                                                      fontWeight: FontWeight
-                                                          .w500,
-                                                      fontSize: 18,
-                                                      color: Colors.white),
-                                                ),
-                                                CustomTextField(
-                                                  suffix: Icon(Icons.category),
-                                                  controller: typeController,
-                                                  isFormField: true,
-                                                  hintText: 'ادخل النوع ',
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          width: isSmallScreen ? null : 400,
-                                          child: Padding(
-                                            padding: const EdgeInsets.all(8.0),
-                                            child: Column(
-                                              mainAxisAlignment: MainAxisAlignment
-                                                  .start,
-                                              crossAxisAlignment: CrossAxisAlignment
-                                                  .start,
-                                              children: [
-                                                const Text(
-                                                  'الكمية',
-                                                  style: TextStyle(
-                                                      fontWeight: FontWeight
-                                                          .w500,
-                                                      fontSize: 18,
-                                                      color: Colors.white),
-                                                ),
-                                                CustomTextField(
-                                                  suffix:
-                                                  Icon(Icons
-                                                      .production_quantity_limits),
-                                                  controller: quantityController,
-                                                  isPhoneNumber: true,
-                                                  textInputType: TextInputType
-                                                      .number,
-                                                  hintText: 'ادخل الكمية',
-                                                  isFormField: true,
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          width: isSmallScreen ? null : 400,
-                                          child: Padding(
-                                            padding: const EdgeInsets.all(8.0),
-                                            child: Column(
-                                              mainAxisAlignment: MainAxisAlignment
-                                                  .start,
-                                              crossAxisAlignment: CrossAxisAlignment
-                                                  .start,
-                                              children: [
-                                                const Text(
-                                                  'سعر المتر',
-                                                  style: TextStyle(
-                                                      fontWeight: FontWeight
-                                                          .w500,
-                                                      fontSize: 18,
-                                                      color: Colors.white),
-                                                ),
-                                                CustomTextField(
-                                                  suffix: Icon(Icons.money),
-                                                  controller: priceController,
-                                                  textInputType: TextInputType
-                                                      .number,
-                                                  isFormField: true,
-                                                  hintText: 'ادخل سعر المتر ',
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          height: 20,
-                                        ),
-                                        const SizedBox(
-                                          height: 20,
-                                        ),
-                                        Row(
-                                          mainAxisAlignment:
-                                          MainAxisAlignment.spaceEvenly,
-                                          children: [
-                                            SizedBox(
-                                                width: 80,
-                                                child: ElevatedButton(
-                                                  onPressed: () {
-                                                    var categoryModel = CategoryModel(
-                                                      type:
-                                                      typeController.text,
-                                                      price: priceController
-                                                          .text,
-                                                      quantity:
-                                                      quantityController
-                                                          .text,
-                                                    );
 
-                                                    if (_formKey.currentState!
-                                                        .validate()) {
-                                                      data
-                                                          .UpdateCategory(
-                                                          context,
-                                                          categoryModel,
-                                                          category.sId!)
-                                                          .then((value) {
-                                                        data.getDataCategory();
-                                                      });
-                                                    }
-                                                  },
-                                                  style: ButtonStyle(
-                                                      backgroundColor:
-                                                      MaterialStateProperty.all(
-                                                          accentCanvasColor)),
-                                                  child: const Text(
-                                                    'تحديث',
-                                                    style: TextStyle(
-                                                        color: Colors.white,
-                                                        fontSize: 12),
-                                                  ),
-                                                )),
-                                            SizedBox(
-                                                width: 80,
-                                                child: ElevatedButton(
-                                                  onPressed: () {
-                                                    data
-                                                        .deleteCategory(category
-                                                        .sId
-                                                        .toString())
-                                                        .then((value) =>
-                                                        Navigator.of(
-                                                            context));
-                                                  },
-                                                  style: ButtonStyle(
-                                                      backgroundColor:
-                                                      MaterialStateProperty
-                                                          .all(Colors.red)),
-                                                  child: const Text(
-                                                    'ازالة',
-                                                    style: TextStyle(
-                                                        color: Colors.white,
-                                                        fontSize: 12,
-                                                        fontWeight:
-                                                        FontWeight.bold),
-                                                  ),
-                                                )),
-                                          ],
-                                        )
-                                      ],
-                                    ),
-                                  )),
-                            ),
-                          ),
-                        ));
-                  });
-            },
-          ),
-          title: Text(
-            category.type!,
-            style: TextStyle(
-                fontSize: isSmallScreen ? 12 : 16, fontWeight: FontWeight.bold),
-          ),
-          subtitle: Text(
-            "المبلغ المديون به:   ${category.price}     ",
-            style: TextStyle(
-                fontSize: isSmallScreen ? 12 : 16, fontWeight: FontWeight.bold),
-          ),
-        ),
-      ),
-    );
-  }
 }

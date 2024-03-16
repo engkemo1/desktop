@@ -885,88 +885,51 @@ class _AllDataScreenState extends State<AllDataScreen> {
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
                           color: Colors.white.withOpacity(0.9)),
-                      child: Column(
-                        children: [
-                          Row(
-                            children: [
-                              Text(
-                                "رقم الفاتورة: ${data.productsModelList[index].code.toString()} ",
-                                style: TextStyle(fontSize: 16),
-                              ),
-                              SizedBox(
-                                width: 20,
-                              ),
-                              Text("تاريخ الفاتورة: ${date} ",
-                                  style: TextStyle(fontSize: 16)),
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              Text(
-                                  "هاتف العميل: ${data.productsModelList[index].phone.toString()} ",
-                                  style: TextStyle(fontSize: 16)),
-                              SizedBox(
-                                width: 20,
-                              ),
-                              Text(
-                                  "الاسم: ${data.productsModelList[index].name.toString()} ",
-                                  style: TextStyle(fontSize: 16)),
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              Text(
-                                  "قيمة الفاتورة: ${data.productsModelList[index].total.toString()} ",
-                                  style: TextStyle(fontSize: 16)),
-                              SizedBox(
-                                width: 20,
-                              ),
-                              Text(
-                                  "نوع التفصيل: ${data.productsModelList[index].type.toString()} ",
-                                  style: TextStyle(fontSize: 16))
-                            ],
-                          ),
-                          Divider(),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              InkWell(
-                                onTap: () {
-                                  data.deleteProduct(data
-                                      .productsModelList[index].sId
-                                      .toString());
-                                },
-                                child: Container(
-                                  height: 35,
-                                  width: 100,
-                                  padding: EdgeInsets.all(5),
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(5),
-                                      color: accentCanvasColor),
-                                  child: Row(
-                                    children: [
-                                      Icon(
-                                        Icons.delete,
-                                        color: Colors.red,
-                                        size: 20,
-                                      ),
-                                      Text(
-                                        ' مسح',
-                                        style: TextStyle(color: Colors.white),
-                                      )
-                                    ],
-                                  ),
-                                ),
-                              ),
-                              InkWell(
-                                onTap: () async {
-                                  final pdfFile = await PdfInvoiceApi.generate2(
-                                      data.productsModelList[index], null);
+                      child: ListTile(
+                        leading: Image.asset("images/receipt.png"),
+                        title: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
 
-                                  // opening the pdf file
-                                  FileHandleApi.openFile(pdfFile);
-                                },
-                                child: Container(
+                                Text(
+                                  "رقم الفاتورة: ${data.productsModelList[index].code.toString()} ",
+                                  style: TextStyle(fontSize: 16),
+                                ),
+                            Text(
+                                "الاسم: ${data.productsModelList[index].name.toString()} ",
+                                style: TextStyle(fontSize: 16)),
+                                Text("تاريخ الفاتورة: ${date} ",
+                                    style: TextStyle(fontSize: 16)),
+
+
+                                Text(
+                                    "هاتف العميل: ${data.productsModelList[index].phone.toString()} ",
+                                    style: TextStyle(fontSize: 16)),
+                                SizedBox(
+                                  width: 20,
+                                ),
+
+
+                            Text(
+                                "قيمة الفاتورة: ${data.productsModelList[index].total.toString()} ",
+                                style: TextStyle(fontSize: 16)),
+                            SizedBox(
+                              width: 20,
+                            ),
+                            Text(
+                                "نوع التفصيل: ${data.productsModelList[index].type.toString()} ",
+                                style: TextStyle(fontSize: 16)),
+                            Divider(),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                InkWell(
+                                  onTap: () {
+                                    data.deleteProduct(data
+                                        .productsModelList[index].sId
+                                        .toString());
+                                  },
+                                  child: Container(
                                     height: 35,
                                     width: 100,
                                     padding: EdgeInsets.all(5),
@@ -976,19 +939,50 @@ class _AllDataScreenState extends State<AllDataScreen> {
                                     child: Row(
                                       children: [
                                         Icon(
-                                          Icons.print,
-                                          color: Colors.white,
+                                          Icons.delete,
+                                          color: Colors.red,
+                                          size: 20,
                                         ),
                                         Text(
-                                          ' طباعة',
+                                          ' مسح',
                                           style: TextStyle(color: Colors.white),
                                         )
                                       ],
-                                    )),
-                              ),
-                            ],
-                          )
-                        ],
+                                    ),
+                                  ),
+                                ),
+                                InkWell(
+                                  onTap: () async {
+                                    final pdfFile = await PdfInvoiceApi.generate2(
+                                        data.productsModelList[index], null);
+
+                                    // opening the pdf file
+                                    FileHandleApi.openFile(pdfFile);
+                                  },
+                                  child: Container(
+                                      height: 35,
+                                      width: 100,
+                                      padding: EdgeInsets.all(5),
+                                      decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(5),
+                                          color: accentCanvasColor),
+                                      child: Row(
+                                        children: [
+                                          Icon(
+                                            Icons.print,
+                                            color: Colors.white,
+                                          ),
+                                          Text(
+                                            ' طباعة',
+                                            style: TextStyle(color: Colors.white),
+                                          )
+                                        ],
+                                      )),
+                                ),
+                              ],
+                            )
+                          ],
+                        ),
                       ),
                     );
                   },
@@ -1010,88 +1004,48 @@ class _AllDataScreenState extends State<AllDataScreen> {
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
                           color: Colors.white.withOpacity(0.9)),
-                      child: Column(
-                        children: [
-                          Row(
-                            children: [
-                              Text(
-                                "رقم الفاتورة: ${productsSearchList[index].code.toString()} ",
-                                style: TextStyle(fontSize: 16),
-                              ),
-                              SizedBox(
-                                width: 20,
-                              ),
-                              Text("تاريخ الفاتورة: ${date} ",
-                                  style: TextStyle(fontSize: 16)),
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              Text(
-                                  "هاتف العميل: ${productsSearchList[index].phone.toString()} ",
-                                  style: TextStyle(fontSize: 16)),
-                              SizedBox(
-                                width: 20,
-                              ),
-                              Text(
-                                  "الاسم: ${productsSearchList[index].name.toString()} ",
-                                  style: TextStyle(fontSize: 16)),
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              Text(
-                                  "قيمة الفاتورة: ${productsSearchList[index].total.toString()} ",
-                                  style: TextStyle(fontSize: 16)),
-                              SizedBox(
-                                width: 20,
-                              ),
-                              Text(
-                                  "نوع التفصيل: ${productsSearchList[index].type.toString()} ",
-                                  style: TextStyle(fontSize: 16))
-                            ],
-                          ),
-                          Divider(),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              InkWell(
-                                onTap: () {
-                                  data.deleteProduct(data
-                                      .productsSearchList[index].sId
-                                      .toString());
-                                },
-                                child: Container(
-                                  height: 35,
-                                  width: 100,
-                                  padding: EdgeInsets.all(5),
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(5),
-                                      color: accentCanvasColor),
-                                  child: Row(
-                                    children: [
-                                      Icon(
-                                        Icons.delete,
-                                        color: Colors.red,
-                                        size: 20,
-                                      ),
-                                      Text(
-                                        ' مسح',
-                                        style: TextStyle(color: Colors.white),
-                                      )
-                                    ],
-                                  ),
-                                ),
-                              ),
-                              InkWell(
-                                onTap: () async {
-                                  final pdfFile = await PdfInvoiceApi.generate2(
-                                      productsSearchList[index], null);
+                      child: ListTile(
+                        leading: Image.asset("images/receipt.png"),
+                        title: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "رقم الفاتورة: ${productsSearchList[index].code.toString()} ",
+                              style: TextStyle(fontSize: 16),
+                            ),
+                            Text(
+                                "الاسم: ${productsSearchList[index].name.toString()} ",
+                                style: TextStyle(fontSize: 16)),
+                            Text("تاريخ الفاتورة: ${date} ",
+                                style: TextStyle(fontSize: 16)),
+                            Text(
+                                "هاتف العميل: ${productsSearchList[index].phone.toString()} ",
+                                style: TextStyle(fontSize: 16)),
+                            SizedBox(
+                              width: 20,
+                            ),
 
-                                  // opening the pdf file
-                                  FileHandleApi.openFile(pdfFile);
-                                },
-                                child: Container(
+                            Text(
+                                "قيمة الفاتورة: ${productsSearchList[index].total.toString()} ",
+                                style: TextStyle(fontSize: 16)),
+                            SizedBox(
+                              width: 20,
+                            ),
+                            Text(
+                                "نوع التفصيل: ${productsSearchList[index].type.toString()} ",
+                                style: TextStyle(fontSize: 16)),
+                            Divider(),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                InkWell(
+                                  onTap: () {
+                                    data.deleteProduct(data
+                                        .productsSearchList[index].sId
+                                        .toString());
+                                  },
+                                  child: Container(
                                     height: 35,
                                     width: 100,
                                     padding: EdgeInsets.all(5),
@@ -1101,19 +1055,50 @@ class _AllDataScreenState extends State<AllDataScreen> {
                                     child: Row(
                                       children: [
                                         Icon(
-                                          Icons.print,
-                                          color: Colors.white,
+                                          Icons.delete,
+                                          color: Colors.red,
+                                          size: 20,
                                         ),
                                         Text(
-                                          ' طباعة',
+                                          ' مسح',
                                           style: TextStyle(color: Colors.white),
                                         )
                                       ],
-                                    )),
-                              ),
-                            ],
-                          )
-                        ],
+                                    ),
+                                  ),
+                                ),
+                                InkWell(
+                                  onTap: () async {
+                                    final pdfFile = await PdfInvoiceApi.generate2(
+                                        productsSearchList[index], null);
+
+                                    // opening the pdf file
+                                    FileHandleApi.openFile(pdfFile);
+                                  },
+                                  child: Container(
+                                      height: 35,
+                                      width: 100,
+                                      padding: EdgeInsets.all(5),
+                                      decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(5),
+                                          color: accentCanvasColor),
+                                      child: Row(
+                                        children: [
+                                          Icon(
+                                            Icons.print,
+                                            color: Colors.white,
+                                          ),
+                                          Text(
+                                            ' طباعة',
+                                            style: TextStyle(color: Colors.white),
+                                          )
+                                        ],
+                                      )),
+                                ),
+                              ],
+                            )
+                          ],
+                        ),
                       ),
                     );
                   },

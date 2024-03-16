@@ -1,8 +1,12 @@
 import 'dart:ui' as ui;
 import 'package:desktop_app/constants.dart';
-import 'package:desktop_app/view/arrived_list_screen.dart';
+import 'package:desktop_app/view/screens/add_screen/add_screen.dart';
+import 'package:desktop_app/view/screens/delivery_list_screen.dart';
+import 'package:desktop_app/view/screens/home_screen.dart';
+import 'package:desktop_app/view/screens/main_screen.dart';
 import 'package:desktop_app/view/screens/pdf_invoice/file_handeler.dart';
 import 'package:desktop_app/view/screens/pdf_invoice/pdf.dart';
+import 'package:desktop_app/view/widgets/customTextField.dart';
 import 'package:desktop_app/view_model/cubit/products_cubit/add_state.dart';
 import 'package:desktop_app/view_model/cubit/products_cubit/products_cubit.dart';
 import 'package:empty_widget/empty_widget.dart';
@@ -16,17 +20,14 @@ import 'package:pdf/pdf.dart';
 import 'package:printing/printing.dart';
 
 import '../../Model/products_model.dart';
-import '../widgets/customTextField.dart';
-import 'add_screen/add_screen.dart';
-import 'home_screen.dart';
-import 'main_screen.dart';
 
-class DeliveryListScreen extends StatefulWidget {
+
+class ArrivedListScreen extends StatefulWidget {
   @override
-  State<DeliveryListScreen> createState() => _DeliveryListScreenState();
+  State<ArrivedListScreen> createState() => _ArrivedListScreenState();
 }
 
-class _DeliveryListScreenState extends State<DeliveryListScreen> {
+class _ArrivedListScreenState extends State<ArrivedListScreen> {
   var searchController = TextEditingController();
   List<ProductsModel> productsSearchList = [];
 
@@ -74,22 +75,22 @@ class _DeliveryListScreenState extends State<DeliveryListScreen> {
               }
             }, builder: (BuildContext context, state) {
           var data = ProductCubit.get(context);
-         var productList =   data.productsModelList.where((element) {
-        return   DateTime.now().difference(DateTime.parse(element.deliveryTime!)).inDays.abs()<=5  ;
-         } ).toList();
-print(productList);
+          var productList =   data.productsModelList.where((element) {
+            return   DateTime.now().difference(DateTime.parse(element.deliveryTime!)).inDays.abs()<=5  ;
+          } ).toList();
+          print(productList);
           return state is GetProductsLoadingState
               ? const Center(
             child: CircularProgressIndicator(),
           )
               : productList.isEmpty
               ? isSmallScreen?            SafeArea(
-                child: Column(
-                  children: [
-                    Container(
-                                width: double.infinity,
-                                color: accentCanvasColor,
-                                child: Column(
+            child: Column(
+              children: [
+                Container(
+                  width: double.infinity,
+                  color: accentCanvasColor,
+                  child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -107,13 +108,12 @@ print(productList);
                             child: HoverAnimatedContainer(
                               hoverWidth: 140,
                               height: 50,
-                              padding: EdgeInsets.all(10),
                               hoverDecoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
                                 color: Colors.red.withOpacity(0.8),
                               ),
-                              margin: EdgeInsets.only(left: 10, right: 10),
-                              width: 140,
+                              margin: EdgeInsets.only(left: 5, right: 5),
+                              width: 110,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
                                 color: Color(0xffBCEFC2),
@@ -128,7 +128,7 @@ print(productList);
                                   Text(
                                     "الصفحة الرئيسية",
                                     style: TextStyle(
-                                        fontSize: 15, fontWeight: FontWeight.bold),
+                                        fontSize: 13, fontWeight: FontWeight.bold),
                                   ),
                                 ],
                               ),
@@ -142,13 +142,12 @@ print(productList);
                             child: HoverAnimatedContainer(
                               hoverWidth: 140,
                               height: 50,
-                              padding: EdgeInsets.all(10),
                               hoverDecoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
                                 color: Colors.red.withOpacity(0.8),
                               ),
-                              margin: EdgeInsets.only(left: 10, right: 10),
-                              width: 140,
+                              margin: EdgeInsets.only(left: 5, right: 5),
+                              width: 110,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
                                 color: Color(0xffBCEFC2),
@@ -158,17 +157,52 @@ print(productList);
                                 children: [
                                   Image.asset(
                                     "images/report.png",
-                                    height: 40,
+                                    height: 25,
                                   ),
                                   Text(
                                     "  اضافة فاتورة",
                                     style: TextStyle(
-                                        fontSize: 15, fontWeight: FontWeight.bold),
+                                        fontSize: 13, fontWeight: FontWeight.bold),
                                   ),
                                 ],
                               ),
                             ),
                           ),
+                          InkWell(
+                            onTap: () {
+                              Navigator.push(context,
+                                  MaterialPageRoute(builder: (_) => DeliveryListScreen()));
+                            },
+                            child: HoverAnimatedContainer(
+                              hoverWidth: 140,
+                              height: 50,
+                              hoverDecoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: Colors.red.withOpacity(0.8),
+                              ),
+                              margin: EdgeInsets.only(left: 5, right: 5),
+                              width: 110,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: Color(0xffBCEFC2),
+                              ),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Image.asset(
+                                    "images/clock.png",
+                                    height: 25,
+                                  ),
+                                  Text(
+                                    "قوائم التسليم",
+                                    style: TextStyle(
+                                        fontSize: 13, fontWeight: FontWeight.bold),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+
                         ],
                       ),
                       SizedBox(
@@ -179,7 +213,7 @@ print(productList);
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            "قائمة تسليم الفواتير",
+                            "قائمةالفواتير المستلمة",
                             style: TextStyle(
                                 fontSize: 25,
                                 wordSpacing: 2,
@@ -232,34 +266,34 @@ print(productList);
                         ),
                       ),
                     ],
-                                ),
-                              ),
-                    Expanded(child:                    Container(
-                      height: MediaQuery.of(context).size.height * 0.6,
-                      alignment: Alignment.center,
-                      child: EmptyWidget(
-                        // Image from project assets
-                        image: null,
-                        packageImage: PackageImage.Image_3,
-                        title: 'لايوجد فواتير',
-                        subTitle: 'لايوجد فواتير قيد التسليم بعد',
-                        titleTextStyle: TextStyle(
-                          fontSize: isSmallScreen ? 13 : 22,
-                          color: const Color(0xff9da9c7),
-                          fontWeight: FontWeight.w500,
-                        ),
-                        subtitleTextStyle: TextStyle(
-                          fontSize: isSmallScreen ? 12 : 22,
-                          color: const Color(0xffabb8d6),
-                        ),
-                        // Uncomment below statement to hide background animation
-                        // hideBackgroundAnimation: true,
-                      ),
-                    ),
-                    )
-                  ],
+                  ),
                 ),
-              )
+                Expanded(child:                    Container(
+                  height: MediaQuery.of(context).size.height * 0.6,
+                  alignment: Alignment.center,
+                  child: EmptyWidget(
+                    // Image from project assets
+                    image: null,
+                    packageImage: PackageImage.Image_3,
+                    title: 'لايوجد فواتير',
+                    subTitle: 'لايوجد فواتير قيد التسليم بعد',
+                    titleTextStyle: TextStyle(
+                      fontSize: isSmallScreen ? 13 : 22,
+                      color: const Color(0xff9da9c7),
+                      fontWeight: FontWeight.w500,
+                    ),
+                    subtitleTextStyle: TextStyle(
+                      fontSize: isSmallScreen ? 12 : 22,
+                      color: const Color(0xffabb8d6),
+                    ),
+                    // Uncomment below statement to hide background animation
+                    // hideBackgroundAnimation: true,
+                  ),
+                ),
+                )
+              ],
+            ),
+          )
               :Container(
             decoration: BoxDecoration(
                 image: DecorationImage(
@@ -268,186 +302,186 @@ print(productList);
                   ),
                   fit: BoxFit.cover,
                 )),
-                child: Column(
-                  children: [
-                    Directionality(
-                      textDirection: ui.TextDirection.rtl,
-                      child: Container(
-                        width: double.infinity,
+            child: Column(
+              children: [
+                Directionality(
+                  textDirection: ui.TextDirection.rtl,
+                  child: Container(
+                    width: double.infinity,
 
-                        color: accentCanvasColor,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                    color: accentCanvasColor,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            SizedBox(
-                              height: 10,
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                InkWell(
-                                  onTap: () {
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (_) => MainScreen(
-                                              index: 0,
-                                            )));
-                                  },
-                                  child: HoverAnimatedContainer(
-                                    hoverWidth: 200,
-                                    padding: EdgeInsets.all(20),
-                                    hoverDecoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(10),
-                                      color: Colors.red.withOpacity(0.8),
-                                    ),
-                                    margin: EdgeInsets.only(left: 20, right: 20),
-                                    width: 200,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(10),
-                                      color: Color(0xffBCEFC2),
-                                    ),
-                                    child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.start,
-                                      children: [
-                                        Icon(Icons.home),
-                                        Text(
-                                          "الصفحة الرئيسية",
-                                          style: TextStyle(
-                                              fontSize: 18, fontWeight: FontWeight.bold),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
+                            InkWell(
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (_) => MainScreen(
+                                          index: 0,
+                                        )));
+                              },
+                              child: HoverAnimatedContainer(
+                                hoverWidth: 200,
+                                padding: EdgeInsets.all(20),
+                                hoverDecoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  color: Colors.red.withOpacity(0.8),
                                 ),
-                                Row(
+                                margin: EdgeInsets.only(left: 20, right: 20),
+                                width: 200,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  color: Color(0xffBCEFC2),
+                                ),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
+                                    Icon(Icons.home),
                                     Text(
-                                      "قائمة تسليم الفواتير",
+                                      "الصفحة الرئيسية",
                                       style: TextStyle(
-                                          fontSize: 35,
-                                          wordSpacing: 2,
-                                          color: Colors.white.withOpacity(0.8),
-                                          fontWeight: FontWeight.w500),
-                                    ),
-                                    SizedBox(
-                                      width: 5,
-                                    ),
-                                    Image.asset(
-                                      "images/receipt.png",
-                                      height: 70,
+                                          fontSize: 18, fontWeight: FontWeight.bold),
                                     ),
                                   ],
                                 ),
-                                InkWell(
-                                  onTap: () {
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (_) => MainScreen(
-                                              index: 2,
-                                            )));
-                                  },
-                                  child: HoverAnimatedContainer(
-                                    hoverWidth: 200,
-                                    padding: EdgeInsets.all(20),
-                                    hoverDecoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(10),
-                                      color: Colors.red.withOpacity(0.8),
-                                    ),
-                                    margin: EdgeInsets.only(left: 20, right: 20),
-                                    width: 200,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(10),
-                                      color: Color(0xffBCEFC2),
-                                    ),
-                                    child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.start,
-                                      children: [
-                                        Image.asset(
-                                          "images/report.png",
-                                          height: 30,
-                                        ),
-                                        Text(
-                                          "  اضافة فاتورة",
-                                          style: TextStyle(
-                                              fontSize: 18, fontWeight: FontWeight.bold),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
+                              ),
+                            ),
+                            Row(
+                              children: [
+                                Text(
+                                  "قائمة الفواتير المستلمة",
+                                  style: TextStyle(
+                                      fontSize: 35,
+                                      wordSpacing: 2,
+                                      color: Colors.white.withOpacity(0.8),
+                                      fontWeight: FontWeight.w500),
+                                ),
+                                SizedBox(
+                                  width: 5,
+                                ),
+                                Image.asset(
+                                  "images/receipt.png",
+                                  height: 70,
                                 ),
                               ],
                             ),
-                            SizedBox(
-                              height: 5,
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(
-                                  left: 100, right: 100, bottom: 20, top: 20),
-                              child: CustomTextField(
-                                controller: searchController,
-                                prefix: Icon(Icons.search),
-                                onChanged: (val) {
-                                  var result = int.tryParse(searchController.text);
-                                  if (result != null) {
-                                    setState(() {
-                                      searchCode(val, productList);
-                                    });
-                                  } else {
-                                    setState(() {
-                                      search(val, productList);
-                                    });                                    }
-
-
-                                },
-                                suffixIcon: IconButton(
-                                  icon: Icon(
-                                    Icons.close,
-                                    size: 15,
-                                  ),
-                                  onPressed: () {
-                                    setState(() {
-                                      searchController.clear();
-                                      productsSearchList.clear();
-                                    });
-                                  },
+                            InkWell(
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (_) => MainScreen(
+                                          index: 2,
+                                        )));
+                              },
+                              child: HoverAnimatedContainer(
+                                hoverWidth: 200,
+                                padding: EdgeInsets.all(20),
+                                hoverDecoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  color: Colors.red.withOpacity(0.8),
                                 ),
-                                hintText: ' ابحث عن فاتورة ',
+                                margin: EdgeInsets.only(left: 20, right: 20),
+                                width: 200,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  color: Color(0xffBCEFC2),
+                                ),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    Image.asset(
+                                      "images/report.png",
+                                      height: 30,
+                                    ),
+                                    Text(
+                                      "  اضافة فاتورة",
+                                      style: TextStyle(
+                                          fontSize: 18, fontWeight: FontWeight.bold),
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                           ],
                         ),
-                      ),
-                    ),
-                SizedBox(height: 20,),
-                   Container(
-                                  height: MediaQuery.of(context).size.height * 0.6,
-                                  alignment: Alignment.center,
-                                  child: EmptyWidget(
-                      // Image from project assets
-                      image: null,
-                      packageImage: PackageImage.Image_3,
-                      title: 'لايوجد فواتير',
-                      subTitle: 'لايوجد فواتير قيد التسليم بعد',
-                      titleTextStyle: TextStyle(
-                        fontSize: isSmallScreen ? 13 : 22,
-                        color: const Color(0xff9da9c7),
-                        fontWeight: FontWeight.w500,
-                      ),
-                      subtitleTextStyle: TextStyle(
-                        fontSize: isSmallScreen ? 12 : 22,
-                        color: const Color(0xffabb8d6),
-                      ),
-                      // Uncomment below statement to hide background animation
-                      // hideBackgroundAnimation: true,
-                                  ),
-                                ),
+                        SizedBox(
+                          height: 5,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(
+                              left: 100, right: 100, bottom: 20, top: 20),
+                          child: CustomTextField(
+                            controller: searchController,
+                            prefix: Icon(Icons.search),
+                            onChanged: (val) {
+                              var result = int.tryParse(searchController.text);
+                              if (result != null) {
+                                setState(() {
+                                  searchCode(val, productList);
+                                });
+                              } else {
+                                setState(() {
+                                  search(val, productList);
+                                });                                    }
 
-                  ],
+
+                            },
+                            suffixIcon: IconButton(
+                              icon: Icon(
+                                Icons.close,
+                                size: 15,
+                              ),
+                              onPressed: () {
+                                setState(() {
+                                  searchController.clear();
+                                  productsSearchList.clear();
+                                });
+                              },
+                            ),
+                            hintText: ' ابحث عن فاتورة ',
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
-              )
+                SizedBox(height: 20,),
+                Container(
+                  height: MediaQuery.of(context).size.height * 0.6,
+                  alignment: Alignment.center,
+                  child: EmptyWidget(
+                    // Image from project assets
+                    image: null,
+                    packageImage: PackageImage.Image_3,
+                    title: 'لايوجد فواتير',
+                    subTitle: 'لايوجد فواتير قيد التسليم بعد',
+                    titleTextStyle: TextStyle(
+                      fontSize: isSmallScreen ? 13 : 22,
+                      color: const Color(0xff9da9c7),
+                      fontWeight: FontWeight.w500,
+                    ),
+                    subtitleTextStyle: TextStyle(
+                      fontSize: isSmallScreen ? 12 : 22,
+                      color: const Color(0xffabb8d6),
+                    ),
+                    // Uncomment below statement to hide background animation
+                    // hideBackgroundAnimation: true,
+                  ),
+                ),
+
+              ],
+            ),
+          )
               : Directionality(
               textDirection: ui.TextDirection.rtl,
               child: isSmallScreen
@@ -463,7 +497,7 @@ print(productList);
   buildCardDesktop(ProductCubit data, BuildContext context)   {
     bool isSub=false;
 
-    var productList =   data.productsModelList.where((element) => DateTime.now().difference(DateTime.parse(element.deliveryTime!)).inDays.abs()<=5).where((element) => element.isDelliverd==null||element.isDelliverd==false).toList();
+    var productList =   data.productsModelList.where((element) => element.isDelliverd==true).toList();
 
     if (productsSearchList.isNotEmpty) {
       print(productsSearchList.first.name);
@@ -530,13 +564,15 @@ print(productList);
                     ),
                     InkWell(
                       onTap: () {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (_) => ArrivedListScreen()));
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (_) => DeliveryListScreen(
+                                )));
                       },
                       child: HoverAnimatedContainer(
                         hoverWidth: 210,
                         padding: EdgeInsets.all(20),
-
                         hoverDecoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
                           color: Colors.red.withOpacity(0.8),
@@ -550,9 +586,12 @@ print(productList);
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
-                              Image.asset(                        "images/delivered.png",height: 30,
-                            ),                            Text(
-                              "الفواتير المستلمة",
+                            Image.asset(
+                              "images/clock.png",
+                              height: 30,
+                            ),
+                            Text(
+                              "   قوائم التسليم ",
                               style: TextStyle(
                                   fontSize: 18, fontWeight: FontWeight.bold),
                             ),
@@ -601,14 +640,13 @@ print(productList);
                     ),
 
                   ],
-
                 ),
                 Divider(),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      "قائمة تسليم الفواتير",
+                      "قائمة الفواتير المستلمة",
                       style: TextStyle(
                           fontSize: 35,
                           wordSpacing: 2,
@@ -619,7 +657,8 @@ print(productList);
                       width: 5,
                     ),
                     Image.asset(
-                      "images/receipt.png",
+                      "images/delivered.png",
+
                       height: 70,
                     ),
                   ],
@@ -677,17 +716,17 @@ print(productList);
 
                       child: ElevatedButton(
                         style: ButtonStyle(backgroundColor: MaterialStatePropertyAll(Colors.white)),
-                          onPressed: (){
+                        onPressed: (){
                           if(productModelList.isNotEmpty){
-                                         print(productModelList[0].isDelliverd);
+                            print(productModelList[0].isDelliverd);
 
-  ProductCubit().updateProduct(context,productModelList[0]);
+                            ProductCubit().updateProduct(context,productModelList[0]);
                           }
 
 
 
                           print(productModelList);
-                          }, child: Text("تأكيد التسليم"),),
+                        }, child: Text("تأكيد التسليم"),),
                     ),
                     Spacer(),
 
@@ -710,8 +749,8 @@ print(productList);
                     rows: List.generate(
                       productList.length,
                           (index) {
-                            var deliveryDate = DateFormat("yyyy/MM/dd").format(
-                                DateTime.parse(productList[index].deliveryTime!));
+                        var deliveryDate = DateFormat("yyyy/MM/dd").format(
+                            DateTime.parse(productList[index].deliveryTime!));
                         var date = DateFormat("yyyy/MM/dd").format(
                             DateTime.parse(
                                 productList[index].date!));
@@ -841,7 +880,7 @@ print(productList);
   buildCardMobile(ProductCubit data, BuildContext context) {
     bool isSub=false;
 
-    var productList =   data.productsModelList.where((element) => DateTime.now().difference(DateTime.parse(element.deliveryTime!)).inDays.abs()<=5).where((element) => element.isDelliverd==null||element.isDelliverd==false).toList();
+    var productList =   data.productsModelList.where((element) => element.isDelliverd==true).toList();
 
     if (productsSearchList.isNotEmpty) {
       print(productsSearchList.first.name);
@@ -910,7 +949,7 @@ print(productList);
                       InkWell(
                         onTap: () {
                           Navigator.push(context,
-                              MaterialPageRoute(builder: (_) => ArrivedListScreen()));
+                              MaterialPageRoute(builder: (_) => DeliveryListScreen()));
                         },
                         child: HoverAnimatedContainer(
                           hoverWidth: 100,
@@ -928,11 +967,14 @@ print(productList);
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
-Image.asset(                        "images/delivered.png",height: 25,
-),                              Text(
-                                "الفواتير المستلمة  ",
+                              Image.asset(
+                                "images/clock.png",
+                                height: 20,
+                              ),
+                              Text(
+                                "  قوائم التسليم ",
                                 style: TextStyle(
-                                    fontSize: 12, fontWeight: FontWeight.bold),
+                                    fontSize: 13, fontWeight: FontWeight.bold),
                               ),
                             ],
                           ),
@@ -983,7 +1025,7 @@ Image.asset(                        "images/delivered.png",height: 25,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        "قائمة تسليم الفواتير",
+                        "قائمة الفواتير المستلمة",
                         style: TextStyle(
                             fontSize: 25,
                             wordSpacing: 2,
@@ -994,7 +1036,7 @@ Image.asset(                        "images/delivered.png",height: 25,
                         width: 5,
                       ),
                       Image.asset(
-                        "images/clock.png",
+                        "images/delivered.png",
                         height: 50,
                       ),
                     ],
@@ -1058,12 +1100,12 @@ Image.asset(                        "images/delivered.png",height: 25,
 
                       print(productModelList);
                     }, child: Row(
-                      children: [
-                        Text("تأكيد ",style: TextStyle(color: Colors.white),),
-                        Icon(Icons.check,color: Colors.white,),
+                    children: [
+                      Text("تأكيد ",style: TextStyle(color: Colors.white),),
+                      Icon(Icons.check,color: Colors.white,),
 
-                      ],
-                    ),),
+                    ],
+                  ),),
                 ),
                 Spacer(),
 
@@ -1076,7 +1118,7 @@ Image.asset(                        "images/delivered.png",height: 25,
                     ? ListView.builder(
                     itemBuilder: (context, index) {
                       bool isSub=productList[index].isDelliverd??false;
-print(isSub);
+                      print(isSub);
                       var deliveryDate = DateFormat("yyyy/MM/dd").format(
                           DateTime.parse(productList[index].deliveryTime!));
                       var date = DateFormat("yyyy/MM/dd").format(
@@ -1090,29 +1132,31 @@ print(isSub);
                             borderRadius: BorderRadius.circular(10),
                             color: dateD.inDays==1?Colors.red:Colors.white.withOpacity(0.9)),
                         child: ListTile(
-                          leading: Image.asset("images/receipt.png"),
-                          title: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
+                      leading: Image.asset("images/receipt.png"),
+
+                      title:
+                           Column(
+                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
-                                Text("تم التسليم :",style: TextStyle(fontSize: 20),),
-                                StatefulBuilder(
-                                    builder: (context,setState) {
-                                      return Checkbox(value: isSub, onChanged: (bool? value) {
-                                        var product=productList[index];
-                                        setState(() {
-                                          product.isDelliverd=value!;
-                                          productModelList.add(product);
+                                  Text("تم التسليم :",style: TextStyle(fontSize: 20),),
+                                  StatefulBuilder(
+                                      builder: (context,setState) {
+                                        return Checkbox(value: isSub, onChanged: (bool? value) {
+                                          var product=productList[index];
+                                          setState(() {
+                                            product.isDelliverd=value!;
+                                            productModelList.add(product);
 
 
-                                          isSub =value;
-                                        });
-                                      },);
-                                    }
-                                )
-                              ],),
+                                            isSub =value;
+                                          });
+                                        },);
+                                      }
+                                  )
+                                ],),
                               Divider(),
                               Text(
                                 "رقم الفاتورة: ${productList[index].code.toString()} ",
@@ -1126,18 +1170,15 @@ print(isSub);
                               Text(
                                   "هاتف العميل: ${productList[index].phone.toString()} ",
                                   style: TextStyle(fontSize: 16)),
-                              SizedBox(
-                                width: 20,
-                              ),
+
+
                               Text(
                                   "الاسم: ${productList[index].name.toString()} ",
                                   style: TextStyle(fontSize: 16)),
                               Text(
                                   "المبلغ المتبقي : ${productList[index].remainingAmount.toString()} ",
                                   style: TextStyle(fontSize: 16)),
-                              SizedBox(
-                                width: 20,
-                              ),
+
                               Text(
                                   "نوع التفصيل: ${productList[index].type.toString()} ",
                                   style: TextStyle(fontSize: 16)),
@@ -1208,7 +1249,7 @@ print(isSub);
                       );
                     },
                     itemCount: productList.length
-                        ):SizedBox(
+                ):SizedBox(
                   height: 300,
                   child: EmptyWidget(
                     packageImage: PackageImage.Image_2,
@@ -1232,10 +1273,11 @@ print(isSub);
                             borderRadius: BorderRadius.circular(10),
                             color: dateD.inDays==1?Colors.red:Colors.white.withOpacity(0.9)),
                         child: ListTile(
-                          leading: Image.asset("images/receipt.png"),
+                      leading: Image.asset("images/receipt.png"),
 
-                          title: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
+                      title:
+                           Column(
+                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -1261,6 +1303,7 @@ print(isSub);
                                 "رقم الفاتورة: ${productsSearchList[index].code.toString()} ",
                                 style: TextStyle(fontSize: 16),
                               ),
+
 
                               Text("الايام المتبقية: ${dateD.inDays} ",
                                   style: TextStyle(fontSize: 16)),
@@ -1358,55 +1401,55 @@ print(isSub);
   DataRow buildDataRow(String deliveryDate,DateTime dateTime,int index, ProductCubit data, String date,
       var productsModelList, String time, BuildContext context) {
     print(productsModelList.isDelliverd);
-bool isSub=productsModelList.isDelliverd??false;
+    bool isSub=productsModelList.isDelliverd??false;
     var dateD=   DateTime.now().difference(dateTime);
     return DataRow(
-color: dateD.inDays.abs()==1?MaterialStatePropertyAll(Colors.redAccent):MaterialStatePropertyAll(Colors.white.withOpacity(0.9)),
+        color: dateD.inDays.abs()==1?MaterialStatePropertyAll(Colors.redAccent):MaterialStatePropertyAll(Colors.white.withOpacity(0.9)),
 
         cells: [
           DataCell(Center(child: StatefulBuilder(
-            builder: (context,setState) {
-              return Checkbox(value: isSub, onChanged: (bool? value) {
-                var product=productsModelList;
-                setState(() {
-                  product.isDelliverd=value!;
+              builder: (context,setState) {
+                return Checkbox(value: isSub, onChanged: (bool? value) {
+                  var product=productsModelList;
+                  setState(() {
+                    product.isDelliverd=value!;
                     productModelList.add(product);
 
 
-                isSub =value;
-                });
-              },);
-            }
+                    isSub =value;
+                  });
+                },);
+              }
           )),onTapDown: (t){
           }),
-      DataCell(Center(child: Text(productsModelList.code.toString())),onTapDown: (t){
-        t.localPosition.distance;
-      }),
-      DataCell(Center(child: Text(productsModelList.name!))),
-      DataCell(Center(child: Text(productsModelList.phone!))),
+          DataCell(Center(child: Text(productsModelList.code.toString())),onTapDown: (t){
+            t.localPosition.distance;
+          }),
+          DataCell(Center(child: Text(productsModelList.name!))),
+          DataCell(Center(child: Text(productsModelList.phone!))),
           DataCell(Center(child: Text("${deliveryDate}"))),
 
           DataCell(Center(child: Text("${dateD.inDays.abs()} ايام "))),
 
-      DataCell(Center(child: Text(productsModelList.prize.toString()))),
-      DataCell(Center(
-        child: IconButton(
-            onPressed: () async {
-              final pdfFile =
-              await PdfInvoiceApi.generate2(productsModelList, null);
+          DataCell(Center(child: Text(productsModelList.prize.toString()))),
+          DataCell(Center(
+            child: IconButton(
+                onPressed: () async {
+                  final pdfFile =
+                  await PdfInvoiceApi.generate2(productsModelList, null);
 
-              // opening the pdf file
-              FileHandleApi.openFile(pdfFile);
-            },
-            icon: Icon(Icons.print,color: accentCanvasColor,)),
-      )),
-      DataCell(Center(
-        child: IconButton(
-            onPressed: () {
-              data.deleteProduct(productsModelList.sId.toString());
-            },
-            icon: Icon(Icons.delete,color:dateD.inDays.abs()==1?accentCanvasColor :Colors.red,)),
-      )),
-    ]);
+                  // opening the pdf file
+                  FileHandleApi.openFile(pdfFile);
+                },
+                icon: Icon(Icons.print,color: accentCanvasColor,)),
+          )),
+          DataCell(Center(
+            child: IconButton(
+                onPressed: () {
+                  data.deleteProduct(productsModelList.sId.toString());
+                },
+                icon: Icon(Icons.delete,color:dateD.inDays.abs()==1?accentCanvasColor :Colors.red,)),
+          )),
+        ]);
   }
 }
