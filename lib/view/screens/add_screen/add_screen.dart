@@ -74,13 +74,13 @@ class _AddScreenState extends State<AddScreen> {
   SingleValueDropDownController controller = SingleValueDropDownController();
   TextEditingController totalTypeController = TextEditingController();
   TextEditingController codeController = TextEditingController();
-  TextEditingController taqwera1LengthController=TextEditingController();
-  TextEditingController taqwera2LengthController=TextEditingController();
-  TextEditingController taqwera3LengthController=TextEditingController();
+  TextEditingController taqwera1LengthController = TextEditingController();
+  TextEditingController taqwera2LengthController = TextEditingController();
+  TextEditingController taqwera3LengthController = TextEditingController();
 
-  TextEditingController badnLengthController1=TextEditingController();
-  TextEditingController badnLengthController2=TextEditingController();
-  TextEditingController badnLengthController3=TextEditingController();
+  TextEditingController badnLengthController1 = TextEditingController();
+  TextEditingController badnLengthController2 = TextEditingController();
+  TextEditingController badnLengthController3 = TextEditingController();
   TextEditingController hand1LengthController = TextEditingController();
   TextEditingController hand2LengthController = TextEditingController();
 
@@ -144,42 +144,35 @@ class _AddScreenState extends State<AddScreen> {
 
   var controllerType;
 
-  TextEditingController sadrController =TextEditingController();
+  TextEditingController sadrController = TextEditingController();
 
-  TextEditingController komController =TextEditingController();
+  TextEditingController komController = TextEditingController();
 
-  TextEditingController glabController =TextEditingController();
+  TextEditingController glabController = TextEditingController();
 
-  TextEditingController ganbController =TextEditingController();
+  TextEditingController ganbController = TextEditingController();
 
-  TextEditingController gybController=TextEditingController();
+  TextEditingController gybController = TextEditingController();
 
-  TextEditingController taqweraController =TextEditingController();
+  TextEditingController taqweraController = TextEditingController();
 
-  TextEditingController ya2aController=TextEditingController();
+  TextEditingController ya2aController = TextEditingController();
 
-  var categoryName
-  ;
-
-
+  var categoryName;
 
   @override
   void initState() {
-
-    ProductCubit().getData().then((value) {var val=RandomDigits.getInteger(2).toString();
+    ProductCubit().getData().then((value) {
+      var val = RandomDigits.getInteger(2).toString();
       setState(() {
         value.forEach((element) {
-          if(          element.code==   val
-          ){
-            val==(RandomDigits.getInteger(2)+1).toString();
-          }else{
+          if (element.code == val) {
+            val == (RandomDigits.getInteger(2) + 1).toString();
+          } else {
             codeController.text = val;
-
           }
-
         });
       });
-
     });
     totalTypeController.text = "0.0";
     worker_costController.text = "0.0";
@@ -260,11 +253,11 @@ class _AddScreenState extends State<AddScreen> {
     var isSmallScreen = MediaQuery.of(context).size.width < 700;
 
     return Scaffold(
-      body: isSmallScreen?Mobile(): Desktop(),
+      body: isSmallScreen ? Mobile() : Desktop(),
     );
   }
 
-  Directionality Desktop()  {
+  Directionality Desktop() {
     return Directionality(
       textDirection: ui.TextDirection.rtl,
       child: Container(
@@ -813,264 +806,288 @@ class _AddScreenState extends State<AddScreen> {
                               ],
                             ),
                           )),
-
-                       Expanded(
-                         flex: 3,
-                         child: Row(children: [   Expanded(
-                             child: Padding(
-                               padding: const EdgeInsets.only(left:8.0,right: 8),
-                               child: Column(
-                                 mainAxisAlignment: MainAxisAlignment.start,
-                                 crossAxisAlignment: CrossAxisAlignment.start,
-                                 children: [
-                                   const Text(
-                                     'وسع اليد',
-                                     style: TextStyle(
-                                         color: Colors.white70,
-                                         fontWeight: FontWeight.w500,
-                                         fontSize: 15),
-                                   ),
-                                   Container(decoration: BoxDecoration(
-                                       color:buttonColor,
-                                       borderRadius: BorderRadius.circular(10)
-                                   ),
-                                     child: Column(
-                                       children: [
-
-                                         TextFormField(                                  controller: hand1LengthController,
-                                           keyboardType: TextInputType.number,
-                                           textAlign: TextAlign.center,
-
-                                           decoration: InputDecoration(
-                                             contentPadding: EdgeInsets.all(10),
-                                             hintText: 'ادخل المقاس',
-
-                                             hintStyle: TextStyle(
-                                                 fontSize: 14,
-                                                 fontWeight: FontWeight.bold),
-                                           ),
-                                         ),
-                                         TextFormField(                                  controller: hand2LengthController,
-                                           keyboardType: TextInputType.number,
-                                           textAlign: TextAlign.center,
-
-                                           decoration: InputDecoration(
-                                             hintText: 'ادخل  المقاس',
-                                             contentPadding: EdgeInsets.all(10),
-
-                                             hintStyle: TextStyle(
-                                                 fontSize: 14,
-                                                 fontWeight: FontWeight.bold),
-                                           ),
-                                         )
-                                       ],
-                                     ),
-
-                                   )
-
-                                 ],
-                               ),
-                             )),
-                           Expanded(
-                               child: Padding(
-                                 padding: const EdgeInsets.only(left:8.0,right: 8),
-                                 child: Column(
-                                   mainAxisAlignment: MainAxisAlignment.start,
-                                   crossAxisAlignment: CrossAxisAlignment.start,
-                                   children: [
-                                     const Text(
-                                       'طول الكبك',
-                                       style: TextStyle(
-                                           color: Colors.white70,
-                                           fontWeight: FontWeight.w500,
-                                           fontSize: 15),
-                                     ),
-                                     Container(decoration: BoxDecoration(
-                                         color:buttonColor,
-                                         borderRadius: BorderRadius.circular(10)
-                                     ),
-                                       child: Column(
-                                         children: [
-
-                                           TextFormField(                                  controller: k1LengthController,
-                                             keyboardType: TextInputType.number,
-                                             textAlign: TextAlign.center,
-
-                                             decoration: InputDecoration(
-                                               hintText: 'ادخل المقاس ',
-                                               contentPadding: EdgeInsets.all(10),
-
-                                               hintStyle: TextStyle(
-                                                   fontSize: 14,
-                                                   fontWeight: FontWeight.bold),
-                                             ),
-                                           ),
-                                           TextFormField(                                  controller: k2LengthController,
-                                             keyboardType: TextInputType.number,
-                                             textAlign: TextAlign.center,
-
-                                             decoration: InputDecoration(
-                                               hintText: 'ادخل المقاس',
-                                               contentPadding: EdgeInsets.all(10),
-
-                                               hintStyle: TextStyle(
-                                                   fontSize: 14,
-                                                   fontWeight: FontWeight.bold),
-                                             ),
-                                           )
-                                         ],
-                                       ),
-
-                                     )
-
-                                   ],
-                                 ),
-                               )),
-                           Expanded(
-                               child: Padding(
-                                 padding: const EdgeInsets.only(left:8.0,right: 8),
-                                 child: Column(
-                                   mainAxisAlignment: MainAxisAlignment.start,
-                                   crossAxisAlignment: CrossAxisAlignment.start,
-                                   children: [
-                                     const Text(
-                                       'سقوط التقويرة',
-                                       style: TextStyle(
-                                           color: Colors.white70,
-                                           fontWeight: FontWeight.w500,
-                                           fontSize: 12),
-                                     ),
-                                     SizedBox(height: 5,),
-                                     Container(decoration: BoxDecoration(
-                                         color:buttonColor,
-                                         borderRadius: BorderRadius.circular(10)
-                                     ),
-                                       child: Column(
-                                         children: [
-
-                                           TextFormField(                                  controller: taqwera1LengthController,
-                                             keyboardType: TextInputType.number,
-textAlign: TextAlign.center,
-                                             decoration: InputDecoration(
-                                               hintText: 'ادخل المقاس',
-                                               contentPadding: EdgeInsets.all(10),
-
-                                               hintStyle: TextStyle(
-                                                   fontSize: 14,
-                                                   fontWeight: FontWeight.bold),
-                                             ),
-                                           ),
-                                           TextFormField(
-                                             textAlign: TextAlign.center,
-                                             controller: taqwera2LengthController,
-                                             keyboardType: TextInputType.number,
-
-                                             decoration: InputDecoration(
-                                               hintText: 'ادخل المقاس',
-                                               contentPadding: EdgeInsets.all(10),
-
-                                               hintStyle: TextStyle(
-                                                   fontSize: 14,
-                                                   fontWeight: FontWeight.bold),
-                                             ),
-                                           ),
-                                           TextFormField(
-                                             textAlign: TextAlign.center,
-                                             controller: taqwera3LengthController,
-                                             keyboardType: TextInputType.number,
-
-                                             decoration: InputDecoration(
-                                               hintText: 'ادخل المقاس',
-                                               contentPadding: EdgeInsets.all(10),
-
-                                               hintStyle: TextStyle(
-                                                   fontSize: 14,
-                                                   fontWeight: FontWeight.bold),
-                                             ),
-                                           ),
-
-                                         ],
-                                       ),
-
-                                     )
-
-                                   ],
-                                 ),
-                               )),
-                           Expanded(
-                               child: Padding(
-                                 padding: const EdgeInsets.only(left:8.0,right: 8),
-                                 child: Column(
-                                   mainAxisAlignment: MainAxisAlignment.start,
-                                   crossAxisAlignment: CrossAxisAlignment.start,
-                                   children: [
-                                     const Text(
-                                       'مقاس البدن',
-                                       style: TextStyle(
-                                           color: Colors.white70,
-                                           fontWeight: FontWeight.w500,
-                                           fontSize: 12),
-                                     ),
-                                     SizedBox(height: 5,),
-
-                                     Container(decoration: BoxDecoration(
-                                         color:buttonColor,
-                                         borderRadius: BorderRadius.circular(10)
-                                     ),
-                                       child: Column(
-                                         children: [
-
-                                           TextFormField(
-                                             textAlign: TextAlign.center,
-                                             controller: badnLengthController1,
-                                             keyboardType: TextInputType.number,
-
-                                             decoration: InputDecoration(
-                                               hintText: 'ادخل المقاس',
-                                               contentPadding: EdgeInsets.all(10),
-
-                                               hintStyle: TextStyle(
-                                                   fontSize: 14,
-                                                   fontWeight: FontWeight.bold),
-                                             ),
-                                           ),
-                                           TextFormField(                                  controller: badnLengthController2,
-                                             keyboardType: TextInputType.number,
-                                             textAlign: TextAlign.center,
-
-                                             decoration: InputDecoration(
-                                               hintText: 'ادخل المقاس',
-                                               contentPadding: EdgeInsets.all(10),
-
-                                               hintStyle: TextStyle(
-                                                   fontSize: 14,
-                                                   fontWeight: FontWeight.bold),
-                                             ),
-                                           ),
-                                           TextFormField(                                  controller: badnLengthController3,
-                                             keyboardType: TextInputType.number,
-                                             textAlign: TextAlign.center,
-
-                                             decoration: InputDecoration(
-                                               hintText: 'ادخل المقاس',
-                                               contentPadding: EdgeInsets.all(10),
-
-                                               hintStyle: TextStyle(
-                                                   fontSize: 14,
-                                                   fontWeight: FontWeight.bold),
-                                             ),
-                                           ),
-
-                                         ],
-                                       ),
-
-                                     )
-
-                                   ],
-                                 ),
-                               )),],),
-                       )
-
+                          Expanded(
+                            flex: 3,
+                            child: Row(
+                              children: [
+                                Expanded(
+                                    child: Padding(
+                                  padding: const EdgeInsets.only(
+                                      left: 8.0, right: 8),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      const Text(
+                                        'وسع اليد',
+                                        style: TextStyle(
+                                            color: Colors.white70,
+                                            fontWeight: FontWeight.w500,
+                                            fontSize: 15),
+                                      ),
+                                      Container(
+                                        decoration: BoxDecoration(
+                                            color: buttonColor,
+                                            borderRadius:
+                                                BorderRadius.circular(10)),
+                                        child: Column(
+                                          children: [
+                                            TextFormField(
+                                              controller: hand1LengthController,
+                                              keyboardType:
+                                                  TextInputType.number,
+                                              textAlign: TextAlign.center,
+                                              decoration: InputDecoration(
+                                                contentPadding:
+                                                    EdgeInsets.all(10),
+                                                hintText: 'ادخل المقاس',
+                                                hintStyle: TextStyle(
+                                                    fontSize: 14,
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                              ),
+                                            ),
+                                            TextFormField(
+                                              controller: hand2LengthController,
+                                              keyboardType:
+                                                  TextInputType.number,
+                                              textAlign: TextAlign.center,
+                                              decoration: InputDecoration(
+                                                hintText: 'ادخل  المقاس',
+                                                contentPadding:
+                                                    EdgeInsets.all(10),
+                                                hintStyle: TextStyle(
+                                                    fontSize: 14,
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                              ),
+                                            )
+                                          ],
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                )),
+                                Expanded(
+                                    child: Padding(
+                                  padding: const EdgeInsets.only(
+                                      left: 8.0, right: 8),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      const Text(
+                                        'طول الكبك',
+                                        style: TextStyle(
+                                            color: Colors.white70,
+                                            fontWeight: FontWeight.w500,
+                                            fontSize: 15),
+                                      ),
+                                      Container(
+                                        decoration: BoxDecoration(
+                                            color: buttonColor,
+                                            borderRadius:
+                                                BorderRadius.circular(10)),
+                                        child: Column(
+                                          children: [
+                                            TextFormField(
+                                              controller: k1LengthController,
+                                              keyboardType:
+                                                  TextInputType.number,
+                                              textAlign: TextAlign.center,
+                                              decoration: InputDecoration(
+                                                hintText: 'ادخل المقاس ',
+                                                contentPadding:
+                                                    EdgeInsets.all(10),
+                                                hintStyle: TextStyle(
+                                                    fontSize: 14,
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                              ),
+                                            ),
+                                            TextFormField(
+                                              controller: k2LengthController,
+                                              keyboardType:
+                                                  TextInputType.number,
+                                              textAlign: TextAlign.center,
+                                              decoration: InputDecoration(
+                                                hintText: 'ادخل المقاس',
+                                                contentPadding:
+                                                    EdgeInsets.all(10),
+                                                hintStyle: TextStyle(
+                                                    fontSize: 14,
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                              ),
+                                            )
+                                          ],
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                )),
+                                Expanded(
+                                    child: Padding(
+                                  padding: const EdgeInsets.only(
+                                      left: 8.0, right: 8),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      const Text(
+                                        'سقوط التقويرة',
+                                        style: TextStyle(
+                                            color: Colors.white70,
+                                            fontWeight: FontWeight.w500,
+                                            fontSize: 12),
+                                      ),
+                                      SizedBox(
+                                        height: 5,
+                                      ),
+                                      Container(
+                                        decoration: BoxDecoration(
+                                            color: buttonColor,
+                                            borderRadius:
+                                                BorderRadius.circular(10)),
+                                        child: Column(
+                                          children: [
+                                            TextFormField(
+                                              controller:
+                                                  taqwera1LengthController,
+                                              keyboardType:
+                                                  TextInputType.number,
+                                              textAlign: TextAlign.center,
+                                              decoration: InputDecoration(
+                                                hintText: 'ادخل المقاس',
+                                                contentPadding:
+                                                    EdgeInsets.all(10),
+                                                hintStyle: TextStyle(
+                                                    fontSize: 14,
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                              ),
+                                            ),
+                                            TextFormField(
+                                              textAlign: TextAlign.center,
+                                              controller:
+                                                  taqwera2LengthController,
+                                              keyboardType:
+                                                  TextInputType.number,
+                                              decoration: InputDecoration(
+                                                hintText: 'ادخل المقاس',
+                                                contentPadding:
+                                                    EdgeInsets.all(10),
+                                                hintStyle: TextStyle(
+                                                    fontSize: 14,
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                              ),
+                                            ),
+                                            TextFormField(
+                                              textAlign: TextAlign.center,
+                                              controller:
+                                                  taqwera3LengthController,
+                                              keyboardType:
+                                                  TextInputType.number,
+                                              decoration: InputDecoration(
+                                                hintText: 'ادخل المقاس',
+                                                contentPadding:
+                                                    EdgeInsets.all(10),
+                                                hintStyle: TextStyle(
+                                                    fontSize: 14,
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                )),
+                                Expanded(
+                                    child: Padding(
+                                  padding: const EdgeInsets.only(
+                                      left: 8.0, right: 8),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      const Text(
+                                        'مقاس البدن',
+                                        style: TextStyle(
+                                            color: Colors.white70,
+                                            fontWeight: FontWeight.w500,
+                                            fontSize: 12),
+                                      ),
+                                      SizedBox(
+                                        height: 5,
+                                      ),
+                                      Container(
+                                        decoration: BoxDecoration(
+                                            color: buttonColor,
+                                            borderRadius:
+                                                BorderRadius.circular(10)),
+                                        child: Column(
+                                          children: [
+                                            TextFormField(
+                                              textAlign: TextAlign.center,
+                                              controller: badnLengthController1,
+                                              keyboardType:
+                                                  TextInputType.number,
+                                              decoration: InputDecoration(
+                                                hintText: 'ادخل المقاس',
+                                                contentPadding:
+                                                    EdgeInsets.all(10),
+                                                hintStyle: TextStyle(
+                                                    fontSize: 14,
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                              ),
+                                            ),
+                                            TextFormField(
+                                              controller: badnLengthController2,
+                                              keyboardType:
+                                                  TextInputType.number,
+                                              textAlign: TextAlign.center,
+                                              decoration: InputDecoration(
+                                                hintText: 'ادخل المقاس',
+                                                contentPadding:
+                                                    EdgeInsets.all(10),
+                                                hintStyle: TextStyle(
+                                                    fontSize: 14,
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                              ),
+                                            ),
+                                            TextFormField(
+                                              controller: badnLengthController3,
+                                              keyboardType:
+                                                  TextInputType.number,
+                                              textAlign: TextAlign.center,
+                                              decoration: InputDecoration(
+                                                hintText: 'ادخل المقاس',
+                                                contentPadding:
+                                                    EdgeInsets.all(10),
+                                                hintStyle: TextStyle(
+                                                    fontSize: 14,
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                )),
+                              ],
+                            ),
+                          )
                         ],
                       ),
 
@@ -1079,8 +1096,8 @@ textAlign: TextAlign.center,
                         children: [
                           Expanded(
                               child: Divider(
-                                color: Colors.white,
-                              )),
+                            color: Colors.white,
+                          )),
                           Text(
                             "     بيانات الطلب    ",
                             style: TextStyle(
@@ -1090,8 +1107,8 @@ textAlign: TextAlign.center,
                           ),
                           Expanded(
                               child: Divider(
-                                color: Colors.white,
-                              )),
+                            color: Colors.white,
+                          )),
                         ],
                       ),
 
@@ -1126,8 +1143,8 @@ textAlign: TextAlign.center,
                                             activeColor: buttonColor,
                                             tileColor: Colors.white,
                                             fillColor:
-                                            MaterialStateProperty.all(
-                                                buttonColor),
+                                                MaterialStateProperty.all(
+                                                    buttonColor),
                                             selectedTileColor: Colors.white,
                                             groupValue: _character,
                                             onChanged: (value) {
@@ -1140,165 +1157,165 @@ textAlign: TextAlign.center,
                                       ),
                                       _character == SingingCharacter.afrangy
                                           ? Expanded(
-                                        flex: 4,
-                                        child: Row(
-                                          children: [
-                                            Expanded(
-                                              flex: 2,
-                                              child: Container(
-                                                decoration: BoxDecoration(
-                                                  borderRadius:
-                                                  BorderRadius
-                                                      .circular(10),
-                                                  color:
-                                                  Color(0xffBCEFC2),
-                                                ),
-                                                child: DropdownButton(
-                                                  borderRadius:
-                                                  BorderRadius
-                                                      .circular(10),
-                                                  underline: SizedBox(),
-                                                  hint:
-                                                  _dropDownValueA ==
-                                                      null
-                                                      ? Text(
-                                                    'اضغط للاختيار',
-                                                    style: TextStyle(
-                                                        fontWeight:
-                                                        FontWeight.bold),
-                                                  )
-                                                      : Text(
-                                                    _dropDownValueA!,
-                                                    style: TextStyle(
-                                                        color: Colors
-                                                            .black,
-                                                        fontSize:
-                                                        16),
+                                              flex: 4,
+                                              child: Row(
+                                                children: [
+                                                  Expanded(
+                                                    flex: 2,
+                                                    child: Container(
+                                                      decoration: BoxDecoration(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(10),
+                                                        color:
+                                                            Color(0xffBCEFC2),
+                                                      ),
+                                                      child: DropdownButton(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(10),
+                                                        underline: SizedBox(),
+                                                        hint:
+                                                            _dropDownValueA ==
+                                                                    null
+                                                                ? Text(
+                                                                    'اضغط للاختيار',
+                                                                    style: TextStyle(
+                                                                        fontWeight:
+                                                                            FontWeight.bold),
+                                                                  )
+                                                                : Text(
+                                                                    _dropDownValueA!,
+                                                                    style: TextStyle(
+                                                                        color: Colors
+                                                                            .black,
+                                                                        fontSize:
+                                                                            16),
+                                                                  ),
+                                                        isExpanded: true,
+                                                        padding:
+                                                            EdgeInsets.only(
+                                                                left: 20,
+                                                                right: 20),
+                                                        iconSize: 30.0,
+                                                        style: TextStyle(
+                                                            color:
+                                                                Colors.black),
+                                                        items: [
+                                                          'قطري',
+                                                          'سعودي',
+                                                          'كويتي',
+                                                          "بولاقي",
+                                                          "كوم سادة عماني",
+                                                          "شعراوي كوم سادة",
+                                                          "سوداني كوم سادة"
+                                                        ].map(
+                                                          (val) {
+                                                            return DropdownMenuItem<
+                                                                String>(
+                                                              value: val,
+                                                              child: Text(val),
+                                                            );
+                                                          },
+                                                        ).toList(),
+                                                        onChanged: (val) {
+                                                          setState(
+                                                            () {
+                                                              _dropDownValueA =
+                                                                  val;
+                                                            },
+                                                          );
+                                                        },
+                                                      ),
+                                                    ),
                                                   ),
-                                                  isExpanded: true,
-                                                  padding:
-                                                  EdgeInsets.only(
-                                                      left: 20,
-                                                      right: 20),
-                                                  iconSize: 30.0,
-                                                  style: TextStyle(
-                                                      color:
-                                                      Colors.black),
-                                                  items: [
-                                                    'قطري',
-                                                    'سعودي',
-                                                    'كويتي',
-                                                    "بولاقي",
-                                                    "كوم سادة عماني",
-                                                    "شعراوي كوم سادة",
-                                                    "سوداني كوم سادة"
-                                                  ].map(
-                                                        (val) {
-                                                      return DropdownMenuItem<
-                                                          String>(
-                                                        value: val,
-                                                        child: Text(val),
-                                                      );
-                                                    },
-                                                  ).toList(),
-                                                  onChanged: (val) {
-                                                    setState(
-                                                          () {
-                                                        _dropDownValueA =
-                                                            val;
-                                                      },
-                                                    );
-                                                  },
-                                                ),
-                                              ),
-                                            ),
-                                            SizedBox(
-                                              width: 10,
-                                            ),
-                                            _dropDownValueA == "قطري" ||
-                                                _dropDownValueA ==
-                                                    "سعودي" ||
-                                                _dropDownValueA ==
-                                                    "كويتي" ||
-                                                _dropDownValueA ==
-                                                    "بولاقي"
-                                                ? Expanded(
-                                              flex: 2,
-                                              child: Container(
-                                                width: 400,
-                                                decoration:
-                                                BoxDecoration(
-                                                  borderRadius:
-                                                  BorderRadius
-                                                      .circular(
-                                                      10),
-                                                  color: Color(
-                                                      0xffBCEFC2),
-                                                ),
-                                                child:
-                                                DropdownButton(
-                                                  borderRadius:
-                                                  BorderRadius
-                                                      .circular(
-                                                      10),
-                                                  underline:
-                                                  SizedBox(),
-                                                  hint:
-                                                  _dropDownValueB ==
-                                                      null
-                                                      ? Text(
-                                                    'اضغط للاختيار ',
-                                                    style:
-                                                    TextStyle(fontWeight: FontWeight.bold),
-                                                  )
-                                                      : Text(
-                                                    _dropDownValueB!,
-                                                    style: TextStyle(
-                                                        color: Colors.black,
-                                                        fontSize: 16),
+                                                  SizedBox(
+                                                    width: 10,
                                                   ),
-                                                  isExpanded: true,
-                                                  padding: EdgeInsets
-                                                      .only(
-                                                      left: 20,
-                                                      right:
-                                                      20),
-                                                  iconSize: 30.0,
-                                                  style: TextStyle(
-                                                      color: Colors
-                                                          .black),
-                                                  items: [
-                                                    '2 كباسين كوم سادة',
-                                                    '2 كباسين كوم كبك',
-                                                    'جلاب كوم سادة',
-                                                    'جلاب كوم كبك',
-                                                    "2 كباسين كوم سادة بشليك",
-                                                    "2 كباسين كوم سادة بشليك لزق مفتوح",
-                                                  ].map(
-                                                        (val) {
-                                                      return DropdownMenuItem<
-                                                          String>(
-                                                        value: val,
-                                                        child: Text(
-                                                            val),
-                                                      );
-                                                    },
-                                                  ).toList(),
-                                                  onChanged: (val) {
-                                                    setState(
-                                                          () {
-                                                        _dropDownValueB =
-                                                            val;
-                                                      },
-                                                    );
-                                                  },
-                                                ),
+                                                  _dropDownValueA == "قطري" ||
+                                                          _dropDownValueA ==
+                                                              "سعودي" ||
+                                                          _dropDownValueA ==
+                                                              "كويتي" ||
+                                                          _dropDownValueA ==
+                                                              "بولاقي"
+                                                      ? Expanded(
+                                                          flex: 2,
+                                                          child: Container(
+                                                            width: 400,
+                                                            decoration:
+                                                                BoxDecoration(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          10),
+                                                              color: Color(
+                                                                  0xffBCEFC2),
+                                                            ),
+                                                            child:
+                                                                DropdownButton(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          10),
+                                                              underline:
+                                                                  SizedBox(),
+                                                              hint:
+                                                                  _dropDownValueB ==
+                                                                          null
+                                                                      ? Text(
+                                                                          'اضغط للاختيار ',
+                                                                          style:
+                                                                              TextStyle(fontWeight: FontWeight.bold),
+                                                                        )
+                                                                      : Text(
+                                                                          _dropDownValueB!,
+                                                                          style: TextStyle(
+                                                                              color: Colors.black,
+                                                                              fontSize: 16),
+                                                                        ),
+                                                              isExpanded: true,
+                                                              padding: EdgeInsets
+                                                                  .only(
+                                                                      left: 20,
+                                                                      right:
+                                                                          20),
+                                                              iconSize: 30.0,
+                                                              style: TextStyle(
+                                                                  color: Colors
+                                                                      .black),
+                                                              items: [
+                                                                '2 كباسين كوم سادة',
+                                                                '2 كباسين كوم كبك',
+                                                                'جلاب كوم سادة',
+                                                                'جلاب كوم كبك',
+                                                                "2 كباسين كوم سادة بشليك",
+                                                                "2 كباسين كوم سادة بشليك لزق مفتوح",
+                                                              ].map(
+                                                                (val) {
+                                                                  return DropdownMenuItem<
+                                                                      String>(
+                                                                    value: val,
+                                                                    child: Text(
+                                                                        val),
+                                                                  );
+                                                                },
+                                                              ).toList(),
+                                                              onChanged: (val) {
+                                                                setState(
+                                                                  () {
+                                                                    _dropDownValueB =
+                                                                        val;
+                                                                  },
+                                                                );
+                                                              },
+                                                            ),
+                                                          ),
+                                                        )
+                                                      : SizedBox(),
+                                                ],
                                               ),
                                             )
-                                                : SizedBox(),
-                                          ],
-                                        ),
-                                      )
                                           : SizedBox(),
                                       Spacer()
                                     ],
@@ -1334,63 +1351,63 @@ textAlign: TextAlign.center,
                                       ),
                                       _character == SingingCharacter.balady
                                           ? Expanded(
-                                        flex: 3,
-                                        child: Container(
-                                          width: 400,
-                                          decoration: BoxDecoration(
-                                            borderRadius:
-                                            BorderRadius.circular(10),
-                                            color: Color(0xffBCEFC2),
-                                          ),
-                                          child: DropdownButton(
-                                            borderRadius:
-                                            BorderRadius.circular(10),
-                                            underline: SizedBox(),
-                                            hint: _dropDownValueC == null
-                                                ? Text(
-                                              'اضغط للاختيار',
-                                              style: TextStyle(
-                                                  fontWeight:
-                                                  FontWeight
-                                                      .bold),
+                                              flex: 3,
+                                              child: Container(
+                                                width: 400,
+                                                decoration: BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.circular(10),
+                                                  color: Color(0xffBCEFC2),
+                                                ),
+                                                child: DropdownButton(
+                                                  borderRadius:
+                                                      BorderRadius.circular(10),
+                                                  underline: SizedBox(),
+                                                  hint: _dropDownValueC == null
+                                                      ? Text(
+                                                          'اضغط للاختيار',
+                                                          style: TextStyle(
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .bold),
+                                                        )
+                                                      : Text(
+                                                          _dropDownValueC!,
+                                                          style: TextStyle(
+                                                              color:
+                                                                  Colors.black,
+                                                              fontSize: 16),
+                                                        ),
+                                                  isExpanded: true,
+                                                  padding: EdgeInsets.only(
+                                                      left: 20, right: 20),
+                                                  iconSize: 30.0,
+                                                  style: TextStyle(
+                                                      color: Colors.black),
+                                                  items: [
+                                                    'كلفة تامة بشليك',
+                                                    'كلفة تامة نص ياقة',
+                                                    'قشره',
+                                                    "اسطنبولي",
+                                                  ].map(
+                                                    (val) {
+                                                      return DropdownMenuItem<
+                                                          String>(
+                                                        value: val,
+                                                        child: Text(val),
+                                                      );
+                                                    },
+                                                  ).toList(),
+                                                  onChanged: (val) {
+                                                    setState(
+                                                      () {
+                                                        _dropDownValueC = val;
+                                                      },
+                                                    );
+                                                  },
+                                                ),
+                                              ),
                                             )
-                                                : Text(
-                                              _dropDownValueC!,
-                                              style: TextStyle(
-                                                  color:
-                                                  Colors.black,
-                                                  fontSize: 16),
-                                            ),
-                                            isExpanded: true,
-                                            padding: EdgeInsets.only(
-                                                left: 20, right: 20),
-                                            iconSize: 30.0,
-                                            style: TextStyle(
-                                                color: Colors.black),
-                                            items: [
-                                              'كلفة تامة بشليك',
-                                              'كلفة تامة نص ياقة',
-                                              'قشره',
-                                              "اسطنبولي",
-                                            ].map(
-                                                  (val) {
-                                                return DropdownMenuItem<
-                                                    String>(
-                                                  value: val,
-                                                  child: Text(val),
-                                                );
-                                              },
-                                            ).toList(),
-                                            onChanged: (val) {
-                                              setState(
-                                                    () {
-                                                  _dropDownValueC = val;
-                                                },
-                                              );
-                                            },
-                                          ),
-                                        ),
-                                      )
                                           : SizedBox(),
                                       Spacer()
                                     ],
@@ -1479,7 +1496,7 @@ textAlign: TextAlign.center,
 
                                         onChanged: (val) {
                                           quantityController.clear();
-                                        totalTypeController.text="0.0";
+                                          totalTypeController.text = "0.0";
                                           print(remainingAmountController.text);
 
                                           print(totalController.text);
@@ -1501,30 +1518,36 @@ textAlign: TextAlign.center,
                                           setState(() {
                                             totalController
                                                 .text = ((worker_costController
-                                                .text.isEmpty
-                                                ? 0.0
-                                                : double.parse(
-                                                worker_costController
-                                                    .text)) +
-                                                (prizeController.text.isEmpty
-                                                    ? 0.0
-                                                    : double.parse(prizeController.text)) +
-                                                double.parse(
-                                                    totalTypeController.text))
+                                                            .text.isEmpty
+                                                        ? 0.0
+                                                        : double.parse(
+                                                            worker_costController
+                                                                .text)) +
+                                                    (prizeController
+                                                            .text.isEmpty
+                                                        ? 0.0
+                                                        : double.parse(
+                                                            prizeController
+                                                                .text)) +
+                                                    double.parse(
+                                                        totalTypeController
+                                                            .text))
                                                 .toString();
-                                            remainingAmountController.text =
-                                                (double.parse(
-                                                    totalController.text.isEmpty?"0.0": totalController.text)
-                                                    -
+                                            remainingAmountController
+                                                .text = (double.parse(
+                                                        totalController
+                                                                .text.isEmpty
+                                                            ? "0.0"
+                                                            : totalController
+                                                                .text) -
                                                     (amountPaidController
-                                                        .text.isNotEmpty
+                                                            .text.isNotEmpty
                                                         ? double.parse(
-                                                        amountPaidController
-                                                            .text)
+                                                            amountPaidController
+                                                                .text)
                                                         : 0.0))
-                                                    .toString();
+                                                .toString();
                                           });
-
                                         },
                                       ),
                                     )
@@ -1602,8 +1625,6 @@ textAlign: TextAlign.center,
                                           Icon(Icons.auto_awesome_mosaic_sharp),
                                       controller: quantityController,
                                       onChanged: (val) {
-
-
                                         if (val.isEmpty ||
                                             priceTypeController.text.isEmpty ||
                                             quantityTypeController
@@ -1614,53 +1635,49 @@ textAlign: TextAlign.center,
                                             totalTypeController.text = "0.0";
                                           });
                                         } else {
-                                            quantityTypeController.text =
-                                                (double.parse(
-                                                            categoryQuantity) -
-                                                        double.parse(
-                                                            quantityController
-                                                                .text))
-                                                    .toString();
-                                            totalTypeController.text =
-                                                (double.parse(quantityController
-                                                            .text) *
-                                                        double.parse(
-                                                            priceTypeController
-                                                                .text))
-                                                    .toString();
-
+                                          quantityTypeController.text =
+                                              (double.parse(categoryQuantity) -
+                                                      double.parse(
+                                                          quantityController
+                                                              .text))
+                                                  .toString();
+                                          totalTypeController
+                                              .text = (double.parse(
+                                                      quantityController.text) *
+                                                  double.parse(
+                                                      priceTypeController.text))
+                                              .toString();
                                         }
-
 
                                         totalController
                                             .text = ((worker_costController
-                                            .text.isEmpty
-                                            ? 0.0
-                                            : double.parse(
-                                            worker_costController
-                                                .text)) +
-                                            (prizeController.text.isEmpty
-                                                ? 0.0
-                                                : double.parse(prizeController.text)) +
-                                            double.parse(
-                                                totalTypeController.text))
+                                                        .text.isEmpty
+                                                    ? 0.0
+                                                    : double.parse(
+                                                        worker_costController
+                                                            .text)) +
+                                                (prizeController.text.isEmpty
+                                                    ? 0.0
+                                                    : double.parse(
+                                                        prizeController.text)) +
+                                                double.parse(
+                                                    totalTypeController.text))
                                             .toString();
-                                        remainingAmountController.text = (double.parse(
-                                            totalController.text.isEmpty?"0.0":  totalController.text)
-                                            -
-                                            (amountPaidController
-                                                .text.isNotEmpty
-                                                ? double.parse(
-                                                amountPaidController
-                                                    .text)
-                                                : 0.0))
-                                            .toString();
+                                        remainingAmountController.text =
+                                            (double.parse(totalController
+                                                            .text.isEmpty
+                                                        ? "0.0"
+                                                        : totalController
+                                                            .text) -
+                                                    (amountPaidController
+                                                            .text.isNotEmpty
+                                                        ? double.parse(
+                                                            amountPaidController
+                                                                .text)
+                                                        : 0.0))
+                                                .toString();
 
-
-                                        setState(() {
-
-});
-
+                                        setState(() {});
                                       },
                                       textInputType: TextInputType.number,
                                       hintText: 'ادخل الكمية',
@@ -1687,7 +1704,7 @@ textAlign: TextAlign.center,
                                       prefix:
                                           Icon(Icons.monetization_on_outlined),
                                       controller: totalTypeController,
-                                  enable: false   ,
+                                      enable: false,
                                       textInputType: TextInputType.number,
                                       hintText: 'الاجمالي',
                                       isFormField: true,
@@ -1752,19 +1769,18 @@ textAlign: TextAlign.center,
                                                   double.parse(
                                                       totalTypeController.text))
                                               .toString();
-                                          remainingAmountController.text = (double.parse(
-                                              totalController.text)
-                                               -
-                                              (amountPaidController
-                                                  .text.isNotEmpty
-                                                  ? double.parse(
-                                                  amountPaidController
-                                                      .text)
-                                                  : 0.0)).abs()
+                                          remainingAmountController
+                                              .text = (double.parse(
+                                                      totalController.text) -
+                                                  (amountPaidController
+                                                          .text.isNotEmpty
+                                                      ? double.parse(
+                                                          amountPaidController
+                                                              .text)
+                                                      : 0.0))
+                                              .abs()
                                               .toString();
                                         });
-
-
 
                                         setState(() {
                                           show = false;
@@ -1934,7 +1950,6 @@ textAlign: TextAlign.center,
                             ],
                           ),
                           show == true
-
                               ? Text(
                                   ' يوجد ${(double.tryParse(amountPaidController.text.isNotEmpty ? amountPaidController.text : "0")! - double.tryParse(totalController.text.isNotEmpty ? totalController.text : "0")!)} مبلغ ذيادة',
                                   style: TextStyle(
@@ -2218,9 +2233,7 @@ textAlign: TextAlign.center,
                                                             options:
                                                                 CarouselOptions(
                                                               onPageChanged:
-                                                                  (index, c) {
-
-                                                              },
+                                                                  (index, c) {},
                                                               autoPlay: false,
                                                               enlargeCenterPage:
                                                                   true,
@@ -2297,7 +2310,7 @@ textAlign: TextAlign.center,
                                                     ),
                                                   ),
                                                   Expanded(
-                                                    flex: 4,
+                                                    flex: 5,
                                                     child: Column(
                                                       children: [
                                                         CarouselSlider(
@@ -2336,7 +2349,7 @@ textAlign: TextAlign.center,
                                                                   true,
                                                               viewportFraction:
                                                                   0.9,
-                                                              aspectRatio: 2.0,
+                                                              aspectRatio: 1.0,
                                                               initialPage: 2,
                                                             )),
                                                         CustomTextField(
@@ -2380,92 +2393,92 @@ textAlign: TextAlign.center,
                                             ),
                                             Container(
                                               width: 300,
-
-                                                decoration: BoxDecoration(
+                                              decoration: BoxDecoration(
                                                   borderRadius:
                                                       BorderRadius.circular(20),
                                                   color: accentCanvasColor
                                                       .withOpacity(0.8)),
-                                              child: Row(
+                                              child: Stack(
                                                 children: [
-                                                  Expanded(
-                                                    child: IconButton(
-                                                      onPressed: () =>
-                                                          buttonCarouselController6
-                                                              .nextPage(
-                                                                  duration: Duration(
-                                                                      milliseconds:
-                                                                          1),
-                                                                  curve: Curves
-                                                                      .linear),
-                                                      icon: Icon(
-                                                        Icons.chevron_left,
-                                                        size: 50,
-                                                        color: Colors.white,
+                                                  Column(
+                                                    children: [
+                                                      CarouselSlider(
+                                                          items: list3,
+                                                          carouselController:
+                                                              buttonCarouselController6,
+                                                          options:
+                                                              CarouselOptions(
+                                                            onPageChanged:
+                                                                (index, c) {
+                                                              print(index);
+                                                              glab = index == 0
+                                                                  ? "جلاب 1 زرار"
+                                                                  : "جلاب 2 زرار";
+                                                              print(glab);
+                                                            },
+                                                            enlargeCenterPage:
+                                                                true,
+                                                            viewportFraction: 1,
+                                                            aspectRatio: 1.0,
+                                                            initialPage: 2,
+                                                          )),
+                                                      Row(
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .spaceBetween,
+                                                        children: [
+                                                          IconButton(
+                                                            onPressed: () =>
+                                                                buttonCarouselController6.nextPage(
+                                                                    duration: Duration(
+                                                                        milliseconds:
+                                                                            1),
+                                                                    curve: Curves
+                                                                        .linear),
+                                                            icon: Icon(
+                                                              Icons.arrow_back,
+                                                              size: 30,
+                                                              color:
+                                                                  Colors.white,
+                                                            ),
+                                                          ),
+                                                          Expanded(
+                                                            flex: 4,
+                                                            child:
+                                                                CustomTextField(
+                                                              textInputType:
+                                                                  TextInputType
+                                                                      .number,
+                                                              controller:
+                                                                  glabController,
+                                                              prefix: Icon(Icons
+                                                                  .format_size),
+                                                              hintText:
+                                                                  "ادخل المقاس",
+                                                            ),
+                                                          ),
+                                                          IconButton(
+                                                            onPressed: () => buttonCarouselController6
+                                                                .previousPage(
+                                                                    duration: Duration(
+                                                                        milliseconds:
+                                                                            1),
+                                                                    curve: Curves
+                                                                        .linear),
+                                                            icon: Icon(
+                                                              Icons
+                                                                  .arrow_forward,
+                                                              color:
+                                                                  Colors.white,
+                                                              size: 30,
+                                                            ),
+                                                          ),
+                                                        ],
                                                       ),
-                                                    ),
-                                                  ),
-                                                  Expanded(
-                                                      flex: 5,
-                                                    child: Column(
-                                                      children: [
-                                                        CarouselSlider(
-                                                            items: list3,
-                                                            carouselController:
-                                                                buttonCarouselController6,
-                                                            options:
-                                                                CarouselOptions(
-                                                              onPageChanged:
-                                                                  (index, c) {
-                                                                print(index);
-                                                                glab = index ==
-                                                                        0
-                                                                    ? "جلاب 1 زرار"
-                                                                    : "جلاب 2 زرار";
-                                                                print(glab);
-                                                              },
-                                                              autoPlay: false,
-                                                              enlargeCenterPage:
-                                                                  true,
-                                                              viewportFraction:
-                                                                  0.9,
-                                                              aspectRatio: 1.0,
-                                                              initialPage: 2,
-                                                            )),
-                                                        CustomTextField(
-                                                          textInputType:
-                                                              TextInputType
-                                                                  .number,
-                                                          controller:
-                                                              glabController,
-                                                          prefix: Icon(Icons
-                                                              .format_size),
-                                                          hintText:
-                                                              "ادخل المقاس",
-                                                        ),
-                                                        SizedBox(
-                                                          height: 5,
-                                                        )
-                                                      ],
-                                                    ),
-                                                  ),
-                                                  Expanded(
-                                                    child: IconButton(
-                                                      onPressed: () =>
-                                                          buttonCarouselController6
-                                                              .previousPage(
-                                                                  duration: Duration(
-                                                                      milliseconds:
-                                                                          1),
-                                                                  curve: Curves
-                                                                      .linear),
-                                                      icon: Icon(
-                                                        Icons
-                                                            .keyboard_arrow_left_sharp,
-                                                        color: Colors.white,
-                                                        size: 50,
-                                                      ),
-                                                    ),
+                                                      SizedBox(
+                                                        height: 5,
+                                                      )
+                                                    ],
                                                   ),
                                                 ],
                                               ),
@@ -2477,88 +2490,90 @@ textAlign: TextAlign.center,
                                                       BorderRadius.circular(20),
                                                   color: accentCanvasColor
                                                       .withOpacity(0.8)),
-                                              child: Row(
+                                              child: Stack(
                                                 children: [
-                                                  Expanded(
-                                                    flex: 1,
-                                                    child: IconButton(
-                                                      onPressed: () =>
-                                                          buttonCarouselController7
-                                                              .nextPage(
-                                                                  duration: Duration(
-                                                                      milliseconds:
-                                                                          1),
-                                                                  curve: Curves
-                                                                      .linear),
-                                                      icon: Icon(
-                                                        Icons.chevron_left,
-                                                        size: 50,
-                                                        color: Colors.white,
+                                                  Column(
+                                                    children: [
+                                                      CarouselSlider(
+                                                          items: list4,
+                                                          carouselController:
+                                                              buttonCarouselController7,
+                                                          options:
+                                                              CarouselOptions(
+                                                            onPageChanged:
+                                                                (index, c) {
+                                                              print(index);
+                                                              ganb = index == 0
+                                                                  ? "جانب بشليك"
+                                                                  : "جانب شق";
+                                                              print(ganb);
+                                                            },
+                                                            autoPlay: false,
+                                                            enlargeCenterPage:
+                                                                true,
+                                                            viewportFraction:
+                                                                0.9,
+                                                            aspectRatio: 1.0,
+                                                            initialPage: 2,
+                                                          )),
+                                                      Row(
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .spaceBetween,
+                                                        children: [
+                                                          IconButton(
+                                                            onPressed: () => buttonCarouselController7
+                                                                .previousPage(
+                                                                    duration: Duration(
+                                                                        milliseconds:
+                                                                            1),
+                                                                    curve: Curves
+                                                                        .linear),
+                                                            icon: Icon(
+                                                              Icons
+                                                                  .keyboard_arrow_left_sharp,
+                                                              color:
+                                                                  Colors.white,
+                                                              size: 50,
+                                                            ),
+                                                          ),
+                                                          Expanded(
+                                                            flex: 4,
+                                                            child:
+                                                                CustomTextField(
+                                                              textInputType:
+                                                                  TextInputType
+                                                                      .number,
+                                                              controller:
+                                                                  ganbController,
+                                                              prefix: Icon(Icons
+                                                                  .format_size),
+                                                              hintText:
+                                                                  "ادخل المقاس",
+                                                            ),
+                                                          ),
+                                                          IconButton(
+                                                            onPressed: () =>
+                                                                buttonCarouselController7.nextPage(
+                                                                    duration: Duration(
+                                                                        milliseconds:
+                                                                            1),
+                                                                    curve: Curves
+                                                                        .linear),
+                                                            icon: Icon(
+                                                              Icons
+                                                                  .chevron_left,
+                                                              size: 50,
+                                                              color:
+                                                                  Colors.white,
+                                                            ),
+                                                          ),
+                                                        ],
                                                       ),
-                                                    ),
-                                                  ),
-                                                  Expanded(
-                                                    flex: 4,
-                                                    child: Column(
-                                                      children: [
-                                                        CarouselSlider(
-                                                            items: list4,
-                                                            carouselController:
-                                                                buttonCarouselController7,
-                                                            options:
-                                                                CarouselOptions(
-                                                              onPageChanged:
-                                                                  (index, c) {
-                                                                print(index);
-                                                                ganb = index ==
-                                                                        0
-                                                                    ? "جانب بشليك"
-                                                                    : "جانب شق";
-                                                                print(ganb);
-                                                              },
-                                                              autoPlay: false,
-                                                              enlargeCenterPage:
-                                                                  true,
-                                                              viewportFraction:
-                                                                  0.9,
-                                                              aspectRatio: 2.0,
-                                                              initialPage: 2,
-                                                            )),
-                                                        CustomTextField(
-                                                          textInputType:
-                                                              TextInputType
-                                                                  .number,
-                                                          controller:
-                                                              ganbController,
-                                                          prefix: Icon(Icons
-                                                              .format_size),
-                                                          hintText:
-                                                              "ادخل المقاس",
-                                                        ),
-                                                        SizedBox(
-                                                          height: 5,
-                                                        )
-                                                      ],
-                                                    ),
-                                                  ),
-                                                  Expanded(
-                                                    flex: 1,
-                                                    child: IconButton(
-                                                      onPressed: () =>
-                                                          buttonCarouselController7
-                                                              .previousPage(
-                                                                  duration: Duration(
-                                                                      milliseconds:
-                                                                          1),
-                                                                  curve: Curves
-                                                                      .linear),
-                                                      icon: Icon(
-                                                        Icons
-                                                            .keyboard_arrow_left_sharp,
-                                                        color: Colors.white,
-                                                        size: 50,
-                                                      ),
-                                                    ),
+                                                      SizedBox(
+                                                        height: 5,
+                                                      )
+                                                    ],
                                                   ),
                                                 ],
                                               ),
@@ -2911,22 +2926,43 @@ textAlign: TextAlign.center,
                                                   date: _selectedDate,
                                                   length: double.tryParse(
                                                       lengthController.text),
-                                                  badnSize1:  double.tryParse(badnLengthController1.text),
-                                                  badnSize2: double.tryParse( badnLengthController2.text),
-                                                  badnSize3: double.tryParse(badnLengthController3.text),
-                                                  droppTaqwera1: double.tryParse(taqwera1LengthController.text),
-                                                  droppTaqwera2: double.tryParse(taqwera2LengthController.text),
-                                                  droppTaqwera3: double.tryParse(taqwera3LengthController.text),
-
-                                                  hand2Length: double.tryParse(hand2LengthController.text),
-                                                  k2Length: double.tryParse(k2LengthController.text),
-                                                  taqweraSize:double.tryParse(taqweraController.text),
-                                                  ganbSize: double.tryParse(ganbController.text),
-                                                  glabSize: double.tryParse(glabController.text),
-                                                  komSize: double.tryParse(komController.text),
-                                                  yaqaSize: double.tryParse(ya2aController.text),
-                                                  gaybSize:double.tryParse(gybController.text) ,
-                                                  sadrSize:double.tryParse(sadrController.text) ,
+                                                  badnSize1: double.tryParse(
+                                                      badnLengthController1
+                                                          .text),
+                                                  badnSize2: double.tryParse(
+                                                      badnLengthController2
+                                                          .text),
+                                                  badnSize3: double.tryParse(
+                                                      badnLengthController3
+                                                          .text),
+                                                  droppTaqwera1: double.tryParse(
+                                                      taqwera1LengthController
+                                                          .text),
+                                                  droppTaqwera2: double.tryParse(
+                                                      taqwera2LengthController
+                                                          .text),
+                                                  droppTaqwera3: double.tryParse(
+                                                      taqwera3LengthController
+                                                          .text),
+                                                  hand2Length: double.tryParse(
+                                                      hand2LengthController
+                                                          .text),
+                                                  k2Length: double.tryParse(
+                                                      k2LengthController.text),
+                                                  taqweraSize: double.tryParse(
+                                                      taqweraController.text),
+                                                  ganbSize: double.tryParse(
+                                                      ganbController.text),
+                                                  glabSize: double.tryParse(
+                                                      glabController.text),
+                                                  komSize: double.tryParse(
+                                                      komController.text),
+                                                  yaqaSize: double.tryParse(
+                                                      ya2aController.text),
+                                                  gaybSize: double.tryParse(
+                                                      gybController.text),
+                                                  sadrSize: double.tryParse(
+                                                      sadrController.text),
                                                   address:
                                                       addressController.text,
                                                   amountPaid: double.tryParse(
@@ -3023,7 +3059,10 @@ textAlign: TextAlign.center,
                                                       neckLength: c.neckLength,
                                                       sadrLength: c.sadrLength,
                                                       handLength: c.handLength,
-                                                      customerAmount:show == true?c.customerAmount+p:c.customerAmount,
+                                                      customerAmount: show ==
+                                                              true
+                                                          ? c.customerAmount + p
+                                                          : c.customerAmount,
                                                       remainingAmount: c
                                                               .remainingAmount! +
                                                           double.tryParse(
@@ -3130,17 +3169,15 @@ textAlign: TextAlign.center,
                                                   //         );
                                                   //       });
                                                   // } else {
-                                                    CustomersCubit()
-                                                        .updateCustomer2(
-                                                            context,
-                                                            model,
-                                                            c.sId!);
-                                                  }
+                                                  CustomersCubit()
+                                                      .updateCustomer2(context,
+                                                          model, c.sId!);
+                                                }
 
                                                 _formKey.currentState!.reset();
                                                 nameController.clear();
                                                 addressController.clear();
-                                                totalController.text="0.0";
+                                                totalController.text = "0.0";
                                                 amountPaidController.clear();
                                                 chestLengthController.clear();
                                                 k1LengthController.clear();
@@ -3237,7 +3274,8 @@ textAlign: TextAlign.center,
       ),
     );
   }
-   Mobile() {
+
+  Mobile() {
     return SafeArea(
       child: Directionality(
         textDirection: ui.TextDirection.rtl,
@@ -3246,11 +3284,11 @@ textAlign: TextAlign.center,
           width: double.infinity,
           decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage(
-                  "images/login.jpg",
-                ),
-                fit: BoxFit.cover,
-              )),
+            image: AssetImage(
+              "images/login.jpg",
+            ),
+            fit: BoxFit.cover,
+          )),
           child: Container(
             height: double.infinity,
             color: Colors.black.withOpacity(0.8),
@@ -3265,11 +3303,11 @@ textAlign: TextAlign.center,
                           height: 120,
                           decoration: BoxDecoration(
                               image: DecorationImage(
-                                image: AssetImage(
-                                  "images/login.jpg",
-                                ),
-                                fit: BoxFit.cover,
-                              )),
+                            image: AssetImage(
+                              "images/login.jpg",
+                            ),
+                            fit: BoxFit.cover,
+                          )),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -3278,15 +3316,15 @@ textAlign: TextAlign.center,
                                 height: 10,
                               ),
                               Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   InkWell(
                                     onTap: () {
                                       Navigator.push(
                                           context,
                                           MaterialPageRoute(
-                                              builder: (_) => HomeScreen(
-                                              )));
+                                              builder: (_) => HomeScreen()));
                                     },
                                     child: HoverAnimatedContainer(
                                       hoverWidth: 200,
@@ -3296,7 +3334,7 @@ textAlign: TextAlign.center,
                                         color: Colors.red.withOpacity(0.8),
                                       ),
                                       margin:
-                                      EdgeInsets.only(left: 10, right: 10),
+                                          EdgeInsets.only(left: 10, right: 10),
                                       width: 150,
                                       decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(10),
@@ -3304,9 +3342,12 @@ textAlign: TextAlign.center,
                                       ),
                                       child: Row(
                                         mainAxisAlignment:
-                                        MainAxisAlignment.start,
+                                            MainAxisAlignment.start,
                                         children: [
-                                          Icon(Icons.home,size: 25,),
+                                          Icon(
+                                            Icons.home,
+                                            size: 25,
+                                          ),
                                           Text(
                                             "الصفحة الرئيسية",
                                             style: TextStyle(
@@ -3317,14 +3358,12 @@ textAlign: TextAlign.center,
                                       ),
                                     ),
                                   ),
-      
                                   InkWell(
                                     onTap: () {
                                       Navigator.push(
                                           context,
                                           MaterialPageRoute(
-                                              builder: (_) => AllDataScreen(
-                                              )));
+                                              builder: (_) => AllDataScreen()));
                                     },
                                     child: HoverAnimatedContainer(
                                       hoverWidth: 200,
@@ -3334,7 +3373,7 @@ textAlign: TextAlign.center,
                                         color: Colors.red.withOpacity(0.8),
                                       ),
                                       margin:
-                                      EdgeInsets.only(left: 10, right: 10),
+                                          EdgeInsets.only(left: 10, right: 10),
                                       width: 150,
                                       decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(10),
@@ -3342,7 +3381,7 @@ textAlign: TextAlign.center,
                                       ),
                                       child: Row(
                                         mainAxisAlignment:
-                                        MainAxisAlignment.start,
+                                            MainAxisAlignment.start,
                                         children: [
                                           Image.asset(
                                             "images/receipt.png",
@@ -3360,7 +3399,9 @@ textAlign: TextAlign.center,
                                   ),
                                 ],
                               ),
-                              SizedBox(height: 10,),
+                              SizedBox(
+                                height: 10,
+                              ),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
@@ -3375,16 +3416,13 @@ textAlign: TextAlign.center,
                                   SizedBox(
                                     width: 5,
                                   ),
-                                  Image.asset(
-                                      "images/report.png",
-                                      height: 50
-                                  ),
+                                  Image.asset("images/report.png", height: 50),
                                 ],
                               ),
                             ],
                           ),
                         ),
-      
+
                         ////////////////////////  بيانات العميل  /////////////////////////////
                         SizedBox(
                           height: 30,
@@ -3393,8 +3431,8 @@ textAlign: TextAlign.center,
                           children: [
                             Expanded(
                                 child: Divider(
-                                  color: Colors.white,
-                                )),
+                              color: Colors.white,
+                            )),
                             Text(
                               "     بيانات العميل    ",
                               style: TextStyle(
@@ -3404,78 +3442,79 @@ textAlign: TextAlign.center,
                             ),
                             Expanded(
                                 child: Divider(
-                                  color: Colors.white,
-                                )),
+                              color: Colors.white,
+                            )),
                           ],
                         ),
-                        Row(children: [
-                          Expanded(
-                              flex: 1,
-                              child: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    const Text(
-                                      'رقم الفاتورة',
-                                      style: TextStyle(
-                                          color: Colors.white70,
-                                          fontWeight: FontWeight.w500,
-                                          fontSize: 17),
-                                    ),
-                                    CustomTextField(
-                                      prefix: Icon(Icons.code),
-                                      controller: codeController..text,
-                                      isPhoneNumber: true,
-
-                                      hintText: 'ادخل رقم الفاتورة',
-                                      isFormField: true,
-                                    ),
-                                  ],
-                                ),
-                              )),
-
-                          Expanded(
-                              child: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    const Text(
-                                      'عدد الاثواب',
-                                      style: TextStyle(
-                                          color: Colors.white70,
-                                          fontWeight: FontWeight.w500,
-                                          fontSize: 18),
-                                    ),
-                                    CustomTextField(
-                                      hintStyle: TextStyle(
-                                          fontSize: 14,
-                                          fontWeight: FontWeight.bold),
-                                      controller: numDressesController,
-                                      textInputType: TextInputType.number,
-                                      isFormField: true,
-                                      hintText: 'ادخل عدد الاثواب',
-                                    ),
-                                  ],
-                                ),
-                              )),
-
-                        ],),
+                        Row(
+                          children: [
+                            Expanded(
+                                flex: 1,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      const Text(
+                                        'رقم الفاتورة',
+                                        style: TextStyle(
+                                            color: Colors.white70,
+                                            fontWeight: FontWeight.w500,
+                                            fontSize: 17),
+                                      ),
+                                      CustomTextField(
+                                        prefix: Icon(Icons.code),
+                                        controller: codeController..text,
+                                        isPhoneNumber: true,
+                                        hintText: 'ادخل رقم الفاتورة',
+                                        isFormField: true,
+                                      ),
+                                    ],
+                                  ),
+                                )),
+                            Expanded(
+                                child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  const Text(
+                                    'عدد الاثواب',
+                                    style: TextStyle(
+                                        color: Colors.white70,
+                                        fontWeight: FontWeight.w500,
+                                        fontSize: 18),
+                                  ),
+                                  CustomTextField(
+                                    hintStyle: TextStyle(
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.bold),
+                                    controller: numDressesController,
+                                    textInputType: TextInputType.number,
+                                    isFormField: true,
+                                    hintText: 'ادخل عدد الاثواب',
+                                  ),
+                                ],
+                              ),
+                            )),
+                          ],
+                        ),
 
                         Row(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             Expanded(
-                                    flex: 3,
-
+                                flex: 3,
                                 child: Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: Column(
-                                      mainAxisAlignment: MainAxisAlignment.start,
-                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: [
                                         const Text(
                                           'عميل موجود مسبقاً',
@@ -3485,25 +3524,29 @@ textAlign: TextAlign.center,
                                               fontSize: 18),
                                         ),
                                         Container(
-                                          padding:
-                                          EdgeInsets.only(left: 10, right: 10),
+                                          padding: EdgeInsets.only(
+                                              left: 10, right: 10),
                                           decoration: BoxDecoration(
-                                            borderRadius: BorderRadius.circular(5),
+                                            borderRadius:
+                                                BorderRadius.circular(5),
                                             color: buttonColor,
                                           ),
                                           child: DropDownTextField(
                                             padding: EdgeInsets.zero,
-                                            textFieldDecoration: InputDecoration(
-                                                hintText: "ادخل اسم العميل",
-                                                border: InputBorder.none),
+                                            textFieldDecoration:
+                                                InputDecoration(
+                                                    hintText: "ادخل اسم العميل",
+                                                    border: InputBorder.none),
                                             // initialValue: "name4",
                                             controller: controller,
                                             clearOption: false,
-      
+
                                             readOnly: false,
                                             // dropdownColor: Colors.green,
-                                            searchDecoration: const InputDecoration(
-                                                hintText: "ادخل اسم العميل"),
+                                            searchDecoration:
+                                                const InputDecoration(
+                                                    hintText:
+                                                        "ادخل اسم العميل"),
                                             validator: (value) {
                                               if (value == null) {
                                                 return "Required field";
@@ -3512,66 +3555,75 @@ textAlign: TextAlign.center,
                                               }
                                             },
                                             dropDownItemCount: 1000,
-      
+
                                             dropDownList: customer
                                                 .map(
                                                   (e) => DropDownValueModel(
-                                                  name: e, value: e),
-                                            )
+                                                      name: e, value: e),
+                                                )
                                                 .toList(),
-      
+
                                             onChanged: (val) {
                                               Customer? c = customerModel
                                                   .firstWhereOrNull((element) =>
-                                              element.userName == val.name);
-      
+                                                      element.userName ==
+                                                      val.name);
+
                                               setState(() {
                                                 nameController.text =
                                                     val.name.toString();
-                                                addressController.text = c!.address!;
+                                                addressController.text =
+                                                    c!.address!;
                                                 phoneController.text = c.phone!;
                                                 neckController
                                                   ..text = c.neckLength == null
                                                       ? "0"
                                                       : c.neckLength.toString();
                                                 hand1LengthController.text =
-                                                c.handLength == null
-                                                    ? "0"
-                                                    : c.handLength.toString();
+                                                    c.handLength == null
+                                                        ? "0"
+                                                        : c.handLength
+                                                            .toString();
                                                 k1LengthController.text =
-                                                c.kabkLength == null
-                                                    ? "0"
-                                                    : c.kabkLength.toString();
+                                                    c.kabkLength == null
+                                                        ? "0"
+                                                        : c.kabkLength
+                                                            .toString();
                                                 chestLengthController.text =
-                                                c.sadrLength == null
-                                                    ? "0"
-                                                    : c.sadrLength.toString();
+                                                    c.sadrLength == null
+                                                        ? "0"
+                                                        : c.sadrLength
+                                                            .toString();
                                                 lengthController.text =
-                                                c.length == null
-                                                    ? "0"
-                                                    : c.length.toString();
-      
+                                                    c.length == null
+                                                        ? "0"
+                                                        : c.length.toString();
+
                                                 ketfLengthController.text =
-                                                c.ketfLength == null
-                                                    ? "0"
-                                                    : c.ketfLength.toString();
+                                                    c.ketfLength == null
+                                                        ? "0"
+                                                        : c.ketfLength
+                                                            .toString();
                                                 komLengthController.text =
-                                                c.komLength == null
-                                                    ? "0"
-                                                    : c.komLength.toString();
+                                                    c.komLength == null
+                                                        ? "0"
+                                                        : c.komLength
+                                                            .toString();
                                               });
                                             },
                                           ),
                                         )
                                       ]),
                                 )),
-                            Expanded(                                    flex: 3,
-
+                            Expanded(
+                                flex: 3,
                                 child: Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: Column(
-                                      mainAxisAlignment: MainAxisAlignment.start,
-                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: [
                                         const Text(
                                           ' اسم المشتري ',
@@ -3581,7 +3633,8 @@ textAlign: TextAlign.center,
                                               fontSize: 18),
                                         ),
                                         CustomTextField(
-                                          prefix: Icon(Icons.add_reaction_outlined),
+                                          prefix:
+                                              Icon(Icons.add_reaction_outlined),
                                           controller: nameController,
                                           isFormField: true,
                                           hintText: 'ادخل اسم المشتري ',
@@ -3593,69 +3646,68 @@ textAlign: TextAlign.center,
                                         )
                                       ]),
                                 )),
-
                           ],
                         ),
-      Row(children: [
-
-        Expanded(
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Text(
-                    'رقم الهاتف',
-                    style: TextStyle(
-                        color: Colors.white70,
-                        fontWeight: FontWeight.w500,
-                        fontSize: 18),
-                  ),
-                  CustomTextField(
-                    prefix: Icon(Icons.phone_android),
-                    controller: phoneController,
-                    isPhoneNumber: true,
-                    hintText: 'ادخل رقم الهاتف',
-                    isFormField: true,
-                  ),
-                ],
-              ),
-            )),
-        Expanded(
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Text(
-                    'العنوان',
-                    style: TextStyle(
-                        color: Colors.white70,
-                        fontWeight: FontWeight.w500,
-                        fontSize: 18),
-                  ),
-                  CustomTextField(
-                    prefix: Icon(Icons.home_outlined),
-                    controller: addressController,
-                    textInputType: TextInputType.streetAddress,
-                    isFormField: true,
-                    hintText: 'ادخل العنوان ',
-                  ),
-                ],
-              ),
-            )),
-
-      ],),
+                        Row(
+                          children: [
+                            Expanded(
+                                child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  const Text(
+                                    'رقم الهاتف',
+                                    style: TextStyle(
+                                        color: Colors.white70,
+                                        fontWeight: FontWeight.w500,
+                                        fontSize: 18),
+                                  ),
+                                  CustomTextField(
+                                    prefix: Icon(Icons.phone_android),
+                                    controller: phoneController,
+                                    isPhoneNumber: true,
+                                    hintText: 'ادخل رقم الهاتف',
+                                    isFormField: true,
+                                  ),
+                                ],
+                              ),
+                            )),
+                            Expanded(
+                                child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  const Text(
+                                    'العنوان',
+                                    style: TextStyle(
+                                        color: Colors.white70,
+                                        fontWeight: FontWeight.w500,
+                                        fontSize: 18),
+                                  ),
+                                  CustomTextField(
+                                    prefix: Icon(Icons.home_outlined),
+                                    controller: addressController,
+                                    textInputType: TextInputType.streetAddress,
+                                    isFormField: true,
+                                    hintText: 'ادخل العنوان ',
+                                  ),
+                                ],
+                              ),
+                            )),
+                          ],
+                        ),
                         //////////////////////// المقاسات  /////////////////////////////
-      
+
                         const Row(
                           children: [
                             Expanded(
                                 child: Divider(
-                                  color: Colors.white,
-                                )),
+                              color: Colors.white,
+                            )),
                             Text(
                               "     المقاسات    ",
                               style: TextStyle(
@@ -3665,416 +3717,411 @@ textAlign: TextAlign.center,
                             ),
                             Expanded(
                                 child: Divider(
-                                  color: Colors.white,
-                                )),
+                              color: Colors.white,
+                            )),
                           ],
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
-
                             Expanded(
                                 child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      const Text(
-                                        'الطول',
-                                        style: TextStyle(
-                                            color: Colors.white70,
-                                            fontWeight: FontWeight.w500,
-                                            fontSize: 13),
-                                      ),
-                                      CustomTextField(
-                                        hintStyle: TextStyle(
-                                            fontSize: 14,
-                                            fontWeight: FontWeight.bold),
-                                        controller: lengthController,
-                                        textInputType: TextInputType.number,
-                                        hintText: 'ادخل الطول',
-                                        isFormField: true,
-                                      ),
-                                    ],
+                              padding: const EdgeInsets.all(8.0),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  const Text(
+                                    'الطول',
+                                    style: TextStyle(
+                                        color: Colors.white70,
+                                        fontWeight: FontWeight.w500,
+                                        fontSize: 13),
                                   ),
-                                )),
+                                  CustomTextField(
+                                    hintStyle: TextStyle(
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.bold),
+                                    controller: lengthController,
+                                    textInputType: TextInputType.number,
+                                    hintText: 'ادخل الطول',
+                                    isFormField: true,
+                                  ),
+                                ],
+                              ),
+                            )),
                             Expanded(
                                 child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      const Text(
-                                        'الكتف',
-                                        style: TextStyle(
-                                            color: Colors.white70,
-                                            fontWeight: FontWeight.w500,
-                                            fontSize: 13),
-                                      ),
-                                      CustomTextField(
-                                        hintStyle: TextStyle(
-                                            fontSize: 14,
-                                            fontWeight: FontWeight.bold),
-                                        controller: ketfLengthController,
-                                        textInputType: TextInputType.number,
-                                        hintText: 'ادخل الطول',
-                                        isFormField: true,
-                                      ),
-                                    ],
+                              padding: const EdgeInsets.all(8.0),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  const Text(
+                                    'الكتف',
+                                    style: TextStyle(
+                                        color: Colors.white70,
+                                        fontWeight: FontWeight.w500,
+                                        fontSize: 13),
                                   ),
-                                )),
+                                  CustomTextField(
+                                    hintStyle: TextStyle(
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.bold),
+                                    controller: ketfLengthController,
+                                    textInputType: TextInputType.number,
+                                    hintText: 'ادخل الطول',
+                                    isFormField: true,
+                                  ),
+                                ],
+                              ),
+                            )),
                             Expanded(
                                 child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      const Text(
-                                        'طول الكم',
-                                        style: TextStyle(
-                                            color: Colors.white70,
-                                            fontWeight: FontWeight.w500,
-                                            fontSize: 13),
-                                      ),
-                                      CustomTextField(
-                                        hintStyle: TextStyle(
-                                            fontSize: 14,
-                                            fontWeight: FontWeight.bold),
-                                        controller: komLengthController,
-                                        textInputType: TextInputType.number,
-                                        hintText: 'ادخل الطول',
-                                        isFormField: true,
-                                      ),
-                                    ],
+                              padding: const EdgeInsets.all(8.0),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  const Text(
+                                    'طول الكم',
+                                    style: TextStyle(
+                                        color: Colors.white70,
+                                        fontWeight: FontWeight.w500,
+                                        fontSize: 13),
                                   ),
-                                )),
+                                  CustomTextField(
+                                    hintStyle: TextStyle(
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.bold),
+                                    controller: komLengthController,
+                                    textInputType: TextInputType.number,
+                                    hintText: 'ادخل الطول',
+                                    isFormField: true,
+                                  ),
+                                ],
+                              ),
+                            )),
                             Expanded(
                                 child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      const Text(
-                                        'وسع الصدر',
-                                        style: TextStyle(
-                                            color: Colors.white70,
-                                            fontWeight: FontWeight.w500,
-                                            fontSize: 13),
-                                      ),
-                                      CustomTextField(
-                                        hintStyle: TextStyle(
-                                            fontSize: 14,
-                                            fontWeight: FontWeight.bold),
-                                        controller: chestLengthController,
-                                        textInputType: TextInputType.number,
-                                        isFormField: true,
-                                        hintText: ' ادخل وسع الصدر ',
-                                      ),
-                                    ],
+                              padding: const EdgeInsets.all(8.0),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  const Text(
+                                    'وسع الصدر',
+                                    style: TextStyle(
+                                        color: Colors.white70,
+                                        fontWeight: FontWeight.w500,
+                                        fontSize: 13),
                                   ),
-                                )),
-
+                                  CustomTextField(
+                                    hintStyle: TextStyle(
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.bold),
+                                    controller: chestLengthController,
+                                    textInputType: TextInputType.number,
+                                    isFormField: true,
+                                    hintText: ' ادخل وسع الصدر ',
+                                  ),
+                                ],
+                              ),
+                            )),
                             Expanded(
                                 child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      const Text(
-                                        'الرقبة',
-                                        style: TextStyle(
-                                            color: Colors.white70,
-                                            fontWeight: FontWeight.w500,
-                                            fontSize: 13),
-                                      ),
-                                      CustomTextField(
-                                        hintStyle: TextStyle(
-                                            fontSize: 14,
-                                            fontWeight: FontWeight.bold),
-                                        controller: neckController,
-                                        textInputType: TextInputType.number,
-                                        hintText: 'الرقبة',
-                                        isFormField: true,
-                                      ),
-                                    ],
+                              padding: const EdgeInsets.all(8.0),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  const Text(
+                                    'الرقبة',
+                                    style: TextStyle(
+                                        color: Colors.white70,
+                                        fontWeight: FontWeight.w500,
+                                        fontSize: 13),
                                   ),
-                                )),
-
+                                  CustomTextField(
+                                    hintStyle: TextStyle(
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.bold),
+                                    controller: neckController,
+                                    textInputType: TextInputType.number,
+                                    hintText: 'الرقبة',
+                                    isFormField: true,
+                                  ),
+                                ],
+                              ),
+                            )),
                           ],
                         ),
-      Row(children: [
-
-        Expanded(
-          flex: 1,
-          child: Row(children: [   Expanded(
-              child: Padding(
-                padding: const EdgeInsets.only(left:8.0,right: 8),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Text(
-                      'وسع اليد',
-                      style: TextStyle(
-                          color: Colors.white70,
-                          fontWeight: FontWeight.w500,
-                          fontSize: 13),
-                    ),
-                    Container(decoration: BoxDecoration(
-                        color:buttonColor,
-                        borderRadius: BorderRadius.circular(10)
-                    ),
-                      child: Column(
-                        children: [
-
-                          TextFormField(                                  controller: hand1LengthController,
-                            keyboardType: TextInputType.number,
-                            textAlign: TextAlign.center,
-
-                            decoration: InputDecoration(
-                              contentPadding: EdgeInsets.all(10),
-                              hintText: 'ادخل المقاس',
-
-                              hintStyle: TextStyle(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.bold),
+                        Row(
+                          children: [
+                            Expanded(
+                              flex: 1,
+                              child: Row(
+                                children: [
+                                  Expanded(
+                                      child: Padding(
+                                    padding: const EdgeInsets.only(
+                                        left: 8.0, right: 8),
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        const Text(
+                                          'وسع اليد',
+                                          style: TextStyle(
+                                              color: Colors.white70,
+                                              fontWeight: FontWeight.w500,
+                                              fontSize: 13),
+                                        ),
+                                        Container(
+                                          decoration: BoxDecoration(
+                                              color: buttonColor,
+                                              borderRadius:
+                                                  BorderRadius.circular(10)),
+                                          child: Column(
+                                            children: [
+                                              TextFormField(
+                                                controller:
+                                                    hand1LengthController,
+                                                keyboardType:
+                                                    TextInputType.number,
+                                                textAlign: TextAlign.center,
+                                                decoration: InputDecoration(
+                                                  contentPadding:
+                                                      EdgeInsets.all(10),
+                                                  hintText: 'ادخل المقاس',
+                                                  hintStyle: TextStyle(
+                                                      fontSize: 14,
+                                                      fontWeight:
+                                                          FontWeight.bold),
+                                                ),
+                                              ),
+                                              TextFormField(
+                                                controller:
+                                                    hand2LengthController,
+                                                keyboardType:
+                                                    TextInputType.number,
+                                                textAlign: TextAlign.center,
+                                                decoration: InputDecoration(
+                                                  hintText: 'ادخل  المقاس',
+                                                  contentPadding:
+                                                      EdgeInsets.all(10),
+                                                  hintStyle: TextStyle(
+                                                      fontSize: 14,
+                                                      fontWeight:
+                                                          FontWeight.bold),
+                                                ),
+                                              )
+                                            ],
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  )),
+                                ],
+                              ),
                             ),
-                          ),
-                          TextFormField(                                  controller: hand2LengthController,
-                            keyboardType: TextInputType.number,
-                            textAlign: TextAlign.center,
-
-                            decoration: InputDecoration(
-                              hintText: 'ادخل  المقاس',
-                              contentPadding: EdgeInsets.all(10),
-
-                              hintStyle: TextStyle(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                          )
-                        ],
-                      ),
-
-                    )
-
-                  ],
-                ),
-              )),
-          ],),
-        )
-,
-        Expanded(
-            child: Padding(
-              padding: const EdgeInsets.only(left:8.0,right: 8),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Text(
-                    'طول الكبك',
-                    style: TextStyle(
-                        color: Colors.white70,
-                        fontWeight: FontWeight.w500,
-                        fontSize: 13),
-                  ),
-                  Container(decoration: BoxDecoration(
-                      color:buttonColor,
-                      borderRadius: BorderRadius.circular(10)
-                  ),
-                    child: Column(
-                      children: [
-
-                        TextFormField(                                  controller: k1LengthController,
-                          keyboardType: TextInputType.number,
-                          textAlign: TextAlign.center,
-
-                          decoration: InputDecoration(
-                            hintText: 'ادخل المقاس ',
-                            contentPadding: EdgeInsets.all(10),
-
-                            hintStyle: TextStyle(
-                                fontSize: 15,
-                                fontWeight: FontWeight.bold),
-                          ),
+                            Expanded(
+                                child: Padding(
+                              padding:
+                                  const EdgeInsets.only(left: 8.0, right: 8),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  const Text(
+                                    'طول الكبك',
+                                    style: TextStyle(
+                                        color: Colors.white70,
+                                        fontWeight: FontWeight.w500,
+                                        fontSize: 13),
+                                  ),
+                                  Container(
+                                    decoration: BoxDecoration(
+                                        color: buttonColor,
+                                        borderRadius:
+                                            BorderRadius.circular(10)),
+                                    child: Column(
+                                      children: [
+                                        TextFormField(
+                                          controller: k1LengthController,
+                                          keyboardType: TextInputType.number,
+                                          textAlign: TextAlign.center,
+                                          decoration: InputDecoration(
+                                            hintText: 'ادخل المقاس ',
+                                            contentPadding: EdgeInsets.all(10),
+                                            hintStyle: TextStyle(
+                                                fontSize: 15,
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                        ),
+                                        TextFormField(
+                                          controller: k2LengthController,
+                                          keyboardType: TextInputType.number,
+                                          textAlign: TextAlign.center,
+                                          decoration: InputDecoration(
+                                            hintText: 'ادخل المقاس',
+                                            contentPadding: EdgeInsets.all(10),
+                                            hintStyle: TextStyle(
+                                                fontSize: 14,
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  )
+                                ],
+                              ),
+                            )),
+                            Expanded(
+                                child: Padding(
+                              padding:
+                                  const EdgeInsets.only(left: 8.0, right: 8),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  const Text(
+                                    'سقوط التقويرة',
+                                    style: TextStyle(
+                                        color: Colors.white70,
+                                        fontWeight: FontWeight.w500,
+                                        fontSize: 13),
+                                  ),
+                                  SizedBox(
+                                    height: 5,
+                                  ),
+                                  Container(
+                                    decoration: BoxDecoration(
+                                        color: buttonColor,
+                                        borderRadius:
+                                            BorderRadius.circular(10)),
+                                    child: Column(
+                                      children: [
+                                        TextFormField(
+                                          controller: taqwera1LengthController,
+                                          keyboardType: TextInputType.number,
+                                          textAlign: TextAlign.center,
+                                          decoration: InputDecoration(
+                                            hintText: 'ادخل المقاس',
+                                            contentPadding: EdgeInsets.all(10),
+                                            hintStyle: TextStyle(
+                                                fontSize: 14,
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                        ),
+                                        TextFormField(
+                                          textAlign: TextAlign.center,
+                                          controller: taqwera2LengthController,
+                                          keyboardType: TextInputType.number,
+                                          decoration: InputDecoration(
+                                            hintText: 'ادخل المقاس',
+                                            contentPadding: EdgeInsets.all(10),
+                                            hintStyle: TextStyle(
+                                                fontSize: 14,
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                        ),
+                                        TextFormField(
+                                          textAlign: TextAlign.center,
+                                          controller: taqwera3LengthController,
+                                          keyboardType: TextInputType.number,
+                                          decoration: InputDecoration(
+                                            hintText: 'ادخل المقاس',
+                                            contentPadding: EdgeInsets.all(10),
+                                            hintStyle: TextStyle(
+                                                fontSize: 14,
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  )
+                                ],
+                              ),
+                            )),
+                            Expanded(
+                                child: Padding(
+                              padding:
+                                  const EdgeInsets.only(left: 8.0, right: 8),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  const Text(
+                                    'مقاس البدن',
+                                    style: TextStyle(
+                                        color: Colors.white70,
+                                        fontWeight: FontWeight.w500,
+                                        fontSize: 12),
+                                  ),
+                                  SizedBox(
+                                    height: 5,
+                                  ),
+                                  Container(
+                                    decoration: BoxDecoration(
+                                        color: buttonColor,
+                                        borderRadius:
+                                            BorderRadius.circular(10)),
+                                    child: Column(
+                                      children: [
+                                        TextFormField(
+                                          textAlign: TextAlign.center,
+                                          controller: badnLengthController1,
+                                          keyboardType: TextInputType.number,
+                                          decoration: InputDecoration(
+                                            hintText: 'ادخل المقاس',
+                                            contentPadding: EdgeInsets.all(10),
+                                            hintStyle: TextStyle(
+                                                fontSize: 14,
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                        ),
+                                        TextFormField(
+                                          controller: badnLengthController2,
+                                          keyboardType: TextInputType.number,
+                                          textAlign: TextAlign.center,
+                                          decoration: InputDecoration(
+                                            hintText: 'ادخل المقاس',
+                                            contentPadding: EdgeInsets.all(10),
+                                            hintStyle: TextStyle(
+                                                fontSize: 14,
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                        ),
+                                        TextFormField(
+                                          controller: badnLengthController3,
+                                          keyboardType: TextInputType.number,
+                                          textAlign: TextAlign.center,
+                                          decoration: InputDecoration(
+                                            hintText: 'ادخل المقاس',
+                                            contentPadding: EdgeInsets.all(10),
+                                            hintStyle: TextStyle(
+                                                fontSize: 14,
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  )
+                                ],
+                              ),
+                            )),
+                          ],
                         ),
-                        TextFormField(                                  controller: k2LengthController,
-                          keyboardType: TextInputType.number,
-                          textAlign: TextAlign.center,
-
-                          decoration: InputDecoration(
-                            hintText: 'ادخل المقاس',
-                            contentPadding: EdgeInsets.all(10),
-
-                            hintStyle: TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.bold),
-                          ),
-                        )
-                      ],
-                    ),
-
-                  )
-
-                ],
-              ),
-            )),
-        Expanded(
-            child: Padding(
-              padding: const EdgeInsets.only(left:8.0,right: 8),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Text(
-                    'سقوط التقويرة',
-                    style: TextStyle(
-                        color: Colors.white70,
-                        fontWeight: FontWeight.w500,
-                        fontSize: 13),
-                  ),
-                  SizedBox(height: 5,),
-                  Container(decoration: BoxDecoration(
-                      color:buttonColor,
-                      borderRadius: BorderRadius.circular(10)
-                  ),
-                    child: Column(
-                      children: [
-
-                        TextFormField(                                  controller: taqwera1LengthController,
-                          keyboardType: TextInputType.number,
-                          textAlign: TextAlign.center,
-                          decoration: InputDecoration(
-                            hintText: 'ادخل المقاس',
-                            contentPadding: EdgeInsets.all(10),
-
-                            hintStyle: TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.bold),
-                          ),
-                        ),
-                        TextFormField(
-                          textAlign: TextAlign.center,
-                          controller: taqwera2LengthController,
-                          keyboardType: TextInputType.number,
-
-                          decoration: InputDecoration(
-                            hintText: 'ادخل المقاس',
-                            contentPadding: EdgeInsets.all(10),
-
-                            hintStyle: TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.bold),
-                          ),
-                        ),
-                        TextFormField(
-                          textAlign: TextAlign.center,
-                          controller: taqwera3LengthController,
-                          keyboardType: TextInputType.number,
-
-                          decoration: InputDecoration(
-                            hintText: 'ادخل المقاس',
-                            contentPadding: EdgeInsets.all(10),
-
-                            hintStyle: TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.bold),
-                          ),
-                        ),
-
-                      ],
-                    ),
-
-                  )
-
-                ],
-              ),
-            )),
-        Expanded(
-            child: Padding(
-              padding: const EdgeInsets.only(left:8.0,right: 8),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Text(
-                    'مقاس البدن',
-                    style: TextStyle(
-                        color: Colors.white70,
-                        fontWeight: FontWeight.w500,
-                        fontSize: 12),
-                  ),
-                  SizedBox(height: 5,),
-
-                  Container(decoration: BoxDecoration(
-                      color:buttonColor,
-                      borderRadius: BorderRadius.circular(10)
-                  ),
-                    child: Column(
-                      children: [
-
-                        TextFormField(
-                          textAlign: TextAlign.center,
-                          controller: badnLengthController1,
-                          keyboardType: TextInputType.number,
-
-                          decoration: InputDecoration(
-                            hintText: 'ادخل المقاس',
-                            contentPadding: EdgeInsets.all(10),
-
-                            hintStyle: TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.bold),
-                          ),
-                        ),
-                        TextFormField(                                  controller: badnLengthController2,
-                          keyboardType: TextInputType.number,
-                          textAlign: TextAlign.center,
-
-                          decoration: InputDecoration(
-                            hintText: 'ادخل المقاس',
-                            contentPadding: EdgeInsets.all(10),
-
-                            hintStyle: TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.bold),
-                          ),
-                        ),
-                        TextFormField(                                  controller: badnLengthController3,
-                          keyboardType: TextInputType.number,
-                          textAlign: TextAlign.center,
-
-                          decoration: InputDecoration(
-                            hintText: 'ادخل المقاس',
-                            contentPadding: EdgeInsets.all(10),
-
-                            hintStyle: TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.bold),
-                          ),
-                        ),
-
-                      ],
-                    ),
-
-                  )
-
-                ],
-              ),
-            )),
-      ],),
                         ////////////////////////  بيانات الطلب  /////////////////////////////
                         const Row(
                           children: [
                             Expanded(
                                 child: Divider(
-                                  color: Colors.white,
-                                )),
+                              color: Colors.white,
+                            )),
                             Text(
                               "     بيانات الطلب    ",
                               style: TextStyle(
@@ -4084,11 +4131,11 @@ textAlign: TextAlign.center,
                             ),
                             Expanded(
                                 child: Divider(
-                                  color: Colors.white,
-                                )),
+                              color: Colors.white,
+                            )),
                           ],
                         ),
-      
+
                         Column(
                           children: [
                             Padding(
@@ -4114,16 +4161,19 @@ textAlign: TextAlign.center,
                                                   style: TextStyle(
                                                       color: Colors.white,
                                                       fontSize: 15,
-                                                      fontWeight: FontWeight.bold),
+                                                      fontWeight:
+                                                          FontWeight.bold),
                                                 ),
                                                 value: SingingCharacter.balady,
                                                 groupValue: _character,
                                                 activeColor: buttonColor,
-                                                fillColor: MaterialStateProperty.all(
-                                                    buttonColor),
+                                                fillColor:
+                                                    MaterialStateProperty.all(
+                                                        buttonColor),
                                                 tileColor: Colors.white,
                                                 selectedTileColor: Colors.white,
-                                                visualDensity: VisualDensity.standard,
+                                                visualDensity:
+                                                    VisualDensity.standard,
                                                 onChanged: (value) {
                                                   setState(() {
                                                     _character = value!;
@@ -4141,17 +4191,24 @@ textAlign: TextAlign.center,
                                                         title: const Text(
                                                           'افرنجي',
                                                           style: TextStyle(
-                                                              color: Colors.white,
-                                                              fontWeight: FontWeight.bold,
+                                                              color:
+                                                                  Colors.white,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .bold,
                                                               fontSize: 15),
                                                         ),
-                                                        value: SingingCharacter.afrangy,
-                                                        activeColor: buttonColor,
+                                                        value: SingingCharacter
+                                                            .afrangy,
+                                                        activeColor:
+                                                            buttonColor,
                                                         tileColor: Colors.white,
                                                         fillColor:
-                                                        MaterialStateProperty.all(
-                                                            buttonColor),
-                                                        selectedTileColor: Colors.white,
+                                                            MaterialStateProperty
+                                                                .all(
+                                                                    buttonColor),
+                                                        selectedTileColor:
+                                                            Colors.white,
                                                         groupValue: _character,
                                                         onChanged: (value) {
                                                           setState(() {
@@ -4161,248 +4218,237 @@ textAlign: TextAlign.center,
                                                       ),
                                                     ),
                                                   ),
-
                                                 ],
                                               ),
                                             ),
-
                                           ],
                                         ),
                                       ),
                                     ],
                                   ),
-
                                   _character == SingingCharacter.balady
                                       ? Container(
-                                    margin: EdgeInsets.all(10),
-                                        width: 400,
-                                        decoration: BoxDecoration(
-                                          borderRadius:
-                                          BorderRadius.circular(10),
-                                          color: Color(0xffBCEFC2),
-                                        ),
-                                        child: DropdownButton(
-                                          borderRadius:
-                                          BorderRadius.circular(10),
-                                          underline: SizedBox(),
-                                          hint: _dropDownValueC == null
-                                              ? Text(
-                                            'اضغط للاختيار',
-                                            style: TextStyle(
-                                                fontWeight:
-                                                FontWeight
-                                                    .bold),
-                                          )
-                                              : Text(
-                                            _dropDownValueC!,
-                                            style: TextStyle(
-                                                color:
-                                                Colors.black,
-                                                fontSize: 16),
+                                          margin: EdgeInsets.all(10),
+                                          width: 400,
+                                          decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(10),
+                                            color: Color(0xffBCEFC2),
                                           ),
-                                          isExpanded: true,
-                                          padding: EdgeInsets.only(
-                                              left: 20, right: 20),
-                                          iconSize: 30.0,
-                                          style: TextStyle(
-                                              color: Colors.black),
-                                          items: [
-                                            'كلفة تامة بشليك',
-                                            'كلفة تامة نص ياقة',
-                                            'قشره',
-                                            "اسطنبولي",
-                                          ].map(
-                                                (val) {
-                                              return DropdownMenuItem<
-                                                  String>(
-                                                value: val,
-                                                child: Text(val),
+                                          child: DropdownButton(
+                                            borderRadius:
+                                                BorderRadius.circular(10),
+                                            underline: SizedBox(),
+                                            hint: _dropDownValueC == null
+                                                ? Text(
+                                                    'اضغط للاختيار',
+                                                    style: TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.bold),
+                                                  )
+                                                : Text(
+                                                    _dropDownValueC!,
+                                                    style: TextStyle(
+                                                        color: Colors.black,
+                                                        fontSize: 16),
+                                                  ),
+                                            isExpanded: true,
+                                            padding: EdgeInsets.only(
+                                                left: 20, right: 20),
+                                            iconSize: 30.0,
+                                            style:
+                                                TextStyle(color: Colors.black),
+                                            items: [
+                                              'كلفة تامة بشليك',
+                                              'كلفة تامة نص ياقة',
+                                              'قشره',
+                                              "اسطنبولي",
+                                            ].map(
+                                              (val) {
+                                                return DropdownMenuItem<String>(
+                                                  value: val,
+                                                  child: Text(val),
+                                                );
+                                              },
+                                            ).toList(),
+                                            onChanged: (val) {
+                                              setState(
+                                                () {
+                                                  _dropDownValueC = val;
+                                                },
                                               );
                                             },
-                                          ).toList(),
-                                          onChanged: (val) {
-                                            setState(
-                                                  () {
-                                                _dropDownValueC = val;
-                                              },
-                                            );
-                                          },
-                                        ),
-                                      )
+                                          ),
+                                        )
                                       : _character == SingingCharacter.afrangy
-                                      ? Row(
-                                        children: [
-                                          Expanded(
-                                            flex: 2,
-                                            child: Container(
-                                              decoration: BoxDecoration(
-                                                borderRadius:
-                                                BorderRadius
-                                                    .circular(10),
-                                                color:
-                                                Color(0xffBCEFC2),
-                                              ),
-                                              child: DropdownButton(
-                                                borderRadius:
-                                                BorderRadius
-                                                    .circular(10),
-                                                underline: SizedBox(),
-                                                hint:
-                                                _dropDownValueA ==
-                                                    null
-                                                    ? Text(
-                                                  'اضغط للاختيار',
-                                                  style: TextStyle(
-                                                      fontWeight:
-                                                      FontWeight.bold),
-                                                )
-                                                    : Text(
-                                                  _dropDownValueA!,
-                                                  style: TextStyle(
-                                                      color: Colors
-                                                          .black,
-                                                      fontSize:
-                                                      16),
+                                          ? Row(
+                                              children: [
+                                                Expanded(
+                                                  flex: 2,
+                                                  child: Container(
+                                                    decoration: BoxDecoration(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              10),
+                                                      color: Color(0xffBCEFC2),
+                                                    ),
+                                                    child: DropdownButton(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              10),
+                                                      underline: SizedBox(),
+                                                      hint: _dropDownValueA ==
+                                                              null
+                                                          ? Text(
+                                                              'اضغط للاختيار',
+                                                              style: TextStyle(
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .bold),
+                                                            )
+                                                          : Text(
+                                                              _dropDownValueA!,
+                                                              style: TextStyle(
+                                                                  color: Colors
+                                                                      .black,
+                                                                  fontSize: 16),
+                                                            ),
+                                                      isExpanded: true,
+                                                      padding: EdgeInsets.only(
+                                                          left: 20, right: 20),
+                                                      iconSize: 30.0,
+                                                      style: TextStyle(
+                                                          color: Colors.black),
+                                                      items: [
+                                                        'قطري',
+                                                        'سعودي',
+                                                        'كويتي',
+                                                        "بولاقي",
+                                                        "كوم سادة عماني",
+                                                        "شعراوي كوم سادة",
+                                                        "سوداني كوم سادة"
+                                                      ].map(
+                                                        (val) {
+                                                          return DropdownMenuItem<
+                                                              String>(
+                                                            value: val,
+                                                            child: Text(val),
+                                                          );
+                                                        },
+                                                      ).toList(),
+                                                      onChanged: (val) {
+                                                        setState(
+                                                          () {
+                                                            _dropDownValueA =
+                                                                val;
+                                                          },
+                                                        );
+                                                      },
+                                                    ),
+                                                  ),
                                                 ),
-                                                isExpanded: true,
-                                                padding:
-                                                EdgeInsets.only(
-                                                    left: 20,
-                                                    right: 20),
-                                                iconSize: 30.0,
-                                                style: TextStyle(
-                                                    color:
-                                                    Colors.black),
-                                                items: [
-                                                  'قطري',
-                                                  'سعودي',
-                                                  'كويتي',
-                                                  "بولاقي",
-                                                  "كوم سادة عماني",
-                                                  "شعراوي كوم سادة",
-                                                  "سوداني كوم سادة"
-                                                ].map(
-                                                      (val) {
-                                                    return DropdownMenuItem<
-                                                        String>(
-                                                      value: val,
-                                                      child: Text(val),
-                                                    );
-                                                  },
-                                                ).toList(),
-                                                onChanged: (val) {
-                                                  setState(
-                                                        () {
-                                                      _dropDownValueA =
-                                                          val;
-                                                    },
-                                                  );
-                                                },
-                                              ),
-                                            ),
-                                          ),
-                                          SizedBox(
-                                            width: 10,
-                                          ),
-                                          _dropDownValueA == "قطري" ||
-                                              _dropDownValueA ==
-                                                  "سعودي" ||
-                                              _dropDownValueA ==
-                                                  "كويتي" ||
-                                              _dropDownValueA ==
-                                                  "بولاقي"
-                                              ? Expanded(
-                                            flex: 2,
-                                            child: Container(
-                                              width: 400,
-                                              decoration:
-                                              BoxDecoration(
-                                                borderRadius:
-                                                BorderRadius
-                                                    .circular(
-                                                    10),
-                                                color: Color(
-                                                    0xffBCEFC2),
-                                              ),
-                                              child:
-                                              DropdownButton(
-                                                borderRadius:
-                                                BorderRadius
-                                                    .circular(
-                                                    10),
-                                                underline:
-                                                SizedBox(),
-                                                hint:
-                                                _dropDownValueB ==
-                                                    null
-                                                    ? Text(
-                                                  'اضغط للاختيار ',
-                                                  style:
-                                                  TextStyle(fontWeight: FontWeight.bold),
-                                                )
-                                                    : Text(
-                                                  _dropDownValueB!,
-                                                  style: TextStyle(
-                                                      color: Colors.black,
-                                                      fontSize: 16),
+                                                SizedBox(
+                                                  width: 10,
                                                 ),
-                                                isExpanded: true,
-                                                padding: EdgeInsets
-                                                    .only(
-                                                    left: 20,
-                                                    right:
-                                                    20),
-                                                iconSize: 30.0,
-                                                style: TextStyle(
-                                                    color: Colors
-                                                        .black),
-                                                items: [
-                                                  '2 كباسين كوم سادة',
-                                                  '2 كباسين كوم كبك',
-                                                  'جلاب كوم سادة',
-                                                  'جلاب كوم كبك',
-                                                  "2 كباسين كوم سادة بشليك",
-                                                  "2 كباسين كوم سادة بشليك لزق مفتوح",
-                                                ].map(
-                                                      (val) {
-                                                    return DropdownMenuItem<
-                                                        String>(
-                                                      value: val,
-                                                      child: Text(
-                                                          val),
-                                                    );
-                                                  },
-                                                ).toList(),
-                                                onChanged: (val) {
-                                                  setState(
-                                                        () {
-                                                      _dropDownValueB =
-                                                          val;
-                                                    },
-                                                  );
-                                                },
-                                              ),
-                                            ),
-                                          )
-                                              : SizedBox(),
-                                        ],
-                                      )
-                                      : SizedBox(),
+                                                _dropDownValueA == "قطري" ||
+                                                        _dropDownValueA ==
+                                                            "سعودي" ||
+                                                        _dropDownValueA ==
+                                                            "كويتي" ||
+                                                        _dropDownValueA ==
+                                                            "بولاقي"
+                                                    ? Expanded(
+                                                        flex: 2,
+                                                        child: Container(
+                                                          width: 400,
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        10),
+                                                            color: Color(
+                                                                0xffBCEFC2),
+                                                          ),
+                                                          child: DropdownButton(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        10),
+                                                            underline:
+                                                                SizedBox(),
+                                                            hint:
+                                                                _dropDownValueB ==
+                                                                        null
+                                                                    ? Text(
+                                                                        'اضغط للاختيار ',
+                                                                        style: TextStyle(
+                                                                            fontWeight:
+                                                                                FontWeight.bold),
+                                                                      )
+                                                                    : Text(
+                                                                        _dropDownValueB!,
+                                                                        style: TextStyle(
+                                                                            color:
+                                                                                Colors.black,
+                                                                            fontSize: 16),
+                                                                      ),
+                                                            isExpanded: true,
+                                                            padding:
+                                                                EdgeInsets.only(
+                                                                    left: 20,
+                                                                    right: 20),
+                                                            iconSize: 30.0,
+                                                            style: TextStyle(
+                                                                color: Colors
+                                                                    .black),
+                                                            items: [
+                                                              '2 كباسين كوم سادة',
+                                                              '2 كباسين كوم كبك',
+                                                              'جلاب كوم سادة',
+                                                              'جلاب كوم كبك',
+                                                              "2 كباسين كوم سادة بشليك",
+                                                              "2 كباسين كوم سادة بشليك لزق مفتوح",
+                                                            ].map(
+                                                              (val) {
+                                                                return DropdownMenuItem<
+                                                                    String>(
+                                                                  value: val,
+                                                                  child:
+                                                                      Text(val),
+                                                                );
+                                                              },
+                                                            ).toList(),
+                                                            onChanged: (val) {
+                                                              setState(
+                                                                () {
+                                                                  _dropDownValueB =
+                                                                      val;
+                                                                },
+                                                              );
+                                                            },
+                                                          ),
+                                                        ),
+                                                      )
+                                                    : SizedBox(),
+                                              ],
+                                            )
+                                          : SizedBox(),
                                 ],
                               ),
                             ),
                             SizedBox(
                               height: 10,
                             ),
-      
+
                             ////////////////////////  نوع  /////////////////////////////
-      
+
                             const Row(
                               children: [
                                 Expanded(
                                     child: Divider(
-                                      color: Colors.white,
-                                    )),
+                                  color: Colors.white,
+                                )),
                                 Text(
                                   "     نوع القماش    ",
                                   style: TextStyle(
@@ -4412,297 +4458,308 @@ textAlign: TextAlign.center,
                                 ),
                                 Expanded(
                                     child: Divider(
-                                      color: Colors.white,
-                                    )),
+                                  color: Colors.white,
+                                )),
                               ],
                             ),
-      
+
                             Row(
                               children: [
                                 Expanded(
                                     child: Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Column(
-                                        mainAxisAlignment: MainAxisAlignment.start,
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        children: [
-                                          const Text(
-                                            'نوع القماش',
-                                            style: TextStyle(
-                                                color: Colors.white70,
-                                                fontWeight: FontWeight.w500,
-                                                fontSize: 18),
-                                          ),
-                                          Container(
-                                            padding:
-                                            EdgeInsets.only(left: 10, right: 10),
-                                            decoration: BoxDecoration(
-                                              borderRadius: BorderRadius.circular(5),
-                                              color: buttonColor,
-                                            ),
-                                            child: DropDownTextField(
-                                              padding: EdgeInsets.zero,
-                                              textFieldDecoration: InputDecoration(
-                                                  hintText: "ادخل نوع القماش",
-                                                  border: InputBorder.none),
-                                              // initialValue: "name4",
-                                              controller: controllerType,
-                                              clearOption: false,
-      
-                                              readOnly: false,
-                                              // dropdownColor: Colors.green,
-                                              searchDecoration: const InputDecoration(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      const Text(
+                                        'نوع القماش',
+                                        style: TextStyle(
+                                            color: Colors.white70,
+                                            fontWeight: FontWeight.w500,
+                                            fontSize: 18),
+                                      ),
+                                      Container(
+                                        padding: EdgeInsets.only(
+                                            left: 10, right: 10),
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(5),
+                                          color: buttonColor,
+                                        ),
+                                        child: DropDownTextField(
+                                          padding: EdgeInsets.zero,
+                                          textFieldDecoration: InputDecoration(
+                                              hintText: "ادخل نوع القماش",
+                                              border: InputBorder.none),
+                                          // initialValue: "name4",
+                                          controller: controllerType,
+                                          clearOption: false,
+
+                                          readOnly: false,
+                                          // dropdownColor: Colors.green,
+                                          searchDecoration:
+                                              const InputDecoration(
                                                   hintText: "اختار نوع القماش"),
-                                              validator: (value) {
-                                                if (value == null) {
-                                                  return "Required field";
-                                                } else {
-                                                  return null;
-                                                }
-                                              },
-                                              dropDownItemCount: 3,
-      
-                                              dropDownList: category
-                                                  .map(
-                                                    (e) => DropDownValueModel(
+                                          validator: (value) {
+                                            if (value == null) {
+                                              return "Required field";
+                                            } else {
+                                              return null;
+                                            }
+                                          },
+                                          dropDownItemCount: 3,
+
+                                          dropDownList: category
+                                              .map(
+                                                (e) => DropDownValueModel(
                                                     name: e, value: e),
                                               )
-                                                  .toList(),
-      
-                                              onChanged: (val) {
-                                                quantityController.clear();
-                                                totalTypeController.text="0.0";
-                                                print(remainingAmountController.text);
-      
-                                                print(totalController.text);
-      
-                                                categoryName = val.name;
-                                                CategoryModel? c = categoryModel
-                                                    .firstWhereOrNull((element) =>
-                                                element.type == val.name);
-      
-                                                setState(() {
-                                                  quantityTypeController.text =
-                                                      c!.quantity.toString();
-                                                  categoryQuantity =
-                                                      c!.quantity.toString();
-                                                  priceTypeController.text =
+                                              .toList(),
+
+                                          onChanged: (val) {
+                                            quantityController.clear();
+                                            totalTypeController.text = "0.0";
+                                            print(
+                                                remainingAmountController.text);
+
+                                            print(totalController.text);
+
+                                            categoryName = val.name;
+                                            CategoryModel? c = categoryModel
+                                                .firstWhereOrNull((element) =>
+                                                    element.type == val.name);
+
+                                            setState(() {
+                                              quantityTypeController.text =
+                                                  c!.quantity.toString();
+                                              categoryQuantity =
+                                                  c!.quantity.toString();
+                                              priceTypeController.text =
                                                   c.price.toString()!;
-                                                  categoryPrice = c.price!;
-                                                });
-                                                setState(() {
-                                                  totalController
-                                                      .text = ((worker_costController
-                                                      .text.isEmpty
-                                                      ? 0.0
-                                                      : double.parse(
-                                                      worker_costController
-                                                          .text)) +
-                                                      (prizeController.text.isEmpty
+                                              categoryPrice = c.price!;
+                                            });
+                                            setState(() {
+                                              totalController
+                                                  .text = ((worker_costController
+                                                              .text.isEmpty
                                                           ? 0.0
-                                                          : double.parse(prizeController.text)) +
+                                                          : double.parse(
+                                                              worker_costController
+                                                                  .text)) +
+                                                      (prizeController
+                                                              .text.isEmpty
+                                                          ? 0.0
+                                                          : double.parse(
+                                                              prizeController
+                                                                  .text)) +
                                                       double.parse(
-                                                          totalTypeController.text))
-                                                      .toString();
-                                                  remainingAmountController.text =
-                                                      (double.parse(
-                                                          totalController.text.isEmpty?"0.0": totalController.text)
-                                                          -
-                                                          (amountPaidController
+                                                          totalTypeController
+                                                              .text))
+                                                  .toString();
+                                              remainingAmountController
+                                                  .text = (double.parse(
+                                                          totalController
+                                                                  .text.isEmpty
+                                                              ? "0.0"
+                                                              : totalController
+                                                                  .text) -
+                                                      (amountPaidController
                                                               .text.isNotEmpty
-                                                              ? double.parse(
+                                                          ? double.parse(
                                                               amountPaidController
                                                                   .text)
-                                                              : 0.0))
-                                                          .toString();
-                                                });
-      
-                                              },
-                                            ),
-                                          )
-                                        ],
-                                      ),
-                                    )),
+                                                          : 0.0))
+                                                  .toString();
+                                            });
+                                          },
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                )),
                                 Expanded(
                                     child: Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Column(
-                                        mainAxisAlignment: MainAxisAlignment.start,
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        children: [
-                                          const Text(
-                                            'الكمية المتاحة في المخزن',
-                                            style: TextStyle(
-                                                color: Colors.white70,
-                                                fontWeight: FontWeight.w500,
-                                                fontSize: 14),
-                                          ),
-                                          CustomTextField(
-                                            prefix:
-                                            Icon(Icons.auto_awesome_mosaic_sharp),
-                                            enable: false,
-                                            controller: quantityTypeController,
-                                            textInputType: TextInputType.number,
-                                            hintText: 'ادخل النوع',
-                                            isFormField: true,
-                                          ),
-                                        ],
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      const Text(
+                                        'الكمية المتاحة في المخزن',
+                                        style: TextStyle(
+                                            color: Colors.white70,
+                                            fontWeight: FontWeight.w500,
+                                            fontSize: 14),
                                       ),
-                                    )),
-
+                                      CustomTextField(
+                                        prefix: Icon(
+                                            Icons.auto_awesome_mosaic_sharp),
+                                        enable: false,
+                                        controller: quantityTypeController,
+                                        textInputType: TextInputType.number,
+                                        hintText: 'ادخل النوع',
+                                        isFormField: true,
+                                      ),
+                                    ],
+                                  ),
+                                )),
                               ],
                             ),
                             Row(
-                                children: [
-                                  Expanded(
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: Column(
-                                          mainAxisAlignment: MainAxisAlignment.start,
-                                          crossAxisAlignment: CrossAxisAlignment.start,
-                                          children: [
-                                            const Text(
-                                              'سعر المتر',
-                                              style: TextStyle(
-                                                  color: Colors.white70,
-                                                  fontWeight: FontWeight.w500,
-                                                  fontSize: 18),
-                                            ),
-                                            CustomTextField(
-                                              prefix:
-                                              Icon(Icons.monetization_on_outlined),
-                                              controller: priceTypeController,
-                                              enable: false,
-                                              textInputType: TextInputType.number,
-                                              hintText: 'سعر المتر',
-                                              isFormField: true,
-                                            ),
-                                          ],
-                                        ),
-                                      )),
-
-                                  Expanded(
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: Column(
-                                          mainAxisAlignment: MainAxisAlignment.start,
-                                          crossAxisAlignment: CrossAxisAlignment.start,
-                                          children: [
-                                            const Text(
-                                              ' الكمية',
-                                              style: TextStyle(
-                                                  color: Colors.white70,
-                                                  fontWeight: FontWeight.w500,
-                                                  fontSize: 18),
-                                            ),
-                                            CustomTextField(
-                                              prefix:
-                                              Icon(Icons.auto_awesome_mosaic_sharp),
-                                              controller: quantityController,
-                                              onChanged: (val) {
-
-
-                                                if (val.isEmpty ||
-                                                    priceTypeController.text.isEmpty ||
-                                                    quantityTypeController
-                                                        .text.isEmpty) {
-                                                  setState(() {
-                                                    quantityTypeController.text =
-                                                        categoryQuantity;
-                                                    totalTypeController.text = "0.0";
-                                                  });
-                                                } else {
-                                                  quantityTypeController.text =
-                                                      (double.parse(
-                                                          categoryQuantity) -
-                                                          double.parse(
-                                                              quantityController
-                                                                  .text))
-                                                          .toString();
-                                                  totalTypeController.text =
-                                                      (double.parse(quantityController
-                                                          .text) *
-                                                          double.parse(
-                                                              priceTypeController
-                                                                  .text))
-                                                          .toString();
-
-                                                }
-
-
-                                                totalController
-                                                    .text = ((worker_costController
-                                                    .text.isEmpty
-                                                    ? 0.0
-                                                    : double.parse(
-                                                    worker_costController
-                                                        .text)) +
-                                                    (prizeController.text.isEmpty
-                                                        ? 0.0
-                                                        : double.parse(prizeController.text)) +
-                                                    double.parse(
-                                                        totalTypeController.text))
+                              children: [
+                                Expanded(
+                                    child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      const Text(
+                                        'سعر المتر',
+                                        style: TextStyle(
+                                            color: Colors.white70,
+                                            fontWeight: FontWeight.w500,
+                                            fontSize: 18),
+                                      ),
+                                      CustomTextField(
+                                        prefix: Icon(
+                                            Icons.monetization_on_outlined),
+                                        controller: priceTypeController,
+                                        enable: false,
+                                        textInputType: TextInputType.number,
+                                        hintText: 'سعر المتر',
+                                        isFormField: true,
+                                      ),
+                                    ],
+                                  ),
+                                )),
+                                Expanded(
+                                    child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      const Text(
+                                        ' الكمية',
+                                        style: TextStyle(
+                                            color: Colors.white70,
+                                            fontWeight: FontWeight.w500,
+                                            fontSize: 18),
+                                      ),
+                                      CustomTextField(
+                                        prefix: Icon(
+                                            Icons.auto_awesome_mosaic_sharp),
+                                        controller: quantityController,
+                                        onChanged: (val) {
+                                          if (val.isEmpty ||
+                                              priceTypeController
+                                                  .text.isEmpty ||
+                                              quantityTypeController
+                                                  .text.isEmpty) {
+                                            setState(() {
+                                              quantityTypeController.text =
+                                                  categoryQuantity;
+                                              totalTypeController.text = "0.0";
+                                            });
+                                          } else {
+                                            quantityTypeController.text =
+                                                (double.parse(
+                                                            categoryQuantity) -
+                                                        double.parse(
+                                                            quantityController
+                                                                .text))
                                                     .toString();
-                                                remainingAmountController.text = (double.parse(
-                                                    totalController.text.isEmpty?"0.0":  totalController.text)
-                                                    -
-                                                    (amountPaidController
-                                                        .text.isNotEmpty
-                                                        ? double.parse(
-                                                        amountPaidController
-                                                            .text)
-                                                        : 0.0))
+                                            totalTypeController.text =
+                                                (double.parse(quantityController
+                                                            .text) *
+                                                        double.parse(
+                                                            priceTypeController
+                                                                .text))
                                                     .toString();
+                                          }
 
+                                          totalController
+                                              .text = ((worker_costController
+                                                          .text.isEmpty
+                                                      ? 0.0
+                                                      : double.parse(
+                                                          worker_costController
+                                                              .text)) +
+                                                  (prizeController.text.isEmpty
+                                                      ? 0.0
+                                                      : double.parse(
+                                                          prizeController
+                                                              .text)) +
+                                                  double.parse(
+                                                      totalTypeController.text))
+                                              .toString();
+                                          remainingAmountController
+                                              .text = (double.parse(
+                                                      totalController
+                                                              .text.isEmpty
+                                                          ? "0.0"
+                                                          : totalController
+                                                              .text) -
+                                                  (amountPaidController
+                                                          .text.isNotEmpty
+                                                      ? double.parse(
+                                                          amountPaidController
+                                                              .text)
+                                                      : 0.0))
+                                              .toString();
 
-                                                setState(() {
-
-                                                });
-
-                                              },
-                                              textInputType: TextInputType.number,
-                                              hintText: 'ادخل الكمية',
-                                              isFormField: true,
-                                            ),
-                                          ],
-                                        ),
-                                      )),
-                                  Expanded(
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: Column(
-                                          mainAxisAlignment: MainAxisAlignment.start,
-                                          crossAxisAlignment: CrossAxisAlignment.start,
-                                          children: [
-                                            const Text(
-                                              'الاجمالي',
-                                              style: TextStyle(
-                                                  color: Colors.white70,
-                                                  fontWeight: FontWeight.w500,
-                                                  fontSize: 18),
-                                            ),
-                                            CustomTextField(
-                                              prefix:
-                                              Icon(Icons.monetization_on_outlined),
-                                              controller: totalTypeController,
-                                              enable: false   ,
-                                              textInputType: TextInputType.number,
-                                              hintText: 'الاجمالي',
-                                              isFormField: true,
-                                            ),
-                                          ],
-                                        ),
-                                      )),
-                                ],
+                                          setState(() {});
+                                        },
+                                        textInputType: TextInputType.number,
+                                        hintText: 'ادخل الكمية',
+                                        isFormField: true,
+                                      ),
+                                    ],
+                                  ),
+                                )),
+                                Expanded(
+                                    child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      const Text(
+                                        'الاجمالي',
+                                        style: TextStyle(
+                                            color: Colors.white70,
+                                            fontWeight: FontWeight.w500,
+                                            fontSize: 18),
+                                      ),
+                                      CustomTextField(
+                                        prefix: Icon(
+                                            Icons.monetization_on_outlined),
+                                        controller: totalTypeController,
+                                        enable: false,
+                                        textInputType: TextInputType.number,
+                                        hintText: 'الاجمالي',
+                                        isFormField: true,
+                                      ),
+                                    ],
+                                  ),
+                                )),
+                              ],
                             ),
                             ////////////////////////  الدفع  /////////////////////////////
-      
+
                             const Row(
                               children: [
                                 Expanded(
                                     child: Divider(
-                                      color: Colors.white,
-                                    )),
+                                  color: Colors.white,
+                                )),
                                 Text(
                                   "     الدفع    ",
                                   style: TextStyle(
@@ -4712,248 +4769,256 @@ textAlign: TextAlign.center,
                                 ),
                                 Expanded(
                                     child: Divider(
-                                      color: Colors.white,
-                                    )),
+                                  color: Colors.white,
+                                )),
                               ],
                             ),
-      
+
                             Row(
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
                                 Expanded(
                                     child: Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Column(
-                                        mainAxisAlignment: MainAxisAlignment.start,
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        children: [
-                                          const Text(
-                                            'القيمة',
-                                            style: TextStyle(
-                                                color: Colors.white70,
-                                                fontWeight: FontWeight.w500,
-                                                fontSize: 18),
-                                          ),
-                                          CustomTextField(
-                                            onChanged: (val) {
-                                              setState(() {
-                                                totalController
-                                                    .text = ((worker_costController
-                                                    .text.isEmpty
-                                                    ? 0.0
-                                                    : double.parse(
-                                                    worker_costController
-                                                        .text)) +
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      const Text(
+                                        'القيمة',
+                                        style: TextStyle(
+                                            color: Colors.white70,
+                                            fontWeight: FontWeight.w500,
+                                            fontSize: 18),
+                                      ),
+                                      CustomTextField(
+                                        onChanged: (val) {
+                                          setState(() {
+                                            totalController
+                                                .text = ((worker_costController
+                                                            .text.isEmpty
+                                                        ? 0.0
+                                                        : double.parse(
+                                                            worker_costController
+                                                                .text)) +
                                                     (val.isEmpty
                                                         ? 0.0
                                                         : double.parse(val)) +
                                                     double.parse(
-                                                        totalTypeController.text))
-                                                    .toString();
-                                                remainingAmountController.text = (double.parse(
-                                                    totalController.text)
-                                                    -
+                                                        totalTypeController
+                                                            .text))
+                                                .toString();
+                                            remainingAmountController
+                                                .text = (double.parse(
+                                                        totalController.text) -
                                                     (amountPaidController
-                                                        .text.isNotEmpty
+                                                            .text.isNotEmpty
                                                         ? double.parse(
-                                                        amountPaidController
-                                                            .text)
-                                                        : 0.0)).abs()
-                                                    .toString();
-                                              });
-      
-      
-      
-                                              setState(() {
-                                                show = false;
-                                              });
-                                            },
-                                            prefix: Icon(Icons.attach_money),
-                                            controller: prizeController,
-                                            textInputType: TextInputType.number,
-                                            hintText: '0.0\$ ',
-                                            isFormField: true,
-                                          ),
-                                        ],
+                                                            amountPaidController
+                                                                .text)
+                                                        : 0.0))
+                                                .abs()
+                                                .toString();
+                                          });
+
+                                          setState(() {
+                                            show = false;
+                                          });
+                                        },
+                                        prefix: Icon(Icons.attach_money),
+                                        controller: prizeController,
+                                        textInputType: TextInputType.number,
+                                        hintText: '0.0\$ ',
+                                        isFormField: true,
                                       ),
-                                    )),
+                                    ],
+                                  ),
+                                )),
                                 Expanded(
                                     child: Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Column(
-                                        mainAxisAlignment: MainAxisAlignment.start,
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        children: [
-                                          const Text(
-                                            'المصنعية',
-                                            style: TextStyle(
-                                                color: Colors.white70,
-                                                fontWeight: FontWeight.w500,
-                                                fontSize: 18),
-                                          ),
-                                          CustomTextField(
-                                            prefix: Icon(Icons.attach_money),
-                                            onChanged: (val) {
-                                              setState(() {
-                                                totalController
-                                                    .text = ((worker_costController
-                                                    .text.isEmpty
-                                                    ? 0.0
-                                                    : double.parse(
-                                                    worker_costController
-                                                        .text)) +
-                                                    (prizeController.text.isEmpty
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      const Text(
+                                        'المصنعية',
+                                        style: TextStyle(
+                                            color: Colors.white70,
+                                            fontWeight: FontWeight.w500,
+                                            fontSize: 18),
+                                      ),
+                                      CustomTextField(
+                                        prefix: Icon(Icons.attach_money),
+                                        onChanged: (val) {
+                                          setState(() {
+                                            totalController
+                                                .text = ((worker_costController
+                                                            .text.isEmpty
                                                         ? 0.0
                                                         : double.parse(
-                                                        prizeController
-                                                            .text)) +
+                                                            worker_costController
+                                                                .text)) +
+                                                    (prizeController
+                                                            .text.isEmpty
+                                                        ? 0.0
+                                                        : double.parse(
+                                                            prizeController
+                                                                .text)) +
                                                     double.parse(
-                                                        totalTypeController.text))
-                                                    .toString();
-                                              });
-      
-                                              remainingAmountController.text =
-                                                  (double.parse(
+                                                        totalTypeController
+                                                            .text))
+                                                .toString();
+                                          });
+
+                                          remainingAmountController
+                                              .text = (double.parse(
                                                       totalController.text) -
-                                                      (amountPaidController
+                                                  (amountPaidController
                                                           .text.isNotEmpty
-                                                          ? double.parse(
+                                                      ? double.parse(
                                                           amountPaidController
                                                               .text)
-                                                          : 0.0))
-                                                      .toString();
-                                              setState(() {
-                                                show = false;
-                                              });
-                                            },
-                                            controller: worker_costController,
-                                            textInputType: TextInputType.number,
-                                            hintText: 'ادخل مبلغ المصنعية',
-                                            isFormField: true,
-                                          ),
-                                        ],
+                                                      : 0.0))
+                                              .toString();
+                                          setState(() {
+                                            show = false;
+                                          });
+                                        },
+                                        controller: worker_costController,
+                                        textInputType: TextInputType.number,
+                                        hintText: 'ادخل مبلغ المصنعية',
+                                        isFormField: true,
                                       ),
-                                    )),
+                                    ],
+                                  ),
+                                )),
                                 Expanded(
                                     child: Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Column(
-                                        mainAxisAlignment: MainAxisAlignment.start,
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        children: [
-                                          const Text(
-                                            'المبلغ المدفوع',
-                                            style: TextStyle(
-                                                color: Colors.white70,
-
-                                                fontWeight: FontWeight.w500,
-                                                fontSize: 18),
-                                          ),
-                                          CustomTextField(
-                                            prefix: Icon(Icons.attach_money),
-                                            onChanged: (val) {
-                                              if (double.tryParse(
-                                                  val.isNotEmpty ? val : "0")! >
-                                                  double.tryParse(
-                                                      totalController.text)!) {
-                                                remainingAmountController.text = "0";
-                                                setState(() {
-                                                  show = true;
-                                                });
-                                              } else {
-                                                remainingAmountController
-                                                    .text = (double.tryParse(
-                                                    totalController.text)! -
-                                                    double.tryParse(val.isNotEmpty
-                                                        ? val
-                                                        : "0")!)
-                                                    .toString();
-      
-                                                setState(() {
-                                                  show = false;
-                                                });
-                                              }
-                                            },
-                                            controller: amountPaidController,
-                                            textInputType: TextInputType.number,
-                                            isFormField: true,
-                                            hintText: '0.0\$ ',
-                                          ),
-                                        ],
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      const Text(
+                                        'المبلغ المدفوع',
+                                        style: TextStyle(
+                                            color: Colors.white70,
+                                            fontWeight: FontWeight.w500,
+                                            fontSize: 18),
                                       ),
-                                    )),
-                               
+                                      CustomTextField(
+                                        prefix: Icon(Icons.attach_money),
+                                        onChanged: (val) {
+                                          if (double.tryParse(
+                                                  val.isNotEmpty ? val : "0")! >
+                                              double.tryParse(
+                                                  totalController.text)!) {
+                                            remainingAmountController.text =
+                                                "0";
+                                            setState(() {
+                                              show = true;
+                                            });
+                                          } else {
+                                            remainingAmountController
+                                                .text = (double.tryParse(
+                                                        totalController.text)! -
+                                                    double.tryParse(
+                                                        val.isNotEmpty
+                                                            ? val
+                                                            : "0")!)
+                                                .toString();
+
+                                            setState(() {
+                                              show = false;
+                                            });
+                                          }
+                                        },
+                                        controller: amountPaidController,
+                                        textInputType: TextInputType.number,
+                                        isFormField: true,
+                                        hintText: '0.0\$ ',
+                                      ),
+                                    ],
+                                  ),
+                                )),
                               ],
                             ),
-                            Row(children: [
-                              Expanded(
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Column(
-                                      mainAxisAlignment: MainAxisAlignment.start,
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      children: [
-                                        const Text(
-                                          'المبلغ المتبقى',
-                                          style: TextStyle(
-                                              color: Colors.white70,
-                                              fontWeight: FontWeight.w500,
-                                              fontSize: 18),
-                                        ),
-                                        CustomTextField(
-                                          prefix: Icon(Icons.attach_money),
-                                          controller: remainingAmountController,
-                                          textInputType: TextInputType.number,
-                                          hintText: 'ادخل المبلغ المتبقى',
-                                          isFormField: true,
-                                        ),
-                                      ],
-                                    ),
-                                  )),
-                              Expanded(
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Column(
-                                      mainAxisAlignment: MainAxisAlignment.start,
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      children: [
-                                        const Text(
-                                          'الاجمالي',
-                                          style: TextStyle(
-                                              color: Colors.white70,
-                                              fontWeight: FontWeight.w500,
-                                              fontSize: 18),
-                                        ),
-                                        CustomTextField(
-                                          prefix: Icon(Icons.attach_money),
-                                          controller: totalController,
-                                          textInputType: TextInputType.number,
-                                          hintText: 'الاجمالي',
-                                          isFormField: true,
-                                        ),
-                                      ],
-                                    ),
-                                  )),
-                            ],),
+                            Row(
+                              children: [
+                                Expanded(
+                                    child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      const Text(
+                                        'المبلغ المتبقى',
+                                        style: TextStyle(
+                                            color: Colors.white70,
+                                            fontWeight: FontWeight.w500,
+                                            fontSize: 18),
+                                      ),
+                                      CustomTextField(
+                                        prefix: Icon(Icons.attach_money),
+                                        controller: remainingAmountController,
+                                        textInputType: TextInputType.number,
+                                        hintText: 'ادخل المبلغ المتبقى',
+                                        isFormField: true,
+                                      ),
+                                    ],
+                                  ),
+                                )),
+                                Expanded(
+                                    child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      const Text(
+                                        'الاجمالي',
+                                        style: TextStyle(
+                                            color: Colors.white70,
+                                            fontWeight: FontWeight.w500,
+                                            fontSize: 18),
+                                      ),
+                                      CustomTextField(
+                                        prefix: Icon(Icons.attach_money),
+                                        controller: totalController,
+                                        textInputType: TextInputType.number,
+                                        hintText: 'الاجمالي',
+                                        isFormField: true,
+                                      ),
+                                    ],
+                                  ),
+                                )),
+                              ],
+                            ),
                             show == true
-      
                                 ? Text(
-                              ' يوجد ${(double.tryParse(amountPaidController.text.isNotEmpty ? amountPaidController.text : "0")! - double.tryParse(totalController.text.isNotEmpty ? totalController.text : "0")!)} مبلغ ذيادة',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: 15,
-                                  color: Colors.red),
-                            )
+                                    ' يوجد ${(double.tryParse(amountPaidController.text.isNotEmpty ? amountPaidController.text : "0")! - double.tryParse(totalController.text.isNotEmpty ? totalController.text : "0")!)} مبلغ ذيادة',
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w500,
+                                        fontSize: 15,
+                                        color: Colors.red),
+                                  )
                                 : SizedBox(),
-      
+
                             ////////////////////////  التاريخ  /////////////////////////////
-      
+
                             const Row(
                               children: [
                                 Expanded(
                                     child: Divider(
-                                      color: Colors.white,
-                                    )),
+                                  color: Colors.white,
+                                )),
                                 Text(
                                   "     التاريخ    ",
                                   style: TextStyle(
@@ -4963,8 +5028,8 @@ textAlign: TextAlign.center,
                                 ),
                                 Expanded(
                                     child: Divider(
-                                      color: Colors.white,
-                                    )),
+                                  color: Colors.white,
+                                )),
                               ],
                             ),
                             Padding(
@@ -4973,9 +5038,10 @@ textAlign: TextAlign.center,
                                 children: [
                                   Expanded(
                                     child: Column(
-                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
                                       crossAxisAlignment:
-                                      CrossAxisAlignment.start,
+                                          CrossAxisAlignment.start,
                                       children: [
                                         const Text(
                                           'تاريخ الفاتوره',
@@ -4993,7 +5059,7 @@ textAlign: TextAlign.center,
                                             decoration: BoxDecoration(
                                               color: Color(0xffBCEFC2),
                                               borderRadius:
-                                              BorderRadius.circular(6),
+                                                  BorderRadius.circular(6),
                                               boxShadow: [
                                                 BoxShadow(
                                                     color: Colors.grey
@@ -5009,26 +5075,27 @@ textAlign: TextAlign.center,
                                               onTap: () {
                                                 FocusScope.of(context)
                                                     .requestFocus(
-                                                    new FocusNode());
+                                                        new FocusNode());
                                                 _selectDate(context);
                                               },
                                               decoration: InputDecoration(
                                                 border: InputBorder.none,
-      
+
                                                 contentPadding:
-                                                const EdgeInsets.symmetric(
-                                                    horizontal: 15),
+                                                    const EdgeInsets.symmetric(
+                                                        horizontal: 15),
                                                 isDense: true,
                                                 fillColor: Colors.black12,
                                                 enabled: false,
                                                 hintText:
-                                                _selectedDate.toString(),
+                                                    _selectedDate.toString(),
                                                 labelText:
-                                                _selectedDate.toString(),
+                                                    _selectedDate.toString(),
                                                 labelStyle: const TextStyle(
                                                     color: Colors.black45,
                                                     fontSize: 16,
-                                                    fontWeight: FontWeight.bold),
+                                                    fontWeight:
+                                                        FontWeight.bold),
                                                 // iconOrdrop: 'button',
                                                 prefixIcon: const Icon(
                                                   Icons.date_range_outlined,
@@ -5047,9 +5114,10 @@ textAlign: TextAlign.center,
                                   ),
                                   Expanded(
                                     child: Column(
-                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
                                       crossAxisAlignment:
-                                      CrossAxisAlignment.start,
+                                          CrossAxisAlignment.start,
                                       children: [
                                         const Text(
                                           'تاريخ الاستلام',
@@ -5067,7 +5135,7 @@ textAlign: TextAlign.center,
                                             decoration: BoxDecoration(
                                               color: Color(0xffBCEFC2),
                                               borderRadius:
-                                              BorderRadius.circular(6),
+                                                  BorderRadius.circular(6),
                                               boxShadow: [
                                                 BoxShadow(
                                                     color: Colors.grey
@@ -5082,31 +5150,33 @@ textAlign: TextAlign.center,
                                               onTap: () {
                                                 FocusScope.of(context)
                                                     .requestFocus(
-                                                    new FocusNode());
-      
+                                                        new FocusNode());
+
                                                 _selectDate2(context);
                                               },
                                               child: TextField(
                                                 controller:
-                                                _dateDeliveryController,
+                                                    _dateDeliveryController,
                                                 decoration: InputDecoration(
                                                   border: InputBorder.none,
-      
+
                                                   contentPadding:
-                                                  const EdgeInsets.symmetric(
-                                                      horizontal: 15),
+                                                      const EdgeInsets
+                                                          .symmetric(
+                                                          horizontal: 15),
                                                   isDense: true,
                                                   fillColor: Colors.black12,
                                                   enabled: false,
                                                   hintText: selectedDeliveryDate
                                                       .toString(),
-                                                  labelText: selectedDeliveryDate
-                                                      .toString(),
+                                                  labelText:
+                                                      selectedDeliveryDate
+                                                          .toString(),
                                                   labelStyle: const TextStyle(
                                                       color: Colors.black45,
                                                       fontSize: 16,
                                                       fontWeight:
-                                                      FontWeight.bold),
+                                                          FontWeight.bold),
                                                   // iconOrdrop: 'button',
                                                   prefixIcon: const Icon(
                                                     Icons.date_range_outlined,
@@ -5124,7 +5194,7 @@ textAlign: TextAlign.center,
                                 ],
                               ),
                             ),
-      
+
                             ////////////////////////  الاضافات  /////////////////////////////
                             SizedBox(
                               height: 10,
@@ -5133,8 +5203,8 @@ textAlign: TextAlign.center,
                               children: [
                                 Expanded(
                                     child: Divider(
-                                      color: Colors.white,
-                                    )),
+                                  color: Colors.white,
+                                )),
                                 Text(
                                   "     الاضافات    ",
                                   style: TextStyle(
@@ -5144,8 +5214,8 @@ textAlign: TextAlign.center,
                                 ),
                                 Expanded(
                                     child: Divider(
-                                      color: Colors.white,
-                                    )),
+                                  color: Colors.white,
+                                )),
                               ],
                             ),
                             ExpansionTile(
@@ -5165,706 +5235,717 @@ textAlign: TextAlign.center,
                                   width: double.infinity,
                                   decoration: BoxDecoration(
                                       image: DecorationImage(
-                                        image: AssetImage(
-                                          "images/login.jpg",
-                                        ),
-                                        fit: BoxFit.cover,
-                                      )),
+                                    image: AssetImage(
+                                      "images/login.jpg",
+                                    ),
+                                    fit: BoxFit.cover,
+                                  )),
                                   child: Container(
                                     color: Colors.black.withOpacity(0.8),
                                     width: double.infinity,
                                     padding: EdgeInsets.all(10),
                                     alignment: Alignment.center,
-                                    child: _character == SingingCharacter.afrangy
+                                    child: _character ==
+                                            SingingCharacter.afrangy
                                         ? Wrap(
-                                      spacing: 20,
-                                      runSpacing: 20,
-                                      crossAxisAlignment:
-                                      WrapCrossAlignment.center,
-                                      children: [
-                                        Container(
-                                          width: 400,
-                                          decoration: BoxDecoration(
-                                              borderRadius:
-                                              BorderRadius.circular(20),
-                                              color: accentCanvasColor
-                                                  .withOpacity(0.8)),
-                                          child: Row(
+                                            spacing: 20,
+                                            runSpacing: 20,
+                                            crossAxisAlignment:
+                                                WrapCrossAlignment.center,
                                             children: [
-                                              Expanded(
-                                                flex: 1,
-                                                child: IconButton(
-                                                  onPressed: () =>
-                                                      buttonCarouselController4
-                                                          .nextPage(
-                                                          duration: Duration(
-                                                              milliseconds:
-                                                              1),
-                                                          curve: Curves
-                                                              .linear),
-                                                  icon: Icon(
-                                                    Icons.chevron_left,
-                                                    color: Colors.white,
-                                                    size: 50,
-                                                  ),
-                                                ),
-                                              ),
-                                              Expanded(
-                                                flex: 4,
-                                                child: Column(
+                                              Container(
+                                                width: 400,
+                                                decoration: BoxDecoration(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            20),
+                                                    color: accentCanvasColor
+                                                        .withOpacity(0.8)),
+                                                child: Row(
                                                   children: [
-                                                    CarouselSlider(
-                                                        items: list6,
-                                                        carouselController:
-                                                        buttonCarouselController4,
-                                                        options:
-                                                        CarouselOptions(
-                                                          onPageChanged:
-                                                              (index, c) {
-      
-                                                          },
-                                                          autoPlay: false,
-                                                          enlargeCenterPage:
-                                                          true,
-                                                          viewportFraction:
-                                                          0.9,
-                                                          aspectRatio: 2.0,
-                                                          initialPage: 2,
-                                                        )),
-                                                    CustomTextField(
-                                                      textInputType:
-                                                      TextInputType
-                                                          .number,
-                                                      controller:
-                                                      sadrController,
-                                                      hintText:
-                                                      "ادخل المقاس",
-                                                      prefix: Icon(Icons
-                                                          .format_size_outlined),
+                                                    Expanded(
+                                                      flex: 1,
+                                                      child: IconButton(
+                                                        onPressed: () =>
+                                                            buttonCarouselController4.nextPage(
+                                                                duration: Duration(
+                                                                    milliseconds:
+                                                                        1),
+                                                                curve: Curves
+                                                                    .linear),
+                                                        icon: Icon(
+                                                          Icons.chevron_left,
+                                                          color: Colors.white,
+                                                          size: 50,
+                                                        ),
+                                                      ),
                                                     ),
-                                                    SizedBox(
-                                                      height: 10,
-                                                    )
+                                                    Expanded(
+                                                      flex: 4,
+                                                      child: Column(
+                                                        children: [
+                                                          CarouselSlider(
+                                                              items: list6,
+                                                              carouselController:
+                                                                  buttonCarouselController4,
+                                                              options:
+                                                                  CarouselOptions(
+                                                                onPageChanged:
+                                                                    (index,
+                                                                        c) {},
+                                                                autoPlay: false,
+                                                                enlargeCenterPage:
+                                                                    true,
+                                                                viewportFraction:
+                                                                    0.9,
+                                                                aspectRatio:
+                                                                    2.0,
+                                                                initialPage: 2,
+                                                              )),
+                                                          CustomTextField(
+                                                            textInputType:
+                                                                TextInputType
+                                                                    .number,
+                                                            controller:
+                                                                sadrController,
+                                                            hintText:
+                                                                "ادخل المقاس",
+                                                            prefix: Icon(Icons
+                                                                .format_size_outlined),
+                                                          ),
+                                                          SizedBox(
+                                                            height: 10,
+                                                          )
+                                                        ],
+                                                      ),
+                                                    ),
+                                                    Expanded(
+                                                      flex: 1,
+                                                      child: IconButton(
+                                                        onPressed: () {
+                                                          buttonCarouselController4
+                                                              .previousPage(
+                                                                  duration: Duration(
+                                                                      milliseconds:
+                                                                          1),
+                                                                  curve: Curves
+                                                                      .linear);
+                                                        },
+                                                        icon: Icon(
+                                                          Icons
+                                                              .keyboard_arrow_left_sharp,
+                                                          color: Colors.white,
+                                                          size: 50,
+                                                        ),
+                                                      ),
+                                                    ),
                                                   ],
                                                 ),
                                               ),
-                                              Expanded(
-                                                flex: 1,
-                                                child: IconButton(
-                                                  onPressed: () {
-                                                    buttonCarouselController4
-                                                        .previousPage(
-                                                        duration: Duration(
-                                                            milliseconds:
-                                                            1),
-                                                        curve: Curves
-                                                            .linear);
-                                                  },
-                                                  icon: Icon(
-                                                    Icons
-                                                        .keyboard_arrow_left_sharp,
-                                                    color: Colors.white,
-                                                    size: 50,
-                                                  ),
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                        Container(
-                                          width: 300,
-                                          decoration: BoxDecoration(
-                                              borderRadius:
-                                              BorderRadius.circular(20),
-                                              color: accentCanvasColor
-                                                  .withOpacity(0.8)),
-                                          child: Row(
-                                            children: [
-                                              Expanded(
-                                                flex: 1,
-                                                child: IconButton(
-                                                  onPressed: () =>
-                                                      buttonCarouselController5
-                                                          .nextPage(
-                                                          duration: Duration(
-                                                              milliseconds:
-                                                              1),
-                                                          curve: Curves
-                                                              .linear),
-                                                  icon: Icon(
-                                                    Icons.chevron_left,
-                                                    color: Colors.white,
-                                                    size: 50,
-                                                  ),
-                                                ),
-                                              ),
-                                              Expanded(
-                                                flex: 4,
-                                                child: Column(
+                                              Container(
+                                                width: 300,
+                                                decoration: BoxDecoration(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            20),
+                                                    color: accentCanvasColor
+                                                        .withOpacity(0.8)),
+                                                child: Row(
                                                   children: [
-                                                    CarouselSlider(
-                                                        items: list7,
-                                                        carouselController:
-                                                        buttonCarouselController5,
-                                                        options:
-                                                        CarouselOptions(
-                                                          onPageChanged:
-                                                              (index, c) {
-                                                            print(index);
-                                                            kom = index == 0
-                                                                ? "كم شعراوي علية زراير"
-                                                                : index == 1
-                                                                ? "كم بلدي"
-                                                                : index ==
-                                                                2
-                                                                ? "الكم سادة+بشليك لزق"
-                                                                : index == 3
-                                                                ? "الكم سادة"
-                                                                : index == 4
-                                                                ? "اساورة بشليك"
-                                                                : index == 5
-                                                                ? "اساورة كسرة واحد"
-                                                                : index == 6
-                                                                ? "اساورة مربع بدون كسرة"
-                                                                : index == 7
-                                                                ? "اساورة مربع كسرة واحدة"
-                                                                : index == 8
-                                                                ? "اساورة مربع بدون كسرة"
-                                                                : "اساورة مربع 2 كسرة";
-                                                            print(kom);
-                                                          },
-                                                          autoPlay: false,
-                                                          enlargeCenterPage:
-                                                          true,
-                                                          viewportFraction:
-                                                          0.9,
-                                                          aspectRatio: 2.0,
-                                                          initialPage: 2,
-                                                        )),
-                                                    CustomTextField(
-                                                      textInputType:
-                                                      TextInputType
-                                                          .number,
-                                                      controller:
-                                                      komController,
-                                                      prefix: Icon(Icons
-                                                          .format_size),
-                                                      hintText:
-                                                      "ادخل المقاس",
+                                                    Expanded(
+                                                      flex: 1,
+                                                      child: IconButton(
+                                                        onPressed: () =>
+                                                            buttonCarouselController5.nextPage(
+                                                                duration: Duration(
+                                                                    milliseconds:
+                                                                        1),
+                                                                curve: Curves
+                                                                    .linear),
+                                                        icon: Icon(
+                                                          Icons.chevron_left,
+                                                          color: Colors.white,
+                                                          size: 50,
+                                                        ),
+                                                      ),
                                                     ),
-                                                    SizedBox(
-                                                      height: 5,
-                                                    )
+                                                    Expanded(
+                                                      flex: 4,
+                                                      child: Column(
+                                                        children: [
+                                                          CarouselSlider(
+                                                              items: list7,
+                                                              carouselController:
+                                                                  buttonCarouselController5,
+                                                              options:
+                                                                  CarouselOptions(
+                                                                onPageChanged:
+                                                                    (index, c) {
+                                                                  print(index);
+                                                                  kom = index ==
+                                                                          0
+                                                                      ? "كم شعراوي علية زراير"
+                                                                      : index ==
+                                                                              1
+                                                                          ? "كم بلدي"
+                                                                          : index == 2
+                                                                              ? "الكم سادة+بشليك لزق"
+                                                                              : index == 3
+                                                                                  ? "الكم سادة"
+                                                                                  : index == 4
+                                                                                      ? "اساورة بشليك"
+                                                                                      : index == 5
+                                                                                          ? "اساورة كسرة واحد"
+                                                                                          : index == 6
+                                                                                              ? "اساورة مربع بدون كسرة"
+                                                                                              : index == 7
+                                                                                                  ? "اساورة مربع كسرة واحدة"
+                                                                                                  : index == 8
+                                                                                                      ? "اساورة مربع بدون كسرة"
+                                                                                                      : "اساورة مربع 2 كسرة";
+                                                                  print(kom);
+                                                                },
+                                                                autoPlay: false,
+                                                                enlargeCenterPage:
+                                                                    true,
+                                                                viewportFraction:
+                                                                    0.9,
+                                                                aspectRatio:
+                                                                    2.0,
+                                                                initialPage: 2,
+                                                              )),
+                                                          CustomTextField(
+                                                            textInputType:
+                                                                TextInputType
+                                                                    .number,
+                                                            controller:
+                                                                komController,
+                                                            prefix: Icon(Icons
+                                                                .format_size),
+                                                            hintText:
+                                                                "ادخل المقاس",
+                                                          ),
+                                                          SizedBox(
+                                                            height: 5,
+                                                          )
+                                                        ],
+                                                      ),
+                                                    ),
+                                                    Expanded(
+                                                      flex: 1,
+                                                      child: IconButton(
+                                                        onPressed: () =>
+                                                            buttonCarouselController5
+                                                                .previousPage(
+                                                                    duration: Duration(
+                                                                        milliseconds:
+                                                                            1),
+                                                                    curve: Curves
+                                                                        .linear),
+                                                        icon: Icon(
+                                                          Icons
+                                                              .keyboard_arrow_left_sharp,
+                                                          color: Colors.white,
+                                                          size: 50,
+                                                        ),
+                                                      ),
+                                                    ),
                                                   ],
                                                 ),
                                               ),
-                                              Expanded(
-                                                flex: 1,
-                                                child: IconButton(
-                                                  onPressed: () =>
-                                                      buttonCarouselController5
-                                                          .previousPage(
-                                                          duration: Duration(
-                                                              milliseconds:
-                                                              1),
-                                                          curve: Curves
-                                                              .linear),
-                                                  icon: Icon(
-                                                    Icons
-                                                        .keyboard_arrow_left_sharp,
-                                                    color: Colors.white,
-                                                    size: 50,
-                                                  ),
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                        Container(
-                                          width: 300,
-      
-                                          decoration: BoxDecoration(
-                                              borderRadius:
-                                              BorderRadius.circular(20),
-                                              color: accentCanvasColor
-                                                  .withOpacity(0.8)),
-                                          child: Row(
-                                            children: [
-                                              Expanded(
-                                                child: IconButton(
-                                                  onPressed: () =>
-                                                      buttonCarouselController6
-                                                          .nextPage(
-                                                          duration: Duration(
-                                                              milliseconds:
-                                                              1),
-                                                          curve: Curves
-                                                              .linear),
-                                                  icon: Icon(
-                                                    Icons.chevron_left,
-                                                    size: 50,
-                                                    color: Colors.white,
-                                                  ),
-                                                ),
-                                              ),
-                                              Expanded(
-                                                flex: 5,
-                                                child: Column(
+                                              Container(
+                                                width: 300,
+                                                decoration: BoxDecoration(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            20),
+                                                    color: accentCanvasColor
+                                                        .withOpacity(0.8)),
+                                                child: Row(
                                                   children: [
-                                                    CarouselSlider(
-                                                        items: list3,
-                                                        carouselController:
-                                                        buttonCarouselController6,
-                                                        options:
-                                                        CarouselOptions(
-                                                          onPageChanged:
-                                                              (index, c) {
-                                                            print(index);
-                                                            glab = index ==
-                                                                0
-                                                                ? "جلاب 1 زرار"
-                                                                : "جلاب 2 زرار";
-                                                            print(glab);
-                                                          },
-                                                          autoPlay: false,
-                                                          enlargeCenterPage:
-                                                          true,
-                                                          viewportFraction:
-                                                          0.9,
-                                                          aspectRatio: 1.0,
-                                                          initialPage: 2,
-                                                        )),
-                                                    CustomTextField(
-                                                      textInputType:
-                                                      TextInputType
-                                                          .number,
-                                                      controller:
-                                                      glabController,
-                                                      prefix: Icon(Icons
-                                                          .format_size),
-                                                      hintText:
-                                                      "ادخل المقاس",
+                                                    Expanded(
+                                                      child: IconButton(
+                                                        onPressed: () =>
+                                                            buttonCarouselController6.nextPage(
+                                                                duration: Duration(
+                                                                    milliseconds:
+                                                                        1),
+                                                                curve: Curves
+                                                                    .linear),
+                                                        icon: Icon(
+                                                          Icons.chevron_left,
+                                                          size: 50,
+                                                          color: Colors.white,
+                                                        ),
+                                                      ),
                                                     ),
-                                                    SizedBox(
-                                                      height: 5,
-                                                    )
+                                                    Expanded(
+                                                      flex: 5,
+                                                      child: Column(
+                                                        children: [
+                                                          CarouselSlider(
+                                                              items: list3,
+                                                              carouselController:
+                                                                  buttonCarouselController6,
+                                                              options:
+                                                                  CarouselOptions(
+                                                                onPageChanged:
+                                                                    (index, c) {
+                                                                  print(index);
+                                                                  glab = index ==
+                                                                          0
+                                                                      ? "جلاب 1 زرار"
+                                                                      : "جلاب 2 زرار";
+                                                                  print(glab);
+                                                                },
+                                                                autoPlay: false,
+                                                                enlargeCenterPage:
+                                                                    true,
+                                                                viewportFraction:
+                                                                    0.9,
+                                                                aspectRatio:
+                                                                    1.0,
+                                                                initialPage: 2,
+                                                              )),
+                                                          CustomTextField(
+                                                            textInputType:
+                                                                TextInputType
+                                                                    .number,
+                                                            controller:
+                                                                glabController,
+                                                            prefix: Icon(Icons
+                                                                .format_size),
+                                                            hintText:
+                                                                "ادخل المقاس",
+                                                          ),
+                                                          SizedBox(
+                                                            height: 5,
+                                                          )
+                                                        ],
+                                                      ),
+                                                    ),
+                                                    Expanded(
+                                                      child: IconButton(
+                                                        onPressed: () =>
+                                                            buttonCarouselController6
+                                                                .previousPage(
+                                                                    duration: Duration(
+                                                                        milliseconds:
+                                                                            1),
+                                                                    curve: Curves
+                                                                        .linear),
+                                                        icon: Icon(
+                                                          Icons
+                                                              .keyboard_arrow_left_sharp,
+                                                          color: Colors.white,
+                                                          size: 50,
+                                                        ),
+                                                      ),
+                                                    ),
                                                   ],
                                                 ),
                                               ),
-                                              Expanded(
-                                                child: IconButton(
-                                                  onPressed: () =>
-                                                      buttonCarouselController6
-                                                          .previousPage(
-                                                          duration: Duration(
-                                                              milliseconds:
-                                                              1),
-                                                          curve: Curves
-                                                              .linear),
-                                                  icon: Icon(
-                                                    Icons
-                                                        .keyboard_arrow_left_sharp,
-                                                    color: Colors.white,
-                                                    size: 50,
-                                                  ),
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                        Container(
-                                          width: 400,
-                                          decoration: BoxDecoration(
-                                              borderRadius:
-                                              BorderRadius.circular(20),
-                                              color: accentCanvasColor
-                                                  .withOpacity(0.8)),
-                                          child: Row(
-                                            children: [
-                                              Expanded(
-                                                flex: 1,
-                                                child: IconButton(
-                                                  onPressed: () =>
-                                                      buttonCarouselController7
-                                                          .nextPage(
-                                                          duration: Duration(
-                                                              milliseconds:
-                                                              1),
-                                                          curve: Curves
-                                                              .linear),
-                                                  icon: Icon(
-                                                    Icons.chevron_left,
-                                                    size: 50,
-                                                    color: Colors.white,
-                                                  ),
-                                                ),
-                                              ),
-                                              Expanded(
-                                                flex: 4,
-                                                child: Column(
+                                              Container(
+                                                width: 300,
+                                                decoration: BoxDecoration(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            20),
+                                                    color: accentCanvasColor
+                                                        .withOpacity(0.8)),
+                                                child: Row(
                                                   children: [
-                                                    CarouselSlider(
-                                                        items: list4,
-                                                        carouselController:
-                                                        buttonCarouselController7,
-                                                        options:
-                                                        CarouselOptions(
-                                                          onPageChanged:
-                                                              (index, c) {
-                                                            print(index);
-                                                            ganb = index ==
-                                                                0
-                                                                ? "جانب بشليك"
-                                                                : "جانب شق";
-                                                            print(ganb);
-                                                          },
-                                                          autoPlay: false,
-                                                          enlargeCenterPage:
-                                                          true,
-                                                          viewportFraction:
-                                                          0.9,
-                                                          aspectRatio: 2.0,
-                                                          initialPage: 2,
-                                                        )),
-                                                    CustomTextField(
-                                                      textInputType:
-                                                      TextInputType
-                                                          .number,
-                                                      controller:
-                                                      ganbController,
-                                                      prefix: Icon(Icons
-                                                          .format_size),
-                                                      hintText:
-                                                      "ادخل المقاس",
+                                                    Expanded(
+                                                      flex: 1,
+                                                      child: IconButton(
+                                                        onPressed: () =>
+                                                            buttonCarouselController7.nextPage(
+                                                                duration: Duration(
+                                                                    milliseconds:
+                                                                        1),
+                                                                curve: Curves
+                                                                    .linear),
+                                                        icon: Icon(
+                                                          Icons.chevron_left,
+                                                          size: 50,
+                                                          color: Colors.white,
+                                                        ),
+                                                      ),
                                                     ),
-                                                    SizedBox(
-                                                      height: 5,
-                                                    )
+                                                    Expanded(
+                                                      flex: 4,
+                                                      child: Column(
+                                                        children: [
+                                                          CarouselSlider(
+                                                              items: list4,
+                                                              carouselController:
+                                                                  buttonCarouselController7,
+                                                              options:
+                                                                  CarouselOptions(
+                                                                onPageChanged:
+                                                                    (index, c) {
+                                                                  print(index);
+                                                                  ganb = index ==
+                                                                          0
+                                                                      ? "جانب بشليك"
+                                                                      : "جانب شق";
+                                                                  print(ganb);
+                                                                },
+                                                                autoPlay: false,
+                                                                enlargeCenterPage:
+                                                                    true,
+                                                                viewportFraction:
+                                                                    0.9,
+                                                                aspectRatio:
+                                                                    1.0,
+                                                                initialPage: 2,
+                                                              )),
+                                                          CustomTextField(
+                                                            textInputType:
+                                                                TextInputType
+                                                                    .number,
+                                                            controller:
+                                                                ganbController,
+                                                            prefix: Icon(Icons
+                                                                .format_size),
+                                                            hintText:
+                                                                "ادخل المقاس",
+                                                          ),
+                                                          SizedBox(
+                                                            height: 5,
+                                                          )
+                                                        ],
+                                                      ),
+                                                    ),
+                                                    Expanded(
+                                                      flex: 1,
+                                                      child: IconButton(
+                                                        onPressed: () =>
+                                                            buttonCarouselController7
+                                                                .previousPage(
+                                                                    duration: Duration(
+                                                                        milliseconds:
+                                                                            1),
+                                                                    curve: Curves
+                                                                        .linear),
+                                                        icon: Icon(
+                                                          Icons
+                                                              .keyboard_arrow_left_sharp,
+                                                          color: Colors.white,
+                                                          size: 50,
+                                                        ),
+                                                      ),
+                                                    ),
                                                   ],
                                                 ),
                                               ),
-                                              Expanded(
-                                                flex: 1,
-                                                child: IconButton(
-                                                  onPressed: () =>
-                                                      buttonCarouselController7
-                                                          .previousPage(
-                                                          duration: Duration(
-                                                              milliseconds:
-                                                              1),
-                                                          curve: Curves
-                                                              .linear),
-                                                  icon: Icon(
-                                                    Icons
-                                                        .keyboard_arrow_left_sharp,
-                                                    color: Colors.white,
-                                                    size: 50,
-                                                  ),
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                        Container(
-                                          width: 400,
-                                          decoration: BoxDecoration(
-                                              borderRadius:
-                                              BorderRadius.circular(20),
-                                              color: accentCanvasColor
-                                                  .withOpacity(0.8)),
-                                          child: Row(
-                                            children: [
-                                              Expanded(
-                                                flex: 1,
-                                                child: IconButton(
-                                                  onPressed: () =>
-                                                      buttonCarouselController3
-                                                          .nextPage(
-                                                          duration: Duration(
-                                                              milliseconds:
-                                                              1),
-                                                          curve: Curves
-                                                              .linear),
-                                                  icon: Icon(
-                                                    Icons.chevron_left,
-                                                    color: Colors.white,
-                                                    size: 50,
-                                                  ),
-                                                ),
-                                              ),
-                                              Expanded(
-                                                flex: 4,
-                                                child: Column(
+                                              Container(
+                                                width: 400,
+                                                decoration: BoxDecoration(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            20),
+                                                    color: accentCanvasColor
+                                                        .withOpacity(0.8)),
+                                                child: Row(
                                                   children: [
-                                                    CarouselSlider(
-                                                        items: list5,
-                                                        carouselController:
-                                                        buttonCarouselController3,
-                                                        options:
-                                                        CarouselOptions(
-                                                          onPageChanged:
-                                                              (index, c) {
-                                                            print(index);
-                                                            gyb = index == 0
-                                                                ? "جيب مربع"
-                                                                : index == 1
-                                                                ? "جيب مربع مثلث"
-                                                                : "جيب مدور";
-                                                            print(gyb);
-                                                          },
-                                                          autoPlay: false,
-                                                          enlargeCenterPage:
-                                                          true,
-                                                          viewportFraction:
-                                                          0.9,
-                                                          aspectRatio: 2.0,
-                                                          initialPage: 2,
-                                                        )),
-                                                    CustomTextField(
-                                                      textInputType:
-                                                      TextInputType
-                                                          .number,
-                                                      controller:
-                                                      gybController,
-                                                      prefix: Icon(Icons
-                                                          .format_size),
-                                                      hintText:
-                                                      "ادخل المقاس",
+                                                    Expanded(
+                                                      flex: 1,
+                                                      child: IconButton(
+                                                        onPressed: () =>
+                                                            buttonCarouselController3.nextPage(
+                                                                duration: Duration(
+                                                                    milliseconds:
+                                                                        1),
+                                                                curve: Curves
+                                                                    .linear),
+                                                        icon: Icon(
+                                                          Icons.chevron_left,
+                                                          color: Colors.white,
+                                                          size: 50,
+                                                        ),
+                                                      ),
                                                     ),
-                                                    SizedBox(
-                                                      height: 5,
-                                                    )
+                                                    Expanded(
+                                                      flex: 4,
+                                                      child: Column(
+                                                        children: [
+                                                          CarouselSlider(
+                                                              items: list5,
+                                                              carouselController:
+                                                                  buttonCarouselController3,
+                                                              options:
+                                                                  CarouselOptions(
+                                                                onPageChanged:
+                                                                    (index, c) {
+                                                                  print(index);
+                                                                  gyb = index ==
+                                                                          0
+                                                                      ? "جيب مربع"
+                                                                      : index ==
+                                                                              1
+                                                                          ? "جيب مربع مثلث"
+                                                                          : "جيب مدور";
+                                                                  print(gyb);
+                                                                },
+                                                                autoPlay: false,
+                                                                enlargeCenterPage:
+                                                                    true,
+                                                                viewportFraction:
+                                                                    0.9,
+                                                                aspectRatio:
+                                                                    2.0,
+                                                                initialPage: 2,
+                                                              )),
+                                                          CustomTextField(
+                                                            textInputType:
+                                                                TextInputType
+                                                                    .number,
+                                                            controller:
+                                                                gybController,
+                                                            prefix: Icon(Icons
+                                                                .format_size),
+                                                            hintText:
+                                                                "ادخل المقاس",
+                                                          ),
+                                                          SizedBox(
+                                                            height: 5,
+                                                          )
+                                                        ],
+                                                      ),
+                                                    ),
+                                                    Expanded(
+                                                      flex: 1,
+                                                      child: IconButton(
+                                                        onPressed: () =>
+                                                            buttonCarouselController3
+                                                                .previousPage(
+                                                                    duration: Duration(
+                                                                        milliseconds:
+                                                                            1),
+                                                                    curve: Curves
+                                                                        .linear),
+                                                        icon: Icon(
+                                                          Icons
+                                                              .keyboard_arrow_left_sharp,
+                                                          color: Colors.white,
+                                                          size: 50,
+                                                        ),
+                                                      ),
+                                                    ),
                                                   ],
                                                 ),
                                               ),
-                                              Expanded(
-                                                flex: 1,
-                                                child: IconButton(
-                                                  onPressed: () =>
-                                                      buttonCarouselController3
-                                                          .previousPage(
-                                                          duration: Duration(
-                                                              milliseconds:
-                                                              1),
-                                                          curve: Curves
-                                                              .linear),
-                                                  icon: Icon(
-                                                    Icons
-                                                        .keyboard_arrow_left_sharp,
-                                                    color: Colors.white,
-                                                    size: 50,
-                                                  ),
-                                                ),
-                                              ),
                                             ],
-                                          ),
-                                        ),
-                                      ],
-                                    )
+                                          )
                                         : Wrap(
-                                      runSpacing: 20,
-                                      spacing: 20,
-                                      children: [
-                                        Container(
-                                          padding: EdgeInsets.all(20),
-                                          width: 400,
-                                          decoration: BoxDecoration(
-                                              borderRadius:
-                                              BorderRadius.circular(20),
-                                              color: accentCanvasColor
-                                                  .withOpacity(0.8)),
-                                          child: Row(
+                                            runSpacing: 20,
+                                            spacing: 20,
                                             children: [
-                                              Expanded(
-                                                flex: 1,
-                                                child: IconButton(
-                                                  onPressed: () =>
-                                                      buttonCarouselController1
-                                                          .nextPage(
-                                                          duration: Duration(
-                                                              milliseconds:
-                                                              1),
-                                                          curve: Curves
-                                                              .linear),
-                                                  icon: Icon(
-                                                    Icons.chevron_left,
-                                                    color: Colors.white,
-                                                    size: 50,
-                                                  ),
-                                                ),
-                                              ),
-                                              Expanded(
-                                                flex: 4,
-                                                child: Column(
+                                              Container(
+                                                padding: EdgeInsets.all(20),
+                                                width: 400,
+                                                decoration: BoxDecoration(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            20),
+                                                    color: accentCanvasColor
+                                                        .withOpacity(0.8)),
+                                                child: Row(
                                                   children: [
-                                                    CarouselSlider(
-                                                        items: list1,
-                                                        carouselController:
-                                                        buttonCarouselController1,
-                                                        options:
-                                                        CarouselOptions(
-                                                          onPageChanged:
-                                                              (index, c) {
-                                                            print(index);
-                                                            taqwera = index ==
-                                                                0
-                                                                ? "كلفة تامة بشليك"
-                                                                : index == 1
-                                                                ? "كلفة تامة نص ياقة"
-                                                                : index ==
-                                                                2
-                                                                ? "جلابية قشرة"
-                                                                : "اسطنبولي";
-                                                            print(taqwera);
-                                                          },
-                                                          autoPlay: false,
-                                                          enlargeCenterPage:
-                                                          true,
-                                                          viewportFraction:
-                                                          0.9,
-                                                          aspectRatio: 2.0,
-                                                          initialPage: 2,
-                                                        )),
-                                                    CustomTextField(
-                                                      textInputType:
-                                                      TextInputType
-                                                          .number,
-                                                      controller:
-                                                      taqweraController,
-                                                      prefix: Icon(Icons
-                                                          .format_size),
-                                                      hintText:
-                                                      "ادخل المقاس",
+                                                    Expanded(
+                                                      flex: 1,
+                                                      child: IconButton(
+                                                        onPressed: () =>
+                                                            buttonCarouselController1.nextPage(
+                                                                duration: Duration(
+                                                                    milliseconds:
+                                                                        1),
+                                                                curve: Curves
+                                                                    .linear),
+                                                        icon: Icon(
+                                                          Icons.chevron_left,
+                                                          color: Colors.white,
+                                                          size: 50,
+                                                        ),
+                                                      ),
                                                     ),
-                                                    SizedBox(
-                                                      height: 5,
-                                                    )
+                                                    Expanded(
+                                                      flex: 4,
+                                                      child: Column(
+                                                        children: [
+                                                          CarouselSlider(
+                                                              items: list1,
+                                                              carouselController:
+                                                                  buttonCarouselController1,
+                                                              options:
+                                                                  CarouselOptions(
+                                                                onPageChanged:
+                                                                    (index, c) {
+                                                                  print(index);
+                                                                  taqwera = index ==
+                                                                          0
+                                                                      ? "كلفة تامة بشليك"
+                                                                      : index ==
+                                                                              1
+                                                                          ? "كلفة تامة نص ياقة"
+                                                                          : index == 2
+                                                                              ? "جلابية قشرة"
+                                                                              : "اسطنبولي";
+                                                                  print(
+                                                                      taqwera);
+                                                                },
+                                                                autoPlay: false,
+                                                                enlargeCenterPage:
+                                                                    true,
+                                                                viewportFraction:
+                                                                    0.9,
+                                                                aspectRatio:
+                                                                    2.0,
+                                                                initialPage: 2,
+                                                              )),
+                                                          CustomTextField(
+                                                            textInputType:
+                                                                TextInputType
+                                                                    .number,
+                                                            controller:
+                                                                taqweraController,
+                                                            prefix: Icon(Icons
+                                                                .format_size),
+                                                            hintText:
+                                                                "ادخل المقاس",
+                                                          ),
+                                                          SizedBox(
+                                                            height: 5,
+                                                          )
+                                                        ],
+                                                      ),
+                                                    ),
+                                                    Expanded(
+                                                      flex: 1,
+                                                      child: IconButton(
+                                                        onPressed: () =>
+                                                            buttonCarouselController1
+                                                                .previousPage(
+                                                                    duration: Duration(
+                                                                        milliseconds:
+                                                                            1),
+                                                                    curve: Curves
+                                                                        .linear),
+                                                        icon: Icon(
+                                                          Icons
+                                                              .keyboard_arrow_left_sharp,
+                                                          color: Colors.white,
+                                                          size: 50,
+                                                        ),
+                                                      ),
+                                                    ),
                                                   ],
                                                 ),
                                               ),
-                                              Expanded(
-                                                flex: 1,
-                                                child: IconButton(
-                                                  onPressed: () =>
-                                                      buttonCarouselController1
-                                                          .previousPage(
-                                                          duration: Duration(
-                                                              milliseconds:
-                                                              1),
-                                                          curve: Curves
-                                                              .linear),
-                                                  icon: Icon(
-                                                    Icons
-                                                        .keyboard_arrow_left_sharp,
-                                                    color: Colors.white,
-                                                    size: 50,
-                                                  ),
+                                              SizedBox(
+                                                width: 60,
+                                              ),
+                                              Container(
+                                                padding: EdgeInsets.all(20),
+                                                width: 400,
+                                                decoration: BoxDecoration(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            20),
+                                                    color: accentCanvasColor
+                                                        .withOpacity(0.8)),
+                                                child: Row(
+                                                  children: [
+                                                    Expanded(
+                                                      flex: 1,
+                                                      child: IconButton(
+                                                        onPressed: () =>
+                                                            buttonCarouselController2.nextPage(
+                                                                duration: Duration(
+                                                                    milliseconds:
+                                                                        1),
+                                                                curve: Curves
+                                                                    .linear),
+                                                        icon: Icon(
+                                                          Icons.chevron_left,
+                                                          color: Colors.white,
+                                                          size: 50,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    Expanded(
+                                                      flex: 4,
+                                                      child: Column(
+                                                        children: [
+                                                          CarouselSlider(
+                                                              items: list2,
+                                                              carouselController:
+                                                                  buttonCarouselController2,
+                                                              options:
+                                                                  CarouselOptions(
+                                                                onPageChanged:
+                                                                    (index, c) {
+                                                                  print(index);
+                                                                  ya2a = index ==
+                                                                          0
+                                                                      ? "الياقة بدون زراير"
+                                                                      : index ==
+                                                                              1
+                                                                          ? "الياقة زرار واحد"
+                                                                          : "الياقة 2 زرار";
+                                                                  print(ya2a);
+                                                                },
+                                                                autoPlay: false,
+                                                                enlargeCenterPage:
+                                                                    true,
+                                                                viewportFraction:
+                                                                    0.9,
+                                                                aspectRatio:
+                                                                    2.0,
+                                                                initialPage: 2,
+                                                              )),
+                                                          CustomTextField(
+                                                            controller:
+                                                                ya2aController,
+                                                            textInputType:
+                                                                TextInputType
+                                                                    .number,
+                                                            prefix: Icon(Icons
+                                                                .format_size),
+                                                            hintText:
+                                                                "ادخل المقاس",
+                                                          ),
+                                                          SizedBox(
+                                                            height: 5,
+                                                          )
+                                                        ],
+                                                      ),
+                                                    ),
+                                                    Expanded(
+                                                      flex: 1,
+                                                      child: IconButton(
+                                                        onPressed: () =>
+                                                            buttonCarouselController2
+                                                                .previousPage(
+                                                                    duration: Duration(
+                                                                        milliseconds:
+                                                                            1),
+                                                                    curve: Curves
+                                                                        .linear),
+                                                        icon: Icon(
+                                                          Icons
+                                                              .keyboard_arrow_left_sharp,
+                                                          color: Colors.white,
+                                                          size: 50,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ],
                                                 ),
                                               ),
                                             ],
                                           ),
-                                        ),
-                                        SizedBox(
-                                          width: 60,
-                                        ),
-                                        Container(
-                                          padding: EdgeInsets.all(20),
-                                          width: 400,
-                                          decoration: BoxDecoration(
-                                              borderRadius:
-                                              BorderRadius.circular(20),
-                                              color: accentCanvasColor
-                                                  .withOpacity(0.8)),
-                                          child: Row(
-                                            children: [
-                                              Expanded(
-                                                flex: 1,
-                                                child: IconButton(
-                                                  onPressed: () =>
-                                                      buttonCarouselController2
-                                                          .nextPage(
-                                                          duration: Duration(
-                                                              milliseconds:
-                                                              1),
-                                                          curve: Curves
-                                                              .linear),
-                                                  icon: Icon(
-                                                    Icons.chevron_left,
-                                                    color: Colors.white,
-                                                    size: 50,
-                                                  ),
-                                                ),
-                                              ),
-                                              Expanded(
-                                                flex: 4,
-                                                child: Column(
-                                                  children: [
-                                                    CarouselSlider(
-                                                        items: list2,
-                                                        carouselController:
-                                                        buttonCarouselController2,
-                                                        options:
-                                                        CarouselOptions(
-                                                          onPageChanged:
-                                                              (index, c) {
-                                                            print(index);
-                                                            ya2a = index ==
-                                                                0
-                                                                ? "الياقة بدون زراير"
-                                                                : index == 1
-                                                                ? "الياقة زرار واحد"
-                                                                : "الياقة 2 زرار";
-                                                            print(ya2a);
-                                                          },
-                                                          autoPlay: false,
-                                                          enlargeCenterPage:
-                                                          true,
-                                                          viewportFraction:
-                                                          0.9,
-                                                          aspectRatio: 2.0,
-                                                          initialPage: 2,
-                                                        )),
-                                                    CustomTextField(
-                                                      controller:
-                                                      ya2aController,
-                                                      textInputType:
-                                                      TextInputType
-                                                          .number,
-                                                      prefix: Icon(Icons
-                                                          .format_size),
-                                                      hintText:
-                                                      "ادخل المقاس",
-                                                    ),
-                                                    SizedBox(
-                                                      height: 5,
-                                                    )
-                                                  ],
-                                                ),
-                                              ),
-                                              Expanded(
-                                                flex: 1,
-                                                child: IconButton(
-                                                  onPressed: () =>
-                                                      buttonCarouselController2
-                                                          .previousPage(
-                                                          duration: Duration(
-                                                              milliseconds:
-                                                              1),
-                                                          curve: Curves
-                                                              .linear),
-                                                  icon: Icon(
-                                                    Icons
-                                                        .keyboard_arrow_left_sharp,
-                                                    color: Colors.white,
-                                                    size: 50,
-                                                  ),
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ],
-                                    ),
                                   ),
                                 )
                               ],
@@ -5882,30 +5963,33 @@ textAlign: TextAlign.center,
                                     child: BlocProvider(
                                         create: (context) => ProductCubit(),
                                         child: BlocConsumer<ProductCubit,
-                                            ProductsMainState>(
+                                                ProductsMainState>(
                                             listener: (BuildContext context,
                                                 state) async {
-                                              if (state is AddProductsLoadingState) {
-                                                SmartDialog.showLoading();
-                                                await Future.delayed(
-                                                    Duration(seconds: 2));
-                                                SmartDialog.dismiss();
-                                              }
-                                            }, builder:
-                                            (BuildContext context, state) {
-                                          var product = ProductCubit.get(context);
+                                          if (state
+                                              is AddProductsLoadingState) {
+                                            SmartDialog.showLoading();
+                                            await Future.delayed(
+                                                Duration(seconds: 2));
+                                            SmartDialog.dismiss();
+                                          }
+                                        }, builder:
+                                                (BuildContext context, state) {
+                                          var product =
+                                              ProductCubit.get(context);
                                           return ElevatedButton(
                                               onPressed: () {
                                                 var p = (double.tryParse(
-                                                    amountPaidController
-                                                        .text.isNotEmpty
-                                                        ? amountPaidController
-                                                        .text
-                                                        : "0")! -
+                                                        amountPaidController
+                                                                .text.isNotEmpty
+                                                            ? amountPaidController
+                                                                .text
+                                                            : "0")! -
                                                     double.tryParse(
                                                         totalController
-                                                            .text.isNotEmpty
-                                                            ? totalController.text
+                                                                .text.isNotEmpty
+                                                            ? totalController
+                                                                .text
                                                             : "0")!);
                                                 setState(() {
                                                   productsModel = ProductsModel(
@@ -5913,45 +5997,72 @@ textAlign: TextAlign.center,
                                                     date: _selectedDate,
                                                     length: double.tryParse(
                                                         lengthController.text),
-                                                    badnSize1:  double.tryParse(badnLengthController1.text),
-                                                    badnSize2: double.tryParse( badnLengthController2.text),
-                                                    badnSize3: double.tryParse(badnLengthController3.text),
-                                                    droppTaqwera1: double.tryParse(taqwera1LengthController.text),
-                                                    droppTaqwera2: double.tryParse(taqwera2LengthController.text),
-                                                    droppTaqwera3: double.tryParse(taqwera3LengthController.text),
-      
-                                                    hand2Length: double.tryParse(hand2LengthController.text),
-                                                    k2Length: double.tryParse(k2LengthController.text),
-                                                    taqweraSize:double.tryParse(taqweraController.text),
-                                                    ganbSize: double.tryParse(ganbController.text),
-                                                    glabSize: double.tryParse(glabController.text),
-                                                    komSize: double.tryParse(komController.text),
-                                                    yaqaSize: double.tryParse(ya2aController.text),
-                                                    gaybSize:double.tryParse(gybController.text) ,
-                                                    sadrSize:double.tryParse(sadrController.text) ,
+                                                    badnSize1: double.tryParse(
+                                                        badnLengthController1
+                                                            .text),
+                                                    badnSize2: double.tryParse(
+                                                        badnLengthController2
+                                                            .text),
+                                                    badnSize3: double.tryParse(
+                                                        badnLengthController3
+                                                            .text),
+                                                    droppTaqwera1: double.tryParse(
+                                                        taqwera1LengthController
+                                                            .text),
+                                                    droppTaqwera2: double.tryParse(
+                                                        taqwera2LengthController
+                                                            .text),
+                                                    droppTaqwera3: double.tryParse(
+                                                        taqwera3LengthController
+                                                            .text),
+                                                    hand2Length: double.tryParse(
+                                                        hand2LengthController
+                                                            .text),
+                                                    k2Length: double.tryParse(
+                                                        k2LengthController
+                                                            .text),
+                                                    taqweraSize:
+                                                        double.tryParse(
+                                                            taqweraController
+                                                                .text),
+                                                    ganbSize: double.tryParse(
+                                                        ganbController.text),
+                                                    glabSize: double.tryParse(
+                                                        glabController.text),
+                                                    komSize: double.tryParse(
+                                                        komController.text),
+                                                    yaqaSize: double.tryParse(
+                                                        ya2aController.text),
+                                                    gaybSize: double.tryParse(
+                                                        gybController.text),
+                                                    sadrSize: double.tryParse(
+                                                        sadrController.text),
                                                     address:
-                                                    addressController.text,
+                                                        addressController.text,
                                                     amountPaid: double.tryParse(
                                                         amountPaidController
                                                             .text),
-                                                    additionalType2: _character ==
-                                                        SingingCharacter
-                                                            .afrangy
-                                                        ? _dropDownValueB ?? ""
-                                                        : "",
+                                                    additionalType2:
+                                                        _character ==
+                                                                SingingCharacter
+                                                                    .afrangy
+                                                            ? _dropDownValueB ??
+                                                                ""
+                                                            : "",
                                                     chestLength: double.tryParse(
                                                         chestLengthController
                                                             .text),
-                                                    createdAt:
-                                                    DateTime.now().toString(),
+                                                    createdAt: DateTime.now()
+                                                        .toString(),
                                                     details:
-                                                    detailsController.text,
+                                                        detailsController.text,
                                                     handLength: double.tryParse(
                                                         hand1LengthController
                                                             .text),
                                                     image: "ds",
                                                     kLength: double.tryParse(
-                                                        k1LengthController.text),
+                                                        k1LengthController
+                                                            .text),
                                                     mLength: double.tryParse(
                                                         mLengthController.text),
                                                     numDresses: double.tryParse(
@@ -5962,56 +6073,60 @@ textAlign: TextAlign.center,
                                                     phone: phoneController.text,
                                                     prize: double.tryParse(
                                                         totalController.text),
-                                                    remainingAmount: double.tryParse(
-                                                        remainingAmountController
-                                                            .text),
+                                                    remainingAmount:
+                                                        double.tryParse(
+                                                            remainingAmountController
+                                                                .text),
                                                     ganb: ganb,
                                                     gayb: gyb,
                                                     taqwera: taqwera,
                                                     yaqa: ya2a,
                                                     kom: kom,
-                                                    additionalType1: _character ==
-                                                        SingingCharacter
-                                                            .afrangy
-                                                        ? _dropDownValueA
-                                                        : _dropDownValueC,
+                                                    additionalType1:
+                                                        _character ==
+                                                                SingingCharacter
+                                                                    .afrangy
+                                                            ? _dropDownValueA
+                                                            : _dropDownValueC,
                                                     glab: glab,
                                                     sadr: sadr,
                                                     workerCost:
-                                                    worker_costController
-                                                        .text,
+                                                        worker_costController
+                                                            .text,
                                                     total: totalController.text,
                                                     code: codeController.text,
                                                     quantity:
-                                                    quantityController.text,
+                                                        quantityController.text,
                                                     type: _character ==
-                                                        SingingCharacter
-                                                            .afrangy
+                                                            SingingCharacter
+                                                                .afrangy
                                                         ? "افرنجي"
                                                         : "بلدي",
                                                     fyberType: categoryName,
                                                     deliveryTime:
-                                                    selectedDeliveryDate,
+                                                        selectedDeliveryDate,
                                                     ketfLength: double.tryParse(
                                                         ketfLengthController
                                                             .text),
                                                     komLength: double.tryParse(
-                                                        komLengthController.text),
+                                                        komLengthController
+                                                            .text),
                                                   );
                                                 });
-      
+
                                                 product
                                                     .postProduct(
-                                                    context, productsModel)
+                                                        context, productsModel)
                                                     .then((value) {
                                                   print(value);
                                                   Customer? c = customerModel
                                                       .firstWhereOrNull(
                                                           (element) =>
-                                                      element.userName ==
-                                                          nameController
-                                                              .text);
-      
+                                                              element
+                                                                  .userName ==
+                                                              nameController
+                                                                  .text);
+
                                                   if (c != null) {
                                                     Customer model = Customer(
                                                         userName: c?.userName,
@@ -6019,15 +6134,24 @@ textAlign: TextAlign.center,
                                                         phone: c!.phone,
                                                         code: c.code,
                                                         length: c.length,
-                                                        kabkLength: c.kabkLength,
-                                                        ketfLength: c.ketfLength,
+                                                        kabkLength:
+                                                            c.kabkLength,
+                                                        ketfLength:
+                                                            c.ketfLength,
                                                         komLength: c.kabkLength,
-                                                        neckLength: c.neckLength,
-                                                        sadrLength: c.sadrLength,
-                                                        handLength: c.handLength,
-                                                        customerAmount:show == true?c.customerAmount+p:c.customerAmount,
+                                                        neckLength:
+                                                            c.neckLength,
+                                                        sadrLength:
+                                                            c.sadrLength,
+                                                        handLength:
+                                                            c.handLength,
+                                                        customerAmount: show ==
+                                                                true
+                                                            ? c.customerAmount +
+                                                                p
+                                                            : c.customerAmount,
                                                         remainingAmount: c
-                                                            .remainingAmount! +
+                                                                .remainingAmount! +
                                                             double.tryParse(
                                                                 remainingAmountController
                                                                     .text)!);
@@ -6134,15 +6258,16 @@ textAlign: TextAlign.center,
                                                     // } else {
                                                     CustomersCubit()
                                                         .updateCustomer2(
-                                                        context,
-                                                        model,
-                                                        c.sId!);
+                                                            context,
+                                                            model,
+                                                            c.sId!);
                                                   }
-      
-                                                  _formKey.currentState!.reset();
+
+                                                  _formKey.currentState!
+                                                      .reset();
                                                   nameController.clear();
                                                   addressController.clear();
-                                                  totalController.text="0.0";
+                                                  totalController.text = "0.0";
                                                   amountPaidController.clear();
                                                   chestLengthController.clear();
                                                   k1LengthController.clear();
@@ -6197,8 +6322,8 @@ textAlign: TextAlign.center,
                                               },
                                               style: ButtonStyle(
                                                   backgroundColor:
-                                                  MaterialStateProperty.all(
-                                                      backgroundColor)),
+                                                      MaterialStateProperty.all(
+                                                          backgroundColor)),
                                               child: const Text(
                                                 'اضافة',
                                                 style: TextStyle(
@@ -6211,21 +6336,21 @@ textAlign: TextAlign.center,
                                     child: ElevatedButton(
                                         onPressed: () async {
                                           final pdfFile =
-                                          await PdfInvoiceApi.generate(
-                                              productsModel, null);
-      
+                                              await PdfInvoiceApi.generate(
+                                                  productsModel, null);
+
                                           await Printing.layoutPdf(
-                                              onLayout:
-                                                  (PdfPageFormat format) async =>
+                                              onLayout: (PdfPageFormat
+                                                      format) async =>
                                                   pdfFile.save());
                                         },
                                         style: ButtonStyle(
                                             backgroundColor:
-                                            MaterialStateProperty.all(
-                                                backgroundColor)),
+                                                MaterialStateProperty.all(
+                                                    backgroundColor)),
                                         child: Text('طباعة',
-                                            style:
-                                            TextStyle(color: Colors.white)))),
+                                            style: TextStyle(
+                                                color: Colors.white)))),
                               ],
                             ),
                             const SizedBox(
@@ -6241,7 +6366,6 @@ textAlign: TextAlign.center,
     );
   }
 
-
   var list1 = [
     Container(
       width: double.infinity,
@@ -6251,8 +6375,8 @@ textAlign: TextAlign.center,
           borderRadius: BorderRadius.circular(5), color: buttonColor),
       child: Column(
         children: [
-          SvgPicture.asset(
-            "images/كلفة تامة بشليك.svg",
+          Image.asset(
+            "images/كلفة تامة بشليك.png",
             height: 80,
           ),
           Text(
@@ -6271,8 +6395,8 @@ textAlign: TextAlign.center,
           borderRadius: BorderRadius.circular(5), color: buttonColor),
       child: Column(
         children: [
-          SvgPicture.asset(
-            "images/كلفة تامة نص ياقة.svg",
+          Image.asset(
+            "images/كلفة تامة نص ياقة.png",
             height: 80,
           ),
           const Text(
@@ -6291,15 +6415,10 @@ textAlign: TextAlign.center,
           borderRadius: BorderRadius.circular(5), color: buttonColor),
       child: Column(
         children: [
-          SvgPicture.asset(
-            "images/جلابية قشرة.svg",
+          Image.asset(
+            "images/جلابية قشرة.png",
             height: 80,
           ),
-          Text(
-            'جلابية قشرة',
-            style: TextStyle(color: Colors.black),
-            textAlign: TextAlign.center,
-          )
         ],
       ),
     ),
@@ -6326,15 +6445,10 @@ textAlign: TextAlign.center,
           borderRadius: BorderRadius.circular(5), color: buttonColor),
       child: Column(
         children: [
-          SvgPicture.asset(
-            "images/الياقة بدون زراير.svg",
+          Image.asset(
+            "images/الياقة بدون زراير.png",
             height: 80,
           ),
-          Text(
-            'الياقة بدون زراير',
-            style: TextStyle(color: Colors.black),
-            textAlign: TextAlign.center,
-          )
         ],
       ),
     ),
@@ -6346,15 +6460,10 @@ textAlign: TextAlign.center,
           borderRadius: BorderRadius.circular(5), color: buttonColor),
       child: Column(
         children: [
-          SvgPicture.asset(
-            "images/الياقة زرار واحد.svg",
+          Image.asset(
+            "images/الياقة زرار واحد.png",
             height: 80,
           ),
-          Text(
-            'الياقة زرار واحد',
-            style: TextStyle(color: Colors.black),
-            textAlign: TextAlign.center,
-          )
         ],
       ),
     ),
@@ -6366,86 +6475,47 @@ textAlign: TextAlign.center,
           borderRadius: BorderRadius.circular(5), color: buttonColor),
       child: Column(
         children: [
-          SvgPicture.asset(
-            "images/الياقة 2 زرار.svg",
+          Image.asset(
+            "images/الياقة 2 زرار.png",
             height: 80,
           ),
-          Text(
-            'الياقة 2 زرار',
-            style: TextStyle(color: Colors.black),
-            textAlign: TextAlign.center,
-          )
         ],
       ),
     ),
   ];
   var list3 = [
-
-
-          Image.asset(
-            "images/جلاب 1 زرار.jpg",height: 300,width: 300,scale: 300,fit: BoxFit.contain,
-          ),
-
-
-
-    Container(
-      width: double.infinity,
-      margin: EdgeInsets.all(5),
-      padding: EdgeInsets.all(5),
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(5), color: buttonColor),
-      child: Column(
-        children: [
-          SvgPicture.asset(
-            "images/جلاب 2 زرار.svg",
-            height: 90,
-          ),
-
-        ],
-      ),
+    ClipRRect(
+        borderRadius: BorderRadius.only(
+            topRight: Radius.circular(20), topLeft: Radius.circular(20)),
+        child: Image.asset(
+          "images/جلاب 1 زرار.png",
+          height: 300,
+          width: 300,
+          scale: 300,
+          fit: BoxFit.contain,
+        )),
+    ClipRRect(
+      borderRadius: BorderRadius.only(
+          topRight: Radius.circular(20), topLeft: Radius.circular(20)),
+      child: Image.asset("images/جلاب 2 زرار.png",
+          height: 300, width: 300, scale: 300, fit: BoxFit.contain),
     ),
   ];
   var list4 = [
-    Container(
-      width: double.infinity,
-      margin: EdgeInsets.all(5),
-      padding: EdgeInsets.all(5),
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(5), color: buttonColor),
-      child: Column(
-        children: [
-          SvgPicture.asset(
-            "images/جانب بشليك.svg",
-            height: 90,
-          ),
-          Text(
-            'جانب بشليك',
-            style: TextStyle(color: Colors.black),
-            textAlign: TextAlign.center,
-          )
-        ],
-      ),
-    ),
-    Container(
-      width: double.infinity,
-      margin: EdgeInsets.all(5),
-      padding: EdgeInsets.all(5),
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(5), color: buttonColor),
-      child: Column(
-        children: [
-          SvgPicture.asset(
-            "images/جانب شق.svg",
-            height: 90,
-          ),
-          Text(
-            'جانب شق',
-            style: TextStyle(color: Colors.black),
-            textAlign: TextAlign.center,
-          )
-        ],
-      ),
-    ),
+  ClipRRect(
+  borderRadius: BorderRadius.only(
+  topRight: Radius.circular(20), topLeft: Radius.circular(20)),
+  child: Image.asset(
+      "images/جانب بشليك.png",
+  height: 300, width: 300, scale: 300, fit: BoxFit.contain)),
+
+  ClipRRect(
+  borderRadius: BorderRadius.only(
+  topRight: Radius.circular(20), topLeft: Radius.circular(20)),
+  child: Image.asset(
+      "images/جانب شق.png",
+    height: 300, width: 300, scale: 300, fit: BoxFit.contain)),
+
   ];
   var list5 = [
     Container(
@@ -6456,8 +6526,8 @@ textAlign: TextAlign.center,
           borderRadius: BorderRadius.circular(5), color: buttonColor),
       child: Column(
         children: [
-          SvgPicture.asset(
-            "images/جيب مربع.svg",
+          Image.asset(
+            "images/جيب مربع.png",
             height: 90,
           ),
           Text(
@@ -6476,15 +6546,10 @@ textAlign: TextAlign.center,
           borderRadius: BorderRadius.circular(5), color: buttonColor),
       child: Column(
         children: [
-          SvgPicture.asset(
-            "images/جيب مربع مثلث.svg",
+          Image.asset(
+            "images/جيب مربع مثلث.png",
             height: 90,
           ),
-          Text(
-            'جيب مربع مثلث',
-            style: TextStyle(color: Colors.black),
-            textAlign: TextAlign.center,
-          )
         ],
       ),
     ),
@@ -6496,8 +6561,8 @@ textAlign: TextAlign.center,
           borderRadius: BorderRadius.circular(5), color: buttonColor),
       child: Column(
         children: [
-          SvgPicture.asset(
-            "images/جيب مدور.svg",
+          Image.asset(
+            "images/جيب مدور.png",
             height: 90,
           ),
           Text(
@@ -6510,255 +6575,91 @@ textAlign: TextAlign.center,
     ),
   ];
   var list6 = [
-    Container(
-      width: double.infinity,
-      margin: EdgeInsets.all(5),
-      padding: EdgeInsets.all(5),
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(5), color: buttonColor),
-      child: Column(
-        children: [
-          SvgPicture.asset(
-            "images/صدر عادي.svg",
-            height: 90,
-          ),
-          Text(
-            'صدر عادي',
-            style: TextStyle(color: Colors.black),
-            textAlign: TextAlign.center,
-          ),
-        ],
-      ),
+    Image.asset(
+      "images/صدر عادي.png",
+      height: 400,
+      width: 300,
+      scale: 300,
+      fit: BoxFit.contain,
     ),
-    Container(
-      width: double.infinity,
-      margin: EdgeInsets.all(5),
-      padding: EdgeInsets.all(5),
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(5), color: buttonColor),
-      child: Column(
-        children: [
-          SvgPicture.asset(
-            "images/صدر عادي لون في لون 2 خط.svg",
-            height: 90,
-          ),
-          Text(
-            'صدر عادي لون في لون 2 خط',
-            style: TextStyle(color: Colors.black),
-            textAlign: TextAlign.center,
-          )
-        ],
-      ),
+    Image.asset(
+      "images/صدر عادي لون في لون 2 خط.jpg",
+      height: 400,
+      width: 300,
+      scale: 300,
+      fit: BoxFit.contain,
     ),
-    Container(
-      width: double.infinity,
-      margin: EdgeInsets.all(5),
-      padding: EdgeInsets.all(5),
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(5), color: buttonColor),
-      child: Column(
-        children: [
-          SvgPicture.asset(
-            "images/صدر لون في لون خط واحد.svg",
-            height: 90,
-          ),
-          const Text(
-            'صدر لون في لون خط واحد',
-            style: TextStyle(color: Colors.black),
-            textAlign: TextAlign.center,
-          )
-        ],
-      ),
+    Image.asset(
+      "images/صدر لون في لون خط واحد.png",
+      height: 400,
+      width: 300,
+      scale: 300,
+      fit: BoxFit.contain,
     ),
   ];
   var list7 = [
-    Container(
-      width: double.infinity,
-      margin: EdgeInsets.all(5),
-      padding: EdgeInsets.all(5),
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(5), color: buttonColor),
-      child: Column(
-        children: [
-          SvgPicture.asset(
-            "images/كم شعراوي علية زراير.svg",
-            height: 90,
-          ),
-          Text(
-            'كم شعراوي علية زراير',
-            style: TextStyle(color: Colors.black),
-            textAlign: TextAlign.center,
-          )
-        ],
-      ),
+    Image.asset(
+      "images/كم شعراوي علية زراير.jpg",
+      height: 400,
+      width: 300,
+      scale: 300,
+      fit: BoxFit.contain,
     ),
-    Container(
-      width: double.infinity,
-      margin: EdgeInsets.all(5),
-      padding: EdgeInsets.all(5),
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(5), color: buttonColor),
-      child: Column(
-        children: [
-          SvgPicture.asset(
-            "images/كم بلدي.svg",
-            height: 90,
-          ),
-          Text(
-            'كم بلدي',
-            style: TextStyle(color: Colors.black),
-            textAlign: TextAlign.center,
-          )
-        ],
-      ),
+    Image.asset(
+      "images/كم بلدي.png",
+      height: 400,
+      width: 300,
+      scale: 300,
+      fit: BoxFit.contain,
     ),
-    Container(
-      width: double.infinity,
-      margin: EdgeInsets.all(5),
-      padding: EdgeInsets.all(5),
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(5), color: buttonColor),
-      child: Column(
-        children: [
-          SvgPicture.asset(
-            "images/الكم سادة+بشليك لزق.svg",
-            height: 90,
-          ),
-          Text(
-            "الكم سادة+بشليك لزق",
-            style: TextStyle(color: Colors.black),
-            textAlign: TextAlign.center,
-          )
-        ],
-      ),
+    Image.asset(
+      "images/الكم سادة+بشليك لزق.png",
+      height: 400,
+      width: 300,
+      scale: 300,
+      fit: BoxFit.contain,
     ),
-    Container(
-      width: double.infinity,
-      margin: EdgeInsets.all(5),
-      padding: EdgeInsets.all(5),
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(5), color: buttonColor),
-      child: Column(
-        children: [
-          SvgPicture.asset(
-            "images/الكم سادة.svg",
-            height: 90,
-          ),
-          Text(
-            "الكم سادة",
-            style: TextStyle(color: Colors.black),
-            textAlign: TextAlign.center,
-          )
-        ],
-      ),
+    Image.asset(
+      "images/الكم سادة.png",
+      height: 400,
+      width: 300,
+      scale: 300,
+      fit: BoxFit.contain,
     ),
-    Container(
-      width: double.infinity,
-      margin: EdgeInsets.all(5),
-      padding: EdgeInsets.all(5),
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(5), color: buttonColor),
-      child: Column(
-        children: [
-          SvgPicture.asset(
-            "images/اساورة بشليك.svg",
-            height: 90,
-          ),
-          Text(
-            "اساورة بشليك",
-            style: TextStyle(color: Colors.black),
-            textAlign: TextAlign.center,
-          )
-        ],
-      ),
+    Image.asset(
+      "images/اساورة بشليك.png",
+      height: 400,
+      width: 300,
+      scale: 300,
+      fit: BoxFit.contain,
     ),
-
-          Image.asset(
-            "images/اساورة كسرة واحد.png",
-            height: 400,width: 300,scale: 300,fit: BoxFit.contain,          ),
-
-
-
-
-    Container(
-      width: double.infinity,
-      margin: EdgeInsets.all(5),
-      padding: EdgeInsets.all(5),
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(5), color: buttonColor),
-      child: Column(
-        children: [
-          SvgPicture.asset(
-            "images/اساورة مربع بدون كسرة.svg",
-            height: 90,
-          ),
-          Text(
-            'اساورة مربع بدون كسرة',
-            style: TextStyle(color: Colors.black),
-            textAlign: TextAlign.center,
-          )
-        ],
-      ),
+    Image.asset(
+      "images/اساورة كسرة واحد.png",
+      height: 400,
+      width: 300,
+      scale: 300,
+      fit: BoxFit.contain,
     ),
-    Container(
-      width: double.infinity,
-      margin: EdgeInsets.all(5),
-      padding: EdgeInsets.all(5),
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(5), color: buttonColor),
-      child: Column(
-        children: [
-          SvgPicture.asset(
-            "images/اساورة مربع كسرة واحدة.svg",
-            height: 90,
-          ),
-          Text(
-            'اساورة مربع كسرة واحدة',
-            style: TextStyle(color: Colors.black),
-            textAlign: TextAlign.center,
-          )
-        ],
-      ),
+    Image.asset(
+      "images/اساورة مربع بدون كسرة.png",
+      height: 400,
+      width: 300,
+      scale: 300,
+      fit: BoxFit.contain,
     ),
-    Container(
-      width: double.infinity,
-      margin: EdgeInsets.all(5),
-      padding: EdgeInsets.all(5),
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(5), color: buttonColor),
-      child: Column(
-        children: [
-          SvgPicture.asset(
-            "images/اساورة مربع بدون كسرة.svg",
-            height: 90,
-          ),
-          Text(
-            'اساورة مربع بدون كسرة',
-            style: TextStyle(color: Colors.black),
-            textAlign: TextAlign.center,
-          )
-        ],
-      ),
+    Image.asset(
+      "images/اساورة مربع كسرة واحدة.jpg",
+      height: 400,
+      width: 300,
+      scale: 300,
+      fit: BoxFit.contain,
     ),
-    Container(
-      width: double.infinity,
-      margin: EdgeInsets.all(5),
-      padding: EdgeInsets.all(5),
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(5), color: buttonColor),
-      child: Column(
-        children: [
-          SvgPicture.asset(
-            "images/اساورة مربع 2 كسرة.svg",
-            height: 90,
-          ),
-          Text(
-            'اساورة مربع 2 كسرة',
-            style: TextStyle(color: Colors.black),
-            textAlign: TextAlign.center,
-          )
-        ],
-      ),
+    Image.asset(
+      "images/اساورة مربع 2 كسرة.jpg",
+      height: 400,
+      width: 300,
+      scale: 300,
+      fit: BoxFit.contain,
     ),
   ];
 }
