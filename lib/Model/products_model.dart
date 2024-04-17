@@ -32,6 +32,10 @@ class ProductsModel {
   var sadrSize;
   var taqweraSize;
   var glabSize;
+ var komSha3rawyLenght1;
+  var komSha3rawyLenght2;
+  var komSha3rawyLenght3;
+  var komSha3rawyLenght4;
 
   String? glab;
   String? yaqa;
@@ -105,6 +109,11 @@ class ProductsModel {
       this.quantity,
       this.workerCost,
       this.total,
+        this.komSha3rawyLenght1,
+        this.komSha3rawyLenght2,
+        this.komSha3rawyLenght3,
+        this.komSha3rawyLenght4,
+
       this.image,
       this.sId,
       this.iV});
@@ -124,6 +133,10 @@ class ProductsModel {
     droppTaqwera3 = json["dropp_taqwera3"];
     droppTaqwera2 = json["dropp_taqwera2"];
     droppTaqwera1 = json["dropp_taqwera1"];
+    komSha3rawyLenght4=json["kom_sha3rawy_lenght4"];
+    komSha3rawyLenght3=json["kom_sha3rawy_lenght3"];
+    komSha3rawyLenght2=json["kom_sha3rawy_lenght2"];
+    komSha3rawyLenght1=json["kom_sha3rawy_lenght1"];
 
     badnSize1 = json["badn_size1"];
     badnSize2 = json["badn_size2"];
@@ -188,6 +201,11 @@ class ProductsModel {
     data["badn_size1"] = this.badnSize1;
     data["badn_size2"] = this.badnSize2;
     data["badn_size3"] = this.badnSize3;
+    data["kom_sha3rawy_lenght3"]=this.komSha3rawyLenght3;
+    data["kom_sha3rawy_lenght2"]=this.komSha3rawyLenght2;
+    data["kom_sha3rawy_lenght1"]=this.komSha3rawyLenght1;
+    data["kom_sha3rawy_lenght4"]=this.komSha3rawyLenght4;
+
     data['phone'] = this.phone;
     data['address'] = this.address;
     data['prize'] = this.prize;

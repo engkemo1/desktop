@@ -157,8 +157,18 @@ class _AddScreenState extends State<AddScreen> {
   TextEditingController taqweraController = TextEditingController();
 
   TextEditingController ya2aController = TextEditingController();
+  TextEditingController field1Controller = TextEditingController();
+  TextEditingController field2Controller = TextEditingController();
+  TextEditingController field3Controller = TextEditingController();
+  TextEditingController field4Controller = TextEditingController();
+  TextEditingController fieldKom1Controller = TextEditingController();
+  TextEditingController fieldKom2Controller = TextEditingController();
+  TextEditingController fieldKom3Controller = TextEditingController();
+  TextEditingController fieldKom4Controller = TextEditingController();
 
   var categoryName;
+
+
 
   @override
   void initState() {
@@ -2184,55 +2194,569 @@ class _AddScreenState extends State<AddScreen> {
                                   fit: BoxFit.cover,
                                 )),
                                 child: Container(
-                                  color: Colors.black.withOpacity(0.8),
-                                  width: double.infinity,
-                                  padding: EdgeInsets.all(10),
-                                  alignment: Alignment.center,
-                                  child:
-                                  // _character == SingingCharacter.afrangy
-                                  //     ?
-                                  Wrap(
-                                          spacing: 20,
-                                          runSpacing: 20,
-                                          crossAxisAlignment:
-                                              WrapCrossAlignment.center,
-                                          children: [
-                                            Container(
-                                              width: 300,
-                                              decoration: BoxDecoration(
-                                                  borderRadius:
-                                                      BorderRadius.circular(20),
-                                                  color: accentCanvasColor
-                                                      .withOpacity(0.8)),
-                                              child: Column(
+                                    color: Colors.black.withOpacity(0.8),
+                                    width: double.infinity,
+                                    padding: EdgeInsets.all(10),
+                                    alignment: Alignment.center,
+                                    child:
+                                        // _character == SingingCharacter.afrangy
+                                        //     ?
+                                        Wrap(
+                                      spacing: 20,
+                                      runSpacing: 20,
+                                      crossAxisAlignment:
+                                          WrapCrossAlignment.center,
+                                      children: [
+                                        Container(
+                                          width: 300,
+                                          decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(20),
+                                              color: accentCanvasColor
+                                                  .withOpacity(0.8)),
+                                          child: Column(
+                                            children: [
+                                              CarouselSlider(
+                                                  items: list6,
+                                                  carouselController:
+                                                      buttonCarouselController4,
+                                                  options: CarouselOptions(
+                                                    onPageChanged:
+                                                        (index, c) {},
+                                                    autoPlay: false,
+                                                    enlargeCenterPage: true,
+                                                    viewportFraction: 1,
+                                                    aspectRatio: 1.0,
+                                                    initialPage: 1,
+                                                  )),
+                                              Row(
+                                                children: [
+                                                  IconButton(
+                                                    onPressed: () =>
+                                                        buttonCarouselController4
+                                                            .nextPage(
+                                                                duration: Duration(
+                                                                    milliseconds:
+                                                                        1),
+                                                                curve: Curves
+                                                                    .linear),
+                                                    icon: Icon(
+                                                      Icons.arrow_back,
+                                                      color: Colors.white,
+                                                      size: 30,
+                                                    ),
+                                                  ),
+                                                  Expanded(
+                                                    child: CustomTextField(
+                                                      textInputType:
+                                                          TextInputType.number,
+                                                      controller:
+                                                          sadrController,
+                                                      hintText: "ادخل المقاس",
+                                                      prefix: Icon(Icons
+                                                          .format_size_outlined),
+                                                    ),
+                                                  ),
+                                                  IconButton(
+                                                    onPressed: () {
+                                                      buttonCarouselController4
+                                                          .previousPage(
+                                                              duration: Duration(
+                                                                  milliseconds:
+                                                                      1),
+                                                              curve: Curves
+                                                                  .linear);
+                                                    },
+                                                    icon: Icon(
+                                                      Icons.arrow_forward,
+                                                      color: Colors.white,
+                                                      size: 30,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                              SizedBox(
+                                                height: 10,
+                                              )
+                                            ],
+                                          ),
+                                        ),
+                                        Container(
+                                          width: 300,
+                                          decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(20),
+                                              color: accentCanvasColor
+                                                  .withOpacity(0.8)),
+                                          child: Column(
+                                            children: [
+                                              CarouselSlider(
+                                                  items: list7,
+                                                  carouselController:
+                                                      buttonCarouselController5,
+                                                  options: CarouselOptions(
+                                                    onPageChanged: (index, c) {
+                                                      print(index);
+                                                      kom = index == 0
+                                                          ? "كم شعراوي علية زراير"
+                                                          : index == 1
+                                                              ? "كم بلدي"
+                                                              : index == 2
+                                                                  ? "الكم سادة+بشليك لزق"
+                                                                  : index == 3
+                                                                      ? "الكم سادة"
+                                                                      : index ==
+                                                                              4
+                                                                          ? "اساورة بشليك"
+                                                                          : index == 5
+                                                                              ? "اساورة كسرة واحد"
+                                                                              : index == 6
+                                                                                  ? "اساورة مربع بدون كسرة"
+                                                                                  : index == 7
+                                                                                      ? "اساورة مربع كسرة واحدة"
+                                                                                      : index == 8
+                                                                                          ? "اساورة مربع بدون كسرة"
+                                                                                          : "اساورة مربع 2 كسرة";
+                                                      print(kom);
+                                                    },
+                                                    autoPlay: false,
+                                                    enlargeCenterPage: true,
+                                                    viewportFraction: 1,
+                                                    aspectRatio: 1.0,
+                                                    initialPage: 2,
+                                                  )),
+                                              Row(
+                                                children: [
+                                                  IconButton(
+                                                    onPressed: () =>
+                                                        buttonCarouselController5
+                                                            .nextPage(
+                                                                duration: Duration(
+                                                                    milliseconds:
+                                                                        1),
+                                                                curve: Curves
+                                                                    .linear),
+                                                    icon: Icon(
+                                                      Icons.arrow_back,
+                                                      color: Colors.white,
+                                                      size: 30,
+                                                    ),
+                                                  ),
+                                                  Expanded(
+                                                    flex: 5,
+                                                    child: CustomTextField(
+                                                      textInputType:
+                                                          TextInputType.number,
+                                                      controller: komController,
+                                                      prefix: Icon(
+                                                          Icons.format_size),
+                                                      hintText: "ادخل المقاس",
+                                                    ),
+                                                  ),
+                                                  IconButton(
+                                                    onPressed: () =>
+                                                        buttonCarouselController5
+                                                            .previousPage(
+                                                                duration: Duration(
+                                                                    milliseconds:
+                                                                        1),
+                                                                curve: Curves
+                                                                    .linear),
+                                                    icon: Icon(
+                                                      Icons.arrow_forward,
+                                                      color: Colors.white,
+                                                      size: 30,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                              SizedBox(
+                                                height: 5,
+                                              )
+                                            ],
+                                          ),
+                                        ),
+                                        Container(
+                                          width: 300,
+                                          decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(20),
+                                              color: accentCanvasColor
+                                                  .withOpacity(0.8)),
+                                          child: Stack(
+                                            children: [
+                                              Column(
                                                 children: [
                                                   CarouselSlider(
-                                                      items: list6,
+                                                      items: list3,
                                                       carouselController:
-                                                          buttonCarouselController4,
-                                                      options:
-                                                          CarouselOptions(
+                                                          buttonCarouselController6,
+                                                      options: CarouselOptions(
                                                         onPageChanged:
-                                                            (index, c) {},
+                                                            (index, c) {
+                                                          print(index);
+                                                          glab = index == 0
+                                                              ? "جلاب 1 زرار"
+                                                              : "جلاب 2 زرار";
+                                                          print(glab);
+                                                        },
+                                                        enlargeCenterPage: true,
+                                                        viewportFraction: 1,
+                                                        aspectRatio: 1.0,
+                                                        initialPage: 2,
+                                                      )),
+                                                  Row(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceBetween,
+                                                    children: [
+                                                      IconButton(
+                                                        onPressed: () =>
+                                                            buttonCarouselController6.nextPage(
+                                                                duration: Duration(
+                                                                    milliseconds:
+                                                                        1),
+                                                                curve: Curves
+                                                                    .linear),
+                                                        icon: Icon(
+                                                          Icons.arrow_back,
+                                                          size: 30,
+                                                          color: Colors.white,
+                                                        ),
+                                                      ),
+                                                      Expanded(
+                                                        flex: 4,
+                                                        child: CustomTextField(
+                                                          textInputType:
+                                                              TextInputType
+                                                                  .number,
+                                                          controller:
+                                                              glabController,
+                                                          prefix: Icon(Icons
+                                                              .format_size),
+                                                          hintText:
+                                                              "ادخل المقاس",
+                                                        ),
+                                                      ),
+                                                      IconButton(
+                                                        onPressed: () =>
+                                                            buttonCarouselController6
+                                                                .previousPage(
+                                                                    duration: Duration(
+                                                                        milliseconds:
+                                                                            1),
+                                                                    curve: Curves
+                                                                        .linear),
+                                                        icon: Icon(
+                                                          Icons.arrow_forward,
+                                                          color: Colors.white,
+                                                          size: 30,
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                  SizedBox(
+                                                    height: 5,
+                                                  )
+                                                ],
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        Container(
+                                          width: 300,
+                                          decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(20),
+                                              color: accentCanvasColor
+                                                  .withOpacity(0.8)),
+                                          child: Stack(
+                                            children: [
+                                              Column(
+                                                children: [
+                                                  CarouselSlider(
+                                                      items: list4,
+                                                      carouselController:
+                                                          buttonCarouselController7,
+                                                      options: CarouselOptions(
+                                                        onPageChanged:
+                                                            (index, c) {
+                                                          print(index);
+                                                          ganb = index == 0
+                                                              ? "جانب بشليك"
+                                                              : "جانب شق";
+                                                          print(ganb);
+                                                        },
                                                         autoPlay: false,
-                                                        enlargeCenterPage:
-                                                            true,
-                                                        viewportFraction:
-                                                          1,
+                                                        enlargeCenterPage: true,
+                                                        viewportFraction: 1,
                                                         aspectRatio: 1.0,
                                                         initialPage: 1,
                                                       )),
-                                                  Row(children: [
-
+                                                  Row(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceBetween,
+                                                    children: [
+                                                      IconButton(
+                                                        onPressed: () =>
+                                                            buttonCarouselController7.nextPage(
+                                                                duration: Duration(
+                                                                    milliseconds:
+                                                                        1),
+                                                                curve: Curves
+                                                                    .linear),
+                                                        icon: Icon(
+                                                          Icons.arrow_back,
+                                                          size: 30,
+                                                          color: Colors.white,
+                                                        ),
+                                                      ),
+                                                      Expanded(
+                                                        flex: 4,
+                                                        child: CustomTextField(
+                                                          textInputType:
+                                                              TextInputType
+                                                                  .number,
+                                                          controller:
+                                                              ganbController,
+                                                          prefix: Icon(Icons
+                                                              .format_size),
+                                                          hintText:
+                                                              "ادخل المقاس",
+                                                        ),
+                                                      ),
+                                                      IconButton(
+                                                        onPressed: () =>
+                                                            buttonCarouselController7
+                                                                .previousPage(
+                                                                    duration: Duration(
+                                                                        milliseconds:
+                                                                            1),
+                                                                    curve: Curves
+                                                                        .linear),
+                                                        icon: Icon(
+                                                          Icons.arrow_forward,
+                                                          color: Colors.white,
+                                                          size: 30,
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                  SizedBox(
+                                                    height: 5,
+                                                  )
+                                                ],
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        Container(
+                                          width: 300,
+                                          decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(20),
+                                              color: accentCanvasColor
+                                                  .withOpacity(0.8)),
+                                          child: Column(
+                                            children: [
+                                              CarouselSlider(
+                                                  items: list5,
+                                                  carouselController:
+                                                      buttonCarouselController3,
+                                                  options: CarouselOptions(
+                                                    onPageChanged: (index, c) {
+                                                      print(index);
+                                                      gyb = index == 0
+                                                          ? "جيب مربع"
+                                                          : index == 1
+                                                              ? "جيب مربع مثلث"
+                                                              : "جيب مدور";
+                                                      print(gyb);
+                                                    },
+                                                    autoPlay: false,
+                                                    enlargeCenterPage: true,
+                                                    viewportFraction: 1,
+                                                    aspectRatio: 1.0,
+                                                    initialPage: 1,
+                                                  )),
+                                              Row(
+                                                children: [
+                                                  IconButton(
+                                                    onPressed: () =>
+                                                        buttonCarouselController3
+                                                            .nextPage(
+                                                                duration: Duration(
+                                                                    milliseconds:
+                                                                        1),
+                                                                curve: Curves
+                                                                    .linear),
+                                                    icon: Icon(
+                                                      Icons.arrow_back,
+                                                      color: Colors.white,
+                                                      size: 30,
+                                                    ),
+                                                  ),
+                                                  Expanded(
+                                                    flex: 5,
+                                                    child: CustomTextField(
+                                                      textInputType:
+                                                          TextInputType.number,
+                                                      controller: gybController,
+                                                      prefix: Icon(
+                                                          Icons.format_size),
+                                                      hintText: "ادخل المقاس",
+                                                    ),
+                                                  ),
+                                                  IconButton(
+                                                    onPressed: () =>
+                                                        buttonCarouselController3
+                                                            .previousPage(
+                                                                duration: Duration(
+                                                                    milliseconds:
+                                                                        1),
+                                                                curve: Curves
+                                                                    .linear),
+                                                    icon: Icon(
+                                                      Icons.arrow_forward,
+                                                      color: Colors.white,
+                                                      size: 30,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                              SizedBox(
+                                                height: 5,
+                                              )
+                                            ],
+                                          ),
+                                        ),
+                                        Container(
+                                          width: 300,
+                                          decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(20),
+                                              color: accentCanvasColor
+                                                  .withOpacity(0.8)),
+                                          child: Column(
+                                            children: [
+                                              CarouselSlider(
+                                                  items: list1,
+                                                  carouselController:
+                                                      buttonCarouselController1,
+                                                  options: CarouselOptions(
+                                                    onPageChanged: (index, c) {
+                                                      print(index);
+                                                      taqwera = index == 0
+                                                          ? "كلفة تامة بشليك"
+                                                          : index == 1
+                                                              ? "كلفة تامة نص ياقة"
+                                                              : index == 2
+                                                                  ? "جلابية قشرة"
+                                                                  : "اسطنبولي";
+                                                      print(taqwera);
+                                                    },
+                                                    autoPlay: false,
+                                                    enlargeCenterPage: true,
+                                                    viewportFraction: 1,
+                                                    aspectRatio: 1.0,
+                                                    initialPage: 1,
+                                                  )),
+                                              Row(
+                                                children: [
+                                                  IconButton(
+                                                    onPressed: () =>
+                                                        buttonCarouselController1
+                                                            .nextPage(
+                                                                duration: Duration(
+                                                                    milliseconds:
+                                                                        1),
+                                                                curve: Curves
+                                                                    .linear),
+                                                    icon: Icon(
+                                                      Icons.arrow_back,
+                                                      color: Colors.white,
+                                                      size: 30,
+                                                    ),
+                                                  ),
+                                                  Expanded(
+                                                    flex: 5,
+                                                    child: CustomTextField(
+                                                      textInputType:
+                                                          TextInputType.number,
+                                                      controller:
+                                                          taqweraController,
+                                                      prefix: Icon(
+                                                          Icons.format_size),
+                                                      hintText: "ادخل المقاس",
+                                                    ),
+                                                  ),
+                                                  IconButton(
+                                                    onPressed: () =>
+                                                        buttonCarouselController1
+                                                            .previousPage(
+                                                                duration: Duration(
+                                                                    milliseconds:
+                                                                        1),
+                                                                curve: Curves
+                                                                    .linear),
+                                                    icon: Icon(
+                                                      Icons.arrow_forward,
+                                                      color: Colors.white,
+                                                      size: 30,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                              SizedBox(
+                                                height: 5,
+                                              )
+                                            ],
+                                          ),
+                                        ),
+                                        Container(
+                                          width: 300,
+                                          decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(20),
+                                              color: accentCanvasColor
+                                                  .withOpacity(0.8)),
+                                          child: Expanded(
+                                            flex: 4,
+                                            child: Column(
+                                              children: [
+                                                CarouselSlider(
+                                                    items: list2,
+                                                    carouselController:
+                                                        buttonCarouselController2,
+                                                    options: CarouselOptions(
+                                                      onPageChanged:
+                                                          (index, c) {
+                                                        print(index);
+                                                        ya2a = index == 0
+                                                            ? "الياقة بدون زراير"
+                                                            : index == 1
+                                                                ? "الياقة زرار واحد"
+                                                                : "الياقة 2 زرار";
+                                                        print(ya2a);
+                                                      },
+                                                      autoPlay: false,
+                                                      enlargeCenterPage: true,
+                                                      viewportFraction: 1,
+                                                      aspectRatio: 1.0,
+                                                      initialPage: 1,
+                                                    )),
+                                                Row(
+                                                  children: [
                                                     IconButton(
                                                       onPressed: () =>
-                                                          buttonCarouselController4
+                                                          buttonCarouselController2
                                                               .nextPage(
-                                                              duration: Duration(
-                                                                  milliseconds:
-                                                                  1),
-                                                              curve: Curves
-                                                                  .linear),
+                                                                  duration: Duration(
+                                                                      milliseconds:
+                                                                          1),
+                                                                  curve: Curves
+                                                                      .linear),
                                                       icon: Icon(
                                                         Icons.arrow_back,
                                                         color: Colors.white,
@@ -2240,815 +2764,461 @@ class _AddScreenState extends State<AddScreen> {
                                                       ),
                                                     ),
                                                     Expanded(
+                                                      flex: 5,
                                                       child: CustomTextField(
-                                                        textInputType:
-                                                        TextInputType
-                                                            .number,
                                                         controller:
-                                                        sadrController,
-                                                        hintText:
-                                                        "ادخل المقاس",
-                                                        prefix: Icon(Icons
-                                                            .format_size_outlined),
+                                                            ya2aController,
+                                                        textInputType:
+                                                            TextInputType
+                                                                .number,
+                                                        prefix: Icon(
+                                                            Icons.format_size),
+                                                        hintText: "ادخل المقاس",
                                                       ),
                                                     ),
-
                                                     IconButton(
-                                                      onPressed: () {
-                                                        buttonCarouselController4
-                                                            .previousPage(
-                                                            duration: Duration(
-                                                                milliseconds:
-                                                                1),
-                                                            curve: Curves
-                                                                .linear);
-                                                      },
+                                                      onPressed: () =>
+                                                          buttonCarouselController2
+                                                              .previousPage(
+                                                                  duration: Duration(
+                                                                      milliseconds:
+                                                                          1),
+                                                                  curve: Curves
+                                                                      .linear),
                                                       icon: Icon(
-                                                        Icons
-                                                            .arrow_forward,
+                                                        Icons.arrow_forward,
                                                         color: Colors.white,
                                                         size: 30,
                                                       ),
                                                     ),
-                                                  ],),
-                                                  SizedBox(
-                                                    height: 10,
-                                                  )
-                                                ],
-                                              ),
-                                            ),
-                                            Container(
-                                              width: 300,
-
-                                              decoration: BoxDecoration(
-                                                  borderRadius:
-                                                      BorderRadius.circular(20),
-                                                  color: accentCanvasColor
-                                                      .withOpacity(0.8)),
-                                              child: Column(
-                                                children: [
-                                                  CarouselSlider(
-                                                      items: list7,
-                                                      carouselController:
-                                                          buttonCarouselController5,
-                                                      options:
-                                                          CarouselOptions(
-                                                        onPageChanged:
-                                                            (index, c) {
-                                                          print(index);
-                                                          kom = index == 0
-                                                              ? "كم شعراوي علية زراير"
-                                                              : index == 1
-                                                                  ? "كم بلدي"
-                                                                  : index ==
-                                                                          2
-                                                                      ? "الكم سادة+بشليك لزق"
-                                                                      : index == 3
-                                                                          ? "الكم سادة"
-                                                                          : index == 4
-                                                                              ? "اساورة بشليك"
-                                                                              : index == 5
-                                                                                  ? "اساورة كسرة واحد"
-                                                                                  : index == 6
-                                                                                      ? "اساورة مربع بدون كسرة"
-                                                                                      : index == 7
-                                                                                          ? "اساورة مربع كسرة واحدة"
-                                                                                          : index == 8
-                                                                                              ? "اساورة مربع بدون كسرة"
-                                                                                              : "اساورة مربع 2 كسرة";
-                                                          print(kom);
-                                                        },
-                                                        autoPlay: false,
-                                                        enlargeCenterPage:
-                                                            true,
-                                                        viewportFraction:
-                                                            1,
-                                                        aspectRatio: 1.0,
-                                                        initialPage: 2,
-                                                      )),
-                                                  Row(
-                                                      children: [
-                                                        IconButton(
-                                                          onPressed: () =>
-                                                              buttonCarouselController5
-                                                                  .nextPage(
-                                                                  duration: Duration(
-                                                                      milliseconds:
-                                                                      1),
-                                                                  curve: Curves
-                                                                      .linear),
-                                                          icon: Icon(
-                                                            Icons
-                                                                .arrow_back,
-                                                            color:
-                                                            Colors.white,
-                                                            size: 30,
-                                                          ),
-                                                        ),
-                                                        Expanded(
-                                                          flex:5,
-                                                          child: CustomTextField(
-                                                            textInputType:
-                                                            TextInputType
-                                                                .number,
-                                                            controller:
-                                                            komController,
-                                                            prefix: Icon(Icons
-                                                                .format_size),
-                                                            hintText:
-                                                            "ادخل المقاس",
-                                                          ),
-                                                        ),
-
-                                                        IconButton(
-                                                          onPressed: () =>
-                                                              buttonCarouselController5
-                                                                  .previousPage(
-                                                                  duration: Duration(
-                                                                      milliseconds:
-                                                                      1),
-                                                                  curve: Curves
-                                                                      .linear),
-                                                          icon: Icon(
-                                                            Icons
-                                                                .arrow_forward,
-                                                            color:
-                                                            Colors.white,
-                                                            size: 30,
-                                                          ),
-                                                        ),
-
-                                                      ],
-                                                  ),
-                                                  SizedBox(
-                                                    height: 5,
-                                                  )
-                                                ],
-                                              ),
-                                            ),
-                                            Container(
-                                              width: 300,
-                                              decoration: BoxDecoration(
-                                                  borderRadius:
-                                                      BorderRadius.circular(20),
-                                                  color: accentCanvasColor
-                                                      .withOpacity(0.8)),
-                                              child: Stack(
-                                                children: [
-                                                  Column(
-                                                    children: [
-                                                      CarouselSlider(
-                                                          items: list3,
-                                                          carouselController:
-                                                              buttonCarouselController6,
-                                                          options:
-                                                              CarouselOptions(
-                                                            onPageChanged:
-                                                                (index, c) {
-                                                              print(index);
-                                                              glab = index == 0
-                                                                  ? "جلاب 1 زرار"
-                                                                  : "جلاب 2 زرار";
-                                                              print(glab);
-                                                            },
-                                                            enlargeCenterPage:
-                                                                true,
-                                                            viewportFraction: 1,
-                                                            aspectRatio: 1.0,
-                                                            initialPage: 2,
-                                                          )),
-                                                      Row(
-                                                        mainAxisAlignment:
-                                                            MainAxisAlignment
-                                                                .spaceBetween,
-                                                        children: [
-                                                          IconButton(
-                                                            onPressed: () =>
-                                                                buttonCarouselController6.nextPage(
-                                                                    duration: Duration(
-                                                                        milliseconds:
-                                                                            1),
-                                                                    curve: Curves
-                                                                        .linear),
-                                                            icon: Icon(
-                                                              Icons.arrow_back,
-                                                              size: 30,
-                                                              color:
-                                                                  Colors.white,
-                                                            ),
-                                                          ),
-                                                          Expanded(
-                                                            flex: 4,
-                                                            child:
-                                                                CustomTextField(
-                                                              textInputType:
-                                                                  TextInputType
-                                                                      .number,
-                                                              controller:
-                                                                  glabController,
-                                                              prefix: Icon(Icons
-                                                                  .format_size),
-                                                              hintText:
-                                                                  "ادخل المقاس",
-                                                            ),
-                                                          ),
-                                                          IconButton(
-                                                            onPressed: () => buttonCarouselController6
-                                                                .previousPage(
-                                                                    duration: Duration(
-                                                                        milliseconds:
-                                                                            1),
-                                                                    curve: Curves
-                                                                        .linear),
-                                                            icon: Icon(
-                                                              Icons
-                                                                  .arrow_forward,
-                                                              color:
-                                                                  Colors.white,
-                                                              size: 30,
-                                                            ),
-                                                          ),
-                                                        ],
-                                                      ),
-                                                      SizedBox(
-                                                        height: 5,
-                                                      )
-                                                    ],
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                            Container(
-                                              width: 300,
-                                              decoration: BoxDecoration(
-                                                  borderRadius:
-                                                      BorderRadius.circular(20),
-                                                  color: accentCanvasColor
-                                                      .withOpacity(0.8)),
-                                              child: Stack(
-                                                children: [
-                                                  Column(
-                                                    children: [
-                                                      CarouselSlider(
-                                                          items: list4,
-                                                          carouselController:
-                                                              buttonCarouselController7,
-                                                          options:
-                                                              CarouselOptions(
-                                                            onPageChanged:
-                                                                (index, c) {
-                                                              print(index);
-                                                              ganb = index == 0
-                                                                  ? "جانب بشليك"
-                                                                  : "جانب شق";
-                                                              print(ganb);
-                                                            },
-                                                            autoPlay: false,
-                                                            enlargeCenterPage:
-                                                                true,
-                                                            viewportFraction:
-                                                               1,
-                                                            aspectRatio: 1.0,
-                                                            initialPage: 1,
-                                                          )),
-                                                      Row(
-                                                        mainAxisAlignment:
-                                                            MainAxisAlignment
-                                                                .spaceBetween,
-                                                        children: [
-                                                          IconButton(
-                                                            onPressed: () =>
-                                                                buttonCarouselController7.nextPage(
-                                                                    duration: Duration(
-                                                                        milliseconds:
-                                                                        1),
-                                                                    curve: Curves
-                                                                        .linear),
-                                                            icon: Icon(
-                                                              Icons
-                                                                  .arrow_back,
-                                                              size: 30,
-                                                              color:
-                                                              Colors.white,
-                                                            ),
-                                                          ),
-                                                          Expanded(
-                                                            flex: 4,
-                                                            child:
-                                                                CustomTextField(
-                                                              textInputType:
-                                                                  TextInputType
-                                                                      .number,
-                                                              controller:
-                                                                  ganbController,
-                                                              prefix: Icon(Icons
-                                                                  .format_size),
-                                                              hintText:
-                                                                  "ادخل المقاس",
-                                                            ),
-                                                          ),
-                                                          IconButton(
-                                                            onPressed: () => buttonCarouselController7
-                                                                .previousPage(
-                                                                duration: Duration(
-                                                                    milliseconds:
-                                                                    1),
-                                                                curve: Curves
-                                                                    .linear),
-                                                            icon: Icon(
-                                                              Icons
-                                                                  .arrow_forward,
-                                                              color:
-                                                              Colors.white,
-                                                              size: 30,
-                                                            ),
-                                                          ),
-
-                                                        ],
-                                                      ),
-                                                      SizedBox(
-                                                        height: 5,
-                                                      )
-                                                    ],
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                            Container(
-                                              width: 300,
-                                              decoration: BoxDecoration(
-                                                  borderRadius:
-                                                      BorderRadius.circular(20),
-                                                  color: accentCanvasColor
-                                                      .withOpacity(0.8)),
-                                              child: Column(
-                                                children: [
-                                                  CarouselSlider(
-                                                      items: list5,
-                                                      carouselController:
-                                                          buttonCarouselController3,
-                                                      options:
-                                                          CarouselOptions(
-                                                        onPageChanged:
-                                                            (index, c) {
-                                                          print(index);
-                                                          gyb = index == 0
-                                                              ? "جيب مربع"
-                                                              : index == 1
-                                                                  ? "جيب مربع مثلث"
-                                                                  : "جيب مدور";
-                                                          print(gyb);
-                                                        },
-                                                        autoPlay: false,
-                                                        enlargeCenterPage:
-                                                            true,
-                                                        viewportFraction:
-                                                          1,
-                                                        aspectRatio: 1.0,
-                                                        initialPage: 1,
-                                                      )),
-                                                  Row(
-                                                    children: [
-                                                      IconButton(
-                                                        onPressed: () =>
-                                                            buttonCarouselController3
-                                                                .nextPage(
-                                                                duration: Duration(
-                                                                    milliseconds:
-                                                                    1),
-                                                                curve: Curves
-                                                                    .linear),
-                                                        icon: Icon(
-                                                          Icons.arrow_back,
-                                                          color: Colors.white,
-                                                          size: 30,
-                                                        ),
-                                                      ),
-                                                      Expanded(
-                                                        flex:5,
-                                                        child: CustomTextField(
-                                                          textInputType:
-                                                          TextInputType
-                                                              .number,
-                                                          controller:
-                                                          gybController,
-                                                          prefix: Icon(Icons
-                                                              .format_size),
-                                                          hintText:
-                                                          "ادخل المقاس",
-                                                        ),
-                                                      ),
-
-                                                      IconButton(
-                                                        onPressed: () =>
-                                                            buttonCarouselController3
-                                                                .previousPage(
-                                                                duration: Duration(
-                                                                    milliseconds:
-                                                                    1),
-                                                                curve: Curves
-                                                                    .linear),
-                                                        icon: Icon(
-                                                          Icons
-                                                              .arrow_forward,
-                                                          color: Colors.white,
-                                                          size: 30,
-                                                        ),
-                                                      ),
-                                                    ],
-                                                  ),
-
-                                                  SizedBox(
-                                                    height: 5,
-                                                  )
-                                                ],
-                                              ),
-                                            ),
-                                            Container(
-                                              width: 300,
-                                              decoration: BoxDecoration(
-                                                  borderRadius:
-                                                  BorderRadius.circular(20),
-                                                  color: accentCanvasColor
-                                                      .withOpacity(0.8)),
-                                              child: Column(
-                                                children: [
-                                                  CarouselSlider(
-                                                      items: list1,
-                                                      carouselController:
-                                                      buttonCarouselController1,
-                                                      options:
-                                                      CarouselOptions(
-                                                        onPageChanged:
-                                                            (index, c) {
-                                                          print(index);
-                                                          taqwera = index ==
-                                                              0
-                                                              ? "كلفة تامة بشليك"
-                                                              : index == 1
-                                                              ? "كلفة تامة نص ياقة"
-                                                              : index ==
-                                                              2
-                                                              ? "جلابية قشرة"
-                                                              : "اسطنبولي";
-                                                          print(taqwera);
-                                                        },
-                                                        autoPlay: false,
-                                                        enlargeCenterPage:
-                                                        true,
-                                                        viewportFraction:
-                                                        1,
-                                                        aspectRatio: 1.0,
-                                                        initialPage: 1,
-                                                      )),
-                                                  Row(
-                                                    children: [
-                                                      IconButton(
-                                                        onPressed: () =>
-                                                            buttonCarouselController1
-                                                                .nextPage(
-                                                                duration: Duration(
-                                                                    milliseconds:
-                                                                    1),
-                                                                curve: Curves
-                                                                    .linear),
-                                                        icon: Icon(
-                                                          Icons.arrow_back,
-                                                          color: Colors.white,
-                                                          size: 30,
-                                                        ),
-                                                      ),
-
-                                                      Expanded(
-                                                        flex:5,
-                                                        child: CustomTextField(
-                                                          textInputType:
-                                                          TextInputType
-                                                              .number,
-                                                          controller:
-                                                          taqweraController,
-                                                          prefix: Icon(Icons
-                                                              .format_size),
-                                                          hintText:
-                                                          "ادخل المقاس",
-                                                        ),
-                                                      ),
-                                                      IconButton(
-                                                        onPressed: () =>
-                                                            buttonCarouselController1
-                                                                .previousPage(
-                                                                duration: Duration(
-                                                                    milliseconds:
-                                                                    1),
-                                                                curve: Curves
-                                                                    .linear),
-                                                        icon: Icon(
-                                                          Icons
-                                                              .arrow_forward,
-                                                          color: Colors.white,
-                                                          size: 30,
-                                                        ),
-                                                      ),
-                                                    ],
-                                                  ),
-
-                                                  SizedBox(
-                                                    height: 5,
-                                                  )
-                                                ],
-                                              ),
-                                            ),
-
-                                            Container(
-                                              width: 300,
-                                              decoration: BoxDecoration(
-                                                  borderRadius:
-                                                  BorderRadius.circular(20),
-                                                  color: accentCanvasColor
-                                                      .withOpacity(0.8)),
-                                              child: Expanded(
-                                                flex: 4,
-                                                child: Column(
-                                                  children: [
-                                                    CarouselSlider(
-                                                        items: list2,
-                                                        carouselController:
-                                                        buttonCarouselController2,
-                                                        options:
-                                                        CarouselOptions(
-                                                          onPageChanged:
-                                                              (index, c) {
-                                                            print(index);
-                                                            ya2a = index ==
-                                                                0
-                                                                ? "الياقة بدون زراير"
-                                                                : index == 1
-                                                                ? "الياقة زرار واحد"
-                                                                : "الياقة 2 زرار";
-                                                            print(ya2a);
-                                                          },
-                                                          autoPlay: false,
-                                                          enlargeCenterPage:
-                                                          true,
-                                                          viewportFraction:
-                                                          1,
-                                                          aspectRatio: 1.0,
-                                                          initialPage: 1,
-                                                        )),
-                                                    Row(
-                                                      children: [
-                                                        IconButton(
-                                                          onPressed: () =>
-                                                              buttonCarouselController2
-                                                                  .nextPage(
-                                                                  duration: Duration(
-                                                                      milliseconds:
-                                                                      1),
-                                                                  curve: Curves
-                                                                      .linear),
-                                                          icon: Icon(
-                                                            Icons.arrow_back,
-                                                            color: Colors.white,
-                                                            size: 30,
-                                                          ),
-                                                        ),
-                                                        Expanded(
-                                                          flex:5,
-                                                          child: CustomTextField(
-                                                            controller:
-                                                            ya2aController,
-                                                            textInputType:
-                                                            TextInputType
-                                                                .number,
-                                                            prefix: Icon(Icons
-                                                                .format_size),
-                                                            hintText:
-                                                            "ادخل المقاس",
-                                                          ),
-                                                        ),
-
-                                                        IconButton(
-                                                          onPressed: () =>
-                                                              buttonCarouselController2
-                                                                  .previousPage(
-                                                                  duration: Duration(
-                                                                      milliseconds:
-                                                                      1),
-                                                                  curve: Curves
-                                                                      .linear),
-                                                          icon: Icon(
-                                                            Icons
-                                                                .arrow_forward,
-                                                            color: Colors.white,
-                                                            size: 30,
-                                                          ),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                    SizedBox(
-                                                      height: 5,
-                                                    )
                                                   ],
                                                 ),
-                                              ),
+                                                SizedBox(
+                                                  height: 5,
+                                                )
+                                              ],
                                             ),
-                                          ],
-                                        )
-                                      // : Wrap(
-                                      //     runSpacing: 20,
-                                      //     spacing: 20,
-                                      //     children: [
-                                      //       Container(
-                                      //         width: 300,
-                                      //         decoration: BoxDecoration(
-                                      //             borderRadius:
-                                      //                 BorderRadius.circular(20),
-                                      //             color: accentCanvasColor
-                                      //                 .withOpacity(0.8)),
-                                      //         child: Column(
-                                      //           children: [
-                                      //             CarouselSlider(
-                                      //                 items: list1,
-                                      //                 carouselController:
-                                      //                     buttonCarouselController1,
-                                      //                 options:
-                                      //                     CarouselOptions(
-                                      //                   onPageChanged:
-                                      //                       (index, c) {
-                                      //                     print(index);
-                                      //                     taqwera = index ==
-                                      //                             0
-                                      //                         ? "كلفة تامة بشليك"
-                                      //                         : index == 1
-                                      //                             ? "كلفة تامة نص ياقة"
-                                      //                             : index ==
-                                      //                                     2
-                                      //                                 ? "جلابية قشرة"
-                                      //                                 : "اسطنبولي";
-                                      //                     print(taqwera);
-                                      //                   },
-                                      //                   autoPlay: false,
-                                      //                   enlargeCenterPage:
-                                      //                       true,
-                                      //                   viewportFraction:
-                                      //                    1,
-                                      //                   aspectRatio: 1.0,
-                                      //                   initialPage: 1,
-                                      //                 )),
-                                      //             Row(
-                                      //               children: [
-                                      //                 IconButton(
-                                      //                   onPressed: () =>
-                                      //                       buttonCarouselController1
-                                      //                           .nextPage(
-                                      //                           duration: Duration(
-                                      //                               milliseconds:
-                                      //                               1),
-                                      //                           curve: Curves
-                                      //                               .linear),
-                                      //                   icon: Icon(
-                                      //                     Icons.arrow_back,
-                                      //                     color: Colors.white,
-                                      //                     size: 30,
-                                      //                   ),
-                                      //                 ),
-                                      //
-                                      //                 Expanded(
-                                      //                   flex:5,
-                                      //                   child: CustomTextField(
-                                      //                     textInputType:
-                                      //                     TextInputType
-                                      //                         .number,
-                                      //                     controller:
-                                      //                     taqweraController,
-                                      //                     prefix: Icon(Icons
-                                      //                         .format_size),
-                                      //                     hintText:
-                                      //                     "ادخل المقاس",
-                                      //                   ),
-                                      //                 ),
-                                      //                 IconButton(
-                                      //                   onPressed: () =>
-                                      //                       buttonCarouselController1
-                                      //                           .previousPage(
-                                      //                           duration: Duration(
-                                      //                               milliseconds:
-                                      //                               1),
-                                      //                           curve: Curves
-                                      //                               .linear),
-                                      //                   icon: Icon(
-                                      //                     Icons
-                                      //                         .arrow_forward,
-                                      //                     color: Colors.white,
-                                      //                     size: 30,
-                                      //                   ),
-                                      //                 ),
-                                      //               ],
-                                      //             ),
-                                      //
-                                      //             SizedBox(
-                                      //               height: 5,
-                                      //             )
-                                      //           ],
-                                      //         ),
-                                      //       ),
-                                      //
-                                      //       Container(
-                                      //         width: 300,
-                                      //         decoration: BoxDecoration(
-                                      //             borderRadius:
-                                      //                 BorderRadius.circular(20),
-                                      //             color: accentCanvasColor
-                                      //                 .withOpacity(0.8)),
-                                      //         child: Expanded(
-                                      //           flex: 4,
-                                      //           child: Column(
-                                      //             children: [
-                                      //               CarouselSlider(
-                                      //                   items: list2,
-                                      //                   carouselController:
-                                      //                       buttonCarouselController2,
-                                      //                   options:
-                                      //                       CarouselOptions(
-                                      //                     onPageChanged:
-                                      //                         (index, c) {
-                                      //                       print(index);
-                                      //                       ya2a = index ==
-                                      //                               0
-                                      //                           ? "الياقة بدون زراير"
-                                      //                           : index == 1
-                                      //                               ? "الياقة زرار واحد"
-                                      //                               : "الياقة 2 زرار";
-                                      //                       print(ya2a);
-                                      //                     },
-                                      //                     autoPlay: false,
-                                      //                     enlargeCenterPage:
-                                      //                         true,
-                                      //                     viewportFraction:
-                                      //                       1,
-                                      //                     aspectRatio: 1.0,
-                                      //                     initialPage: 1,
-                                      //                   )),
-                                      //               Row(
-                                      //                 children: [
-                                      //                   IconButton(
-                                      //                     onPressed: () =>
-                                      //                         buttonCarouselController2
-                                      //                             .nextPage(
-                                      //                             duration: Duration(
-                                      //                                 milliseconds:
-                                      //                                 1),
-                                      //                             curve: Curves
-                                      //                                 .linear),
-                                      //                     icon: Icon(
-                                      //                       Icons.arrow_back,
-                                      //                       color: Colors.white,
-                                      //                       size: 30,
-                                      //                     ),
-                                      //                   ),
-                                      //                   Expanded(
-                                      //                     flex:5,
-                                      //                     child: CustomTextField(
-                                      //                       controller:
-                                      //                       ya2aController,
-                                      //                       textInputType:
-                                      //                       TextInputType
-                                      //                           .number,
-                                      //                       prefix: Icon(Icons
-                                      //                           .format_size),
-                                      //                       hintText:
-                                      //                       "ادخل المقاس",
-                                      //                     ),
-                                      //                   ),
-                                      //
-                                      //                   IconButton(
-                                      //                     onPressed: () =>
-                                      //                         buttonCarouselController2
-                                      //                             .previousPage(
-                                      //                             duration: Duration(
-                                      //                                 milliseconds:
-                                      //                                 1),
-                                      //                             curve: Curves
-                                      //                                 .linear),
-                                      //                     icon: Icon(
-                                      //                       Icons
-                                      //                           .arrow_forward,
-                                      //                       color: Colors.white,
-                                      //                       size: 30,
-                                      //                     ),
-                                      //                   ),
-                                      //                 ],
-                                      //               ),
-                                      //               SizedBox(
-                                      //                 height: 5,
-                                      //               )
-                                      //             ],
-                                      //           ),
-                                      //         ),
-                                      //       ),
-                                      //     ],
-                                      //   ),
-                                ),
+                                          ),
+                                        ),
+                                        Container(
+                                          width: 300,
+                                          decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(20),
+                                              color: accentCanvasColor
+                                                  .withOpacity(0.8)),
+                                          child: Expanded(
+                                            flex: 4,
+                                            child: Stack(
+                                              children: [
+                                                ClipRRect(
+                                                  child: Image.asset(
+                                                      "images/new.png"),
+                                                  borderRadius:
+                                                      BorderRadius.circular(10),
+                                                ),
+                                                Positioned(
+                                                    top: 60,
+                                                    right: 13,
+                                                    child: SizedBox(
+                                                        height: 50,
+                                                        width: 60,
+                                                        child: TextField(
+                                                          controller:
+                                                          field1Controller,
+                                                          textAlign:
+                                                          TextAlign.center,
+                                                          style: TextStyle(
+                                                              fontSize: 20,
+                                                              fontWeight:
+                                                              FontWeight
+                                                                  .bold),
+                                                          decoration:
+                                                          InputDecoration(
+                                                            border: InputBorder
+                                                                .none,
+                                                          ),
+                                                        ))),
+                                                Positioned(
+                                                    top: 60,
+                                                    right: 120,
+                                                    child: SizedBox(
+                                                        height: 50,
+                                                        width: 60,
+                                                        child: TextField(
+                                                          controller:
+                                                          field2Controller,
+                                                          textAlign:
+                                                          TextAlign.center,
+                                                          style: TextStyle(
+                                                              fontSize: 20,
+                                                              fontWeight:
+                                                              FontWeight
+                                                                  .bold),
+                                                          decoration:
+                                                          InputDecoration(
+                                                            border: InputBorder
+                                                                .none,
+                                                          ),
+                                                        ))),
+
+
+                                                Positioned(
+                                                    top: 60,
+                                                    left: 17,
+                                                    child: SizedBox(
+                                                        height: 50,
+                                                        width: 60,
+                                                        child: TextField(
+                                                          controller:
+                                                              field3Controller,
+                                                          textAlign:
+                                                              TextAlign.center,
+                                                          style: TextStyle(
+                                                              fontSize: 20,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .bold),
+                                                          decoration:
+                                                              InputDecoration(
+                                                            border: InputBorder
+                                                                .none,
+                                                          ),
+                                                        ))),
+                                                Positioned(
+                                                    top: 165,
+                                                    right: 30,
+                                                    child: SizedBox(
+                                                        height: 50,
+                                                        width: 60,
+                                                        child: TextField(
+                                                          controller:
+                                                              field4Controller,
+                                                          textAlign:
+                                                              TextAlign.center,
+                                                          style: TextStyle(
+                                                              fontSize: 20,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .bold),
+                                                          decoration:
+                                                              InputDecoration(
+                                                            border: InputBorder
+                                                                .none,
+                                                          ),
+                                                        ))),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                        Container(
+                                          width: 300,
+                                          decoration: BoxDecoration(
+                                              borderRadius:
+                                              BorderRadius.circular(20),
+                                              color: accentCanvasColor
+                                                  .withOpacity(0.8)),
+                                          child: Expanded(
+                                            flex: 4,
+                                            child: Stack(
+                                              children: [
+                                                ClipRRect(
+                                                  child: Image.asset(
+                                                      "images/كم-بلدي1.png"),
+                                                  borderRadius:
+                                                  BorderRadius.circular(10),
+                                                ),
+                                                Positioned(
+                                                    top: 75,
+                                                    right: 8,
+                                                    child: SizedBox(
+                                                        height: 50,
+                                                        width: 60,
+                                                        child: TextField(
+                                                          controller:
+                                                          fieldKom1Controller,
+                                                          textAlign:
+                                                          TextAlign.center,
+                                                          style: TextStyle(
+                                                              fontSize: 20,
+                                                              fontWeight:
+                                                              FontWeight
+                                                                  .bold),
+                                                          decoration:
+                                                          InputDecoration(
+                                                            border: InputBorder
+                                                                .none,
+                                                          ),
+                                                        ))),
+                                                Positioned(
+                                                    top: 75,
+                                                    right: 115,
+                                                    child: SizedBox(
+                                                        height: 50,
+                                                        width: 60,
+                                                        child: TextField(
+                                                          controller:
+                                                          fieldKom2Controller,
+                                                          textAlign:
+                                                          TextAlign.center,
+                                                          style: TextStyle(
+                                                              fontSize: 20,
+                                                              fontWeight:
+                                                              FontWeight
+                                                                  .bold),
+                                                          decoration:
+                                                          InputDecoration(
+                                                            border: InputBorder
+                                                                .none,
+                                                          ),
+                                                        ))),
+
+                                                Positioned(
+                                                    top: 75,
+                                                    left: 15,
+                                                    child: SizedBox(
+                                                        height: 50,
+                                                        width: 60,
+                                                        child: TextField(
+                                                          controller:
+                                                          fieldKom3Controller,
+                                                          textAlign:
+                                                          TextAlign.center,
+                                                          style: TextStyle(
+                                                              fontSize: 20,
+                                                              fontWeight:
+                                                              FontWeight
+                                                                  .bold),
+                                                          decoration:
+                                                          InputDecoration(
+                                                            border: InputBorder
+                                                                .none,
+                                                          ),
+                                                        ))),
+                                                Positioned(
+                                                    top: 165,
+                                                    right: 30,
+                                                    child: SizedBox(
+                                                        height: 50,
+                                                        width: 60,
+                                                        child: TextField(
+                                                          controller:
+                                                          fieldKom4Controller,
+                                                          textAlign:
+                                                          TextAlign.center,
+                                                          style: TextStyle(
+                                                              fontSize: 20,
+                                                              fontWeight:
+                                                              FontWeight
+                                                                  .bold),
+                                                          decoration:
+                                                          InputDecoration(
+                                                            border: InputBorder
+                                                                .none,
+                                                          ),
+                                                        ))),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+
+                                      ],
+                                    )
+                                    // : Wrap(
+                                    //     runSpacing: 20,
+                                    //     spacing: 20,
+                                    //     children: [
+                                    //       Container(
+                                    //         width: 300,
+                                    //         decoration: BoxDecoration(
+                                    //             borderRadius:
+                                    //                 BorderRadius.circular(20),
+                                    //             color: accentCanvasColor
+                                    //                 .withOpacity(0.8)),
+                                    //         child: Column(
+                                    //           children: [
+                                    //             CarouselSlider(
+                                    //                 items: list1,
+                                    //                 carouselController:
+                                    //                     buttonCarouselController1,
+                                    //                 options:
+                                    //                     CarouselOptions(
+                                    //                   onPageChanged:
+                                    //                       (index, c) {
+                                    //                     print(index);
+                                    //                     taqwera = index ==
+                                    //                             0
+                                    //                         ? "كلفة تامة بشليك"
+                                    //                         : index == 1
+                                    //                             ? "كلفة تامة نص ياقة"
+                                    //                             : index ==
+                                    //                                     2
+                                    //                                 ? "جلابية قشرة"
+                                    //                                 : "اسطنبولي";
+                                    //                     print(taqwera);
+                                    //                   },
+                                    //                   autoPlay: false,
+                                    //                   enlargeCenterPage:
+                                    //                       true,
+                                    //                   viewportFraction:
+                                    //                    1,
+                                    //                   aspectRatio: 1.0,
+                                    //                   initialPage: 1,
+                                    //                 )),
+                                    //             Row(
+                                    //               children: [
+                                    //                 IconButton(
+                                    //                   onPressed: () =>
+                                    //                       buttonCarouselController1
+                                    //                           .nextPage(
+                                    //                           duration: Duration(
+                                    //                               milliseconds:
+                                    //                               1),
+                                    //                           curve: Curves
+                                    //                               .linear),
+                                    //                   icon: Icon(
+                                    //                     Icons.arrow_back,
+                                    //                     color: Colors.white,
+                                    //                     size: 30,
+                                    //                   ),
+                                    //                 ),
+                                    //
+                                    //                 Expanded(
+                                    //                   flex:5,
+                                    //                   child: CustomTextField(
+                                    //                     textInputType:
+                                    //                     TextInputType
+                                    //                         .number,
+                                    //                     controller:
+                                    //                     taqweraController,
+                                    //                     prefix: Icon(Icons
+                                    //                         .format_size),
+                                    //                     hintText:
+                                    //                     "ادخل المقاس",
+                                    //                   ),
+                                    //                 ),
+                                    //                 IconButton(
+                                    //                   onPressed: () =>
+                                    //                       buttonCarouselController1
+                                    //                           .previousPage(
+                                    //                           duration: Duration(
+                                    //                               milliseconds:
+                                    //                               1),
+                                    //                           curve: Curves
+                                    //                               .linear),
+                                    //                   icon: Icon(
+                                    //                     Icons
+                                    //                         .arrow_forward,
+                                    //                     color: Colors.white,
+                                    //                     size: 30,
+                                    //                   ),
+                                    //                 ),
+                                    //               ],
+                                    //             ),
+                                    //
+                                    //             SizedBox(
+                                    //               height: 5,
+                                    //             )
+                                    //           ],
+                                    //         ),
+                                    //       ),
+                                    //
+                                    //       Container(
+                                    //         width: 300,
+                                    //         decoration: BoxDecoration(
+                                    //             borderRadius:
+                                    //                 BorderRadius.circular(20),
+                                    //             color: accentCanvasColor
+                                    //                 .withOpacity(0.8)),
+                                    //         child: Expanded(
+                                    //           flex: 4,
+                                    //           child: Column(
+                                    //             children: [
+                                    //               CarouselSlider(
+                                    //                   items: list2,
+                                    //                   carouselController:
+                                    //                       buttonCarouselController2,
+                                    //                   options:
+                                    //                       CarouselOptions(
+                                    //                     onPageChanged:
+                                    //                         (index, c) {
+                                    //                       print(index);
+                                    //                       ya2a = index ==
+                                    //                               0
+                                    //                           ? "الياقة بدون زراير"
+                                    //                           : index == 1
+                                    //                               ? "الياقة زرار واحد"
+                                    //                               : "الياقة 2 زرار";
+                                    //                       print(ya2a);
+                                    //                     },
+                                    //                     autoPlay: false,
+                                    //                     enlargeCenterPage:
+                                    //                         true,
+                                    //                     viewportFraction:
+                                    //                       1,
+                                    //                     aspectRatio: 1.0,
+                                    //                     initialPage: 1,
+                                    //                   )),
+                                    //               Row(
+                                    //                 children: [
+                                    //                   IconButton(
+                                    //                     onPressed: () =>
+                                    //                         buttonCarouselController2
+                                    //                             .nextPage(
+                                    //                             duration: Duration(
+                                    //                                 milliseconds:
+                                    //                                 1),
+                                    //                             curve: Curves
+                                    //                                 .linear),
+                                    //                     icon: Icon(
+                                    //                       Icons.arrow_back,
+                                    //                       color: Colors.white,
+                                    //                       size: 30,
+                                    //                     ),
+                                    //                   ),
+                                    //                   Expanded(
+                                    //                     flex:5,
+                                    //                     child: CustomTextField(
+                                    //                       controller:
+                                    //                       ya2aController,
+                                    //                       textInputType:
+                                    //                       TextInputType
+                                    //                           .number,
+                                    //                       prefix: Icon(Icons
+                                    //                           .format_size),
+                                    //                       hintText:
+                                    //                       "ادخل المقاس",
+                                    //                     ),
+                                    //                   ),
+                                    //
+                                    //                   IconButton(
+                                    //                     onPressed: () =>
+                                    //                         buttonCarouselController2
+                                    //                             .previousPage(
+                                    //                             duration: Duration(
+                                    //                                 milliseconds:
+                                    //                                 1),
+                                    //                             curve: Curves
+                                    //                                 .linear),
+                                    //                     icon: Icon(
+                                    //                       Icons
+                                    //                           .arrow_forward,
+                                    //                       color: Colors.white,
+                                    //                       size: 30,
+                                    //                     ),
+                                    //                   ),
+                                    //                 ],
+                                    //               ),
+                                    //               SizedBox(
+                                    //                 height: 5,
+                                    //               )
+                                    //             ],
+                                    //           ),
+                                    //         ),
+                                    //       ),
+                                    //     ],
+                                    //   ),
+                                    ),
                               )
                             ],
                           ),
@@ -3092,6 +3262,11 @@ class _AddScreenState extends State<AddScreen> {
                                                           : "0")!);
                                               setState(() {
                                                 productsModel = ProductsModel(
+                                                  komSha3rawyLenght1:double.tryParse(field1Controller.text) ,
+                                                  komSha3rawyLenght2:double.tryParse(field2Controller.text) ,
+                                                  komSha3rawyLenght3:double.tryParse(field3Controller.text) ,
+                                                  komSha3rawyLenght4:double.tryParse(field4Controller.text) ,
+
                                                   name: nameController.text,
                                                   date: _selectedDate,
                                                   length: double.tryParse(
@@ -5770,7 +5945,6 @@ class _AddScreenState extends State<AddScreen> {
                                                                     1.0,
                                                                 initialPage: 2,
                                                               )),
-
                                                           SizedBox(
                                                             height: 5,
                                                           )
@@ -6528,49 +6702,41 @@ class _AddScreenState extends State<AddScreen> {
 
   var list1 = [
     ClipRRect(
-        borderRadius: BorderRadius.only(
-            topRight: Radius.circular(20), topLeft: Radius.circular(20)),
-        child:Image.asset(
-      "images/كلفة تامة بشليك.png",
-        height: 300, width: 300, scale: 300, fit: BoxFit.contain    ),
-    ) ,ClipRRect(
-        borderRadius: BorderRadius.only(
-            topRight: Radius.circular(20), topLeft: Radius.circular(20)),
-        child:
-    Image.asset(
-      "images/كلفة تامة نص ياقة.png",
-        height: 300, width: 300, scale: 300, fit: BoxFit.contain    )),
+      borderRadius: BorderRadius.only(
+          topRight: Radius.circular(20), topLeft: Radius.circular(20)),
+      child: Image.asset("images/كلفة تامة بشليك.png",
+          height: 300, width: 300, scale: 300, fit: BoxFit.contain),
+    ),
     ClipRRect(
         borderRadius: BorderRadius.only(
             topRight: Radius.circular(20), topLeft: Radius.circular(20)),
-        child:
-    Image.asset(
-      "images/جلابية قشرة.png",
-        height: 300, width: 300, scale: 300, fit: BoxFit.contain    )),
-
+        child: Image.asset("images/كلفة تامة نص ياقة.png",
+            height: 300, width: 300, scale: 300, fit: BoxFit.contain)),
+    ClipRRect(
+        borderRadius: BorderRadius.only(
+            topRight: Radius.circular(20), topLeft: Radius.circular(20)),
+        child: Image.asset("images/جلابية قشرة.png",
+            height: 300, width: 300, scale: 300, fit: BoxFit.contain)),
   ];
   var list2 = [
-  ClipRRect(
-  borderRadius: BorderRadius.only(
-  topRight: Radius.circular(20), topLeft: Radius.circular(20)),
-  child:  Image.asset(
-      "images/الياقة بدون زراير.png",
-        height: 300, width: 300, scale: 300, fit: BoxFit.contain    )),
-  ClipRRect(
-  borderRadius: BorderRadius.only(
-  topRight: Radius.circular(20), topLeft: Radius.circular(20)),
-  child:ClipRRect(
-  borderRadius: BorderRadius.only(
-  topRight: Radius.circular(20), topLeft: Radius.circular(20)),
-  child: Image.asset(
-      "images/الياقة زرار واحد.png",
-      height: 300, width: 300, scale: 300, fit: BoxFit.contain    ))),
-  ClipRRect(
-  borderRadius: BorderRadius.only(
-  topRight: Radius.circular(20), topLeft: Radius.circular(20)),
-  child: Image.asset(
-      "images/الياقة 2 زرار.png",
-      height: 300, width: 300, scale: 300, fit: BoxFit.contain    )),
+    ClipRRect(
+        borderRadius: BorderRadius.only(
+            topRight: Radius.circular(20), topLeft: Radius.circular(20)),
+        child: Image.asset("images/الياقة بدون زراير.png",
+            height: 300, width: 300, scale: 300, fit: BoxFit.contain)),
+    ClipRRect(
+        borderRadius: BorderRadius.only(
+            topRight: Radius.circular(20), topLeft: Radius.circular(20)),
+        child: ClipRRect(
+            borderRadius: BorderRadius.only(
+                topRight: Radius.circular(20), topLeft: Radius.circular(20)),
+            child: Image.asset("images/الياقة زرار واحد.png",
+                height: 300, width: 300, scale: 300, fit: BoxFit.contain))),
+    ClipRRect(
+        borderRadius: BorderRadius.only(
+            topRight: Radius.circular(20), topLeft: Radius.circular(20)),
+        child: Image.asset("images/الياقة 2 زرار.png",
+            height: 300, width: 300, scale: 300, fit: BoxFit.contain)),
   ];
   var list3 = [
     ClipRRect(
@@ -6591,68 +6757,64 @@ class _AddScreenState extends State<AddScreen> {
     ),
   ];
   var list4 = [
-  ClipRRect(
-  borderRadius: BorderRadius.only(
-  topRight: Radius.circular(20), topLeft: Radius.circular(20)),
-  child: Image.asset(
-      "images/جانب بشليك.png",
-      height: 300, width: 300, scale: 300, fit: BoxFit.contain
-  )),
-
-  ClipRRect(
-  borderRadius: BorderRadius.only(
-  topRight: Radius.circular(20), topLeft: Radius.circular(20)),
-  child: Image.asset(
-      "images/جانب شق.png",
-    height: 300, width: 300, scale: 300, fit: BoxFit.contain)),
-
-  ];
-  var list5 = [
-  ClipRRect(
-  borderRadius: BorderRadius.only(
-  topRight: Radius.circular(20), topLeft: Radius.circular(20)),
-  child: Image.asset(
-      "images/جيب مربع.png",
-    height: 300,
-    width: 300,
-    scale: 300,
-    fit: BoxFit.contain,    )),
-
-  ClipRRect(
-  borderRadius: BorderRadius.only(
-  topRight: Radius.circular(20), topLeft: Radius.circular(20)),
-  child: Image.asset(
-      "images/جيب مربع مثلث.png",
-    height: 300,
-    width: 300,
-    scale: 300,
-    fit: BoxFit.contain,    )),
-  ClipRRect(
-  borderRadius: BorderRadius.only(
-  topRight: Radius.circular(20), topLeft: Radius.circular(20)),
-  child: Image.asset(
-      "images/جيب مدور.png",
-    height: 300,
-    width: 300,
-    scale: 300,
-    fit: BoxFit.contain,    )),
-
-  ];
-  var list6 = [
-  ClipRRect(
-  borderRadius: BorderRadius.only(
-  topRight: Radius.circular(20), topLeft: Radius.circular(20)),
-  child:  Image.asset(
-      "images/صدر عادي.png",
-      height: 300,
-      width: 300,
-      scale: 300,
-      fit: BoxFit.contain,
-    )),
     ClipRRect(
         borderRadius: BorderRadius.only(
             topRight: Radius.circular(20), topLeft: Radius.circular(20)),
-        child:  Image.asset(
+        child: Image.asset("images/جانب بشليك.png",
+            height: 300, width: 300, scale: 300, fit: BoxFit.contain)),
+    ClipRRect(
+        borderRadius: BorderRadius.only(
+            topRight: Radius.circular(20), topLeft: Radius.circular(20)),
+        child: Image.asset("images/جانب شق.png",
+            height: 300, width: 300, scale: 300, fit: BoxFit.contain)),
+  ];
+  var list5 = [
+    ClipRRect(
+        borderRadius: BorderRadius.only(
+            topRight: Radius.circular(20), topLeft: Radius.circular(20)),
+        child: Image.asset(
+          "images/جيب مربع.png",
+          height: 300,
+          width: 300,
+          scale: 300,
+          fit: BoxFit.contain,
+        )),
+    ClipRRect(
+        borderRadius: BorderRadius.only(
+            topRight: Radius.circular(20), topLeft: Radius.circular(20)),
+        child: Image.asset(
+          "images/جيب مربع مثلث.png",
+          height: 300,
+          width: 300,
+          scale: 300,
+          fit: BoxFit.contain,
+        )),
+    ClipRRect(
+        borderRadius: BorderRadius.only(
+            topRight: Radius.circular(20), topLeft: Radius.circular(20)),
+        child: Image.asset(
+          "images/جيب مدور.png",
+          height: 300,
+          width: 300,
+          scale: 300,
+          fit: BoxFit.contain,
+        )),
+  ];
+  var list6 = [
+    ClipRRect(
+        borderRadius: BorderRadius.only(
+            topRight: Radius.circular(20), topLeft: Radius.circular(20)),
+        child: Image.asset(
+          "images/صدر عادي.png",
+          height: 300,
+          width: 300,
+          scale: 300,
+          fit: BoxFit.contain,
+        )),
+    ClipRRect(
+        borderRadius: BorderRadius.only(
+            topRight: Radius.circular(20), topLeft: Radius.circular(20)),
+        child: Image.asset(
           "images/صدر مخفي.png",
           height: 300,
           width: 300,
@@ -6662,127 +6824,134 @@ class _AddScreenState extends State<AddScreen> {
     ClipRRect(
         borderRadius: BorderRadius.only(
             topRight: Radius.circular(20), topLeft: Radius.circular(20)),
-        child:  Image.asset(
+        child: Image.asset(
           "images/صدر-عادي-مربع .png",
           height: 300,
           width: 300,
           scale: 300,
           fit: BoxFit.contain,
         )),
-  ClipRRect(
-  borderRadius: BorderRadius.only(
-  topRight: Radius.circular(20), topLeft: Radius.circular(20)),
-  child:Image.asset(
-      "images/صدر عادي لون في لون 2 خط.jpg",
-      height: 300,
-      width: 300,
-      scale: 300,
-      fit: BoxFit.contain,
-    )),
     ClipRRect(
-    borderRadius: BorderRadius.only(
-  topRight: Radius.circular(20), topLeft: Radius.circular(20)),
-  child:Image.asset(
-      "images/صدر لون في لون خط واحد.png",
-      height: 300,
-      width: 300,
-      scale: 300,
-      fit: BoxFit.contain,
-    )),
+        borderRadius: BorderRadius.only(
+            topRight: Radius.circular(20), topLeft: Radius.circular(20)),
+        child: Image.asset(
+          "images/صدر عادي لون في لون 2 خط.jpg",
+          height: 300,
+          width: 300,
+          scale: 300,
+          fit: BoxFit.contain,
+        )),
+    ClipRRect(
+        borderRadius: BorderRadius.only(
+            topRight: Radius.circular(20), topLeft: Radius.circular(20)),
+        child: Image.asset(
+          "images/صدر لون في لون خط واحد.png",
+          height: 300,
+          width: 300,
+          scale: 300,
+          fit: BoxFit.contain,
+        )),
   ];
   var list7 = [
-
-  ClipRRect(
-  borderRadius: BorderRadius.only(
-  topRight: Radius.circular(20), topLeft: Radius.circular(20)),
-  child: Image.asset(
-      "images/كم شعراوي علية زراير.jpg",
-      height: 300,
-      width: 300,
-      scale: 300,
-      fit: BoxFit.contain,
-  )),
-  ClipRRect(
-  borderRadius: BorderRadius.only(
-  topRight: Radius.circular(20), topLeft: Radius.circular(20)),
-  child:Image.asset(
-      "images/كم بلدي.png",
-    height: 300,
-      width: 300,
-      scale: 300,
-      fit: BoxFit.contain,
-    )),
     ClipRRect(
-    borderRadius: BorderRadius.only(
-  topRight: Radius.circular(20), topLeft: Radius.circular(20)),
-  child:Image.asset(
-      "images/الكم سادة+بشليك لزق.png",
-    height: 300,
-      width: 300,
-      scale: 300,
-      fit: BoxFit.contain,
-    )),
-  ClipRRect(
-  borderRadius: BorderRadius.only(
-  topRight: Radius.circular(20), topLeft: Radius.circular(20)),
-  child:Image.asset(
-      "images/الكم سادة.png",
-    height: 300,
-      width: 300,
-      scale: 300,
-      fit: BoxFit.contain,
-    )),
-      ClipRRect(
-  borderRadius: BorderRadius.only(
-  topRight: Radius.circular(20), topLeft: Radius.circular(20)),
-  child:Image.asset(
-      "images/اساورة بشليك.png",
-    height: 300,
-      width: 300,
-      scale: 300,
-      fit: BoxFit.contain,
-    )),
-  ClipRRect(
-  borderRadius: BorderRadius.only(
-  topRight: Radius.circular(20), topLeft: Radius.circular(20)),
-  child:Image.asset(
-      "images/اساورة كسرة واحد.png",
-    height: 300,
-      width: 300,
-      scale: 300,
-      fit: BoxFit.contain,
-    )),
-  ClipRRect(
-  borderRadius: BorderRadius.only(
-  topRight: Radius.circular(20), topLeft: Radius.circular(20)),
-  child:Image.asset(
-      "images/اساورة مربع بدون كسرة.png",
-    height: 300,
-      width: 300,
-      scale: 300,
-      fit: BoxFit.contain,
-    )),
+        borderRadius: BorderRadius.only(
+            topRight: Radius.circular(20), topLeft: Radius.circular(20)),
+        child: Image.asset(
+          "images/كم شعراوي علية زراير.jpg",
+          height: 300,
+          width: 300,
+          scale: 300,
+          fit: BoxFit.contain,
+        )),
     ClipRRect(
-    borderRadius: BorderRadius.only(
-  topRight: Radius.circular(20), topLeft: Radius.circular(20)),
-  child:Image.asset(
-      "images/اساورة مربع كسرة واحدة.jpg",
-    height: 300,
-      width: 300,
-      scale: 300,
-      fit: BoxFit.contain,
-    )),
-  ClipRRect(
-  borderRadius: BorderRadius.only(
-  topRight: Radius.circular(20), topLeft: Radius.circular(20)),
-  child:Image.asset(
-      "images/اساورة مربع 2 كسرة.jpg",
-    height: 300,
-      width: 300,
-      scale: 300,
-      fit: BoxFit.contain,
-    )),
-
-
+        borderRadius: BorderRadius.only(
+            topRight: Radius.circular(20), topLeft: Radius.circular(20)),
+        child: Image.asset(
+          "images/كم بلدي.png",
+          height: 300,
+          width: 300,
+          scale: 300,
+          fit: BoxFit.contain,
+        )),
+    ClipRRect(
+        borderRadius: BorderRadius.only(
+            topRight: Radius.circular(20), topLeft: Radius.circular(20)),
+        child: Image.asset(
+          "images/الكم سادة+بشليك لزق.png",
+          height: 300,
+          width: 300,
+          scale: 300,
+          fit: BoxFit.contain,
+        )),
+    ClipRRect(
+        borderRadius: BorderRadius.only(
+            topRight: Radius.circular(20), topLeft: Radius.circular(20)),
+        child: Image.asset(
+          "images/الكم سادة.png",
+          height: 300,
+          width: 300,
+          scale: 300,
+          fit: BoxFit.contain,
+        )),
+    ClipRRect(
+        borderRadius: BorderRadius.only(
+            topRight: Radius.circular(20), topLeft: Radius.circular(20)),
+        child: Image.asset(
+          "images/اساورة بشليك.png",
+          height: 300,
+          width: 300,
+          scale: 300,
+          fit: BoxFit.contain,
+        )),
+    ClipRRect(
+        borderRadius: BorderRadius.only(
+            topRight: Radius.circular(20), topLeft: Radius.circular(20)),
+        child: Image.asset(
+          "images/اساورة كسره واحد.jpg",
+          height: 300,
+          width: 300,
+          scale: 300,
+          fit: BoxFit.contain,
+        )),
+    ClipRRect(
+        borderRadius: BorderRadius.only(
+            topRight: Radius.circular(20), topLeft: Radius.circular(20)),
+        child: Image.asset(
+          "images/اساورة 2 كسرة.jpg",
+          height: 300,
+          width: 300,
+          scale: 300,
+          fit: BoxFit.contain,
+        )),
+    ClipRRect(
+        borderRadius: BorderRadius.only(
+            topRight: Radius.circular(20), topLeft: Radius.circular(20)),
+        child: Image.asset(
+          "images/اساورة مربع بدون كسرة.png",
+          height: 300,
+          width: 300,
+          scale: 300,
+          fit: BoxFit.contain,
+        )),
+    ClipRRect(
+        borderRadius: BorderRadius.only(
+            topRight: Radius.circular(20), topLeft: Radius.circular(20)),
+        child: Image.asset(
+          "images/اساورة مربع كسرة واحدة.jpg",
+          height: 300,
+          width: 300,
+          scale: 300,
+          fit: BoxFit.contain,
+        )),
+    ClipRRect(
+        borderRadius: BorderRadius.only(
+            topRight: Radius.circular(20), topLeft: Radius.circular(20)),
+        child: Image.asset(
+          "images/اساورة مربع 2 كسرة.jpg",
+          height: 300,
+          width: 300,
+          scale: 300,
+          fit: BoxFit.contain,
+        )),
   ];
 }
