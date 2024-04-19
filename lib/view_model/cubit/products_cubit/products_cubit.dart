@@ -71,6 +71,8 @@ class ProductCubit extends Cubit<ProductsMainState> {
       "code": productsModel.code,
       "delivery_time": productsModel.deliveryTime,
       "type": productsModel.type,
+      "kom_sha3rawy":productsModel.komSha3rawy,
+      "kom_balady":productsModel.komBalady,
       "additional_type1": productsModel.additionalType1,
       "additional_type2": productsModel.additionalType2,
       "fyber_type": productsModel.fyberType,

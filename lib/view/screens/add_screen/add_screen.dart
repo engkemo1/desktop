@@ -168,8 +168,6 @@ class _AddScreenState extends State<AddScreen> {
 
   var categoryName;
 
-
-
   @override
   void initState() {
     ProductCubit().getData().then((value) {
@@ -2221,8 +2219,26 @@ class _AddScreenState extends State<AddScreen> {
                                                   carouselController:
                                                       buttonCarouselController4,
                                                   options: CarouselOptions(
-                                                    onPageChanged:
-                                                        (index, c) {},
+                                                    onPageChanged: (index, c) {
+                                                      index == 1
+                                                          ? sadr =
+                                                              "images/صدر مخفي.png"
+                                                          : index == 2
+                                                              ? sadr =
+                                                                  "images/صدر-عادي-مربع .png"
+                                                              : index == 3
+                                                                  ? sadr =
+                                                                      "images/صدر عادي لون في لون 2 خط.jpg"
+                                                                  : index == 4
+                                                                      ? sadr =
+                                                                          "images/صدر لون في لون خط واحد.png"
+                                                                      : index == 0
+                                                          ?  sadr =
+                                                      "images/صدر عادي.png":""
+                                                      ;
+                                                      print(index);
+                                                      print(sadr);
+                                                    },
                                                     autoPlay: false,
                                                     enlargeCenterPage: true,
                                                     viewportFraction: 1,
@@ -2298,25 +2314,26 @@ class _AddScreenState extends State<AddScreen> {
                                                     onPageChanged: (index, c) {
                                                       print(index);
                                                       kom = index == 0
-                                                          ? "كم شعراوي علية زراير"
+                                                          ? "images/كم شعراوي علية زراير.jpg"
                                                           : index == 1
-                                                              ? "كم بلدي"
+                                                              ? "images/كم بلدي.png"
                                                               : index == 2
-                                                                  ? "الكم سادة+بشليك لزق"
+                                                                  ? "images/الكم سادة+بشليك لزق.png"
                                                                   : index == 3
-                                                                      ? "الكم سادة"
+                                                                      ? "images/الكم سادة.png"
                                                                       : index ==
                                                                               4
-                                                                          ? "اساورة بشليك"
+                                                                          ? "images/اساورة بشليك.png"
                                                                           : index == 5
-                                                                              ? "اساورة كسرة واحد"
+                                                                              ? "images/اساورة كسرة واحد.png"
                                                                               : index == 6
-                                                                                  ? "اساورة مربع بدون كسرة"
+                                                                                  ? "images/اساورة 2 كسرة.jpg"
                                                                                   : index == 7
-                                                                                      ? "اساورة مربع كسرة واحدة"
+                                                                                      ? "images/اساورة مربع بدون كسرة.png"
                                                                                       : index == 8
-                                                                                          ? "اساورة مربع بدون كسرة"
-                                                                                          : "اساورة مربع 2 كسرة";
+                                                                                          ? "images/اساورة مربع كسرة واحدة.jpg"
+                                                                                          : "images/اساورة مربع 2 كسرة.jpg";
+
                                                       print(kom);
                                                     },
                                                     autoPlay: false,
@@ -2396,8 +2413,8 @@ class _AddScreenState extends State<AddScreen> {
                                                             (index, c) {
                                                           print(index);
                                                           glab = index == 0
-                                                              ? "جلاب 1 زرار"
-                                                              : "جلاب 2 زرار";
+                                                              ? "images/جلاب 1 زرار.png"
+                                                              : "images/جلاب 2 زرار.png";
                                                           print(glab);
                                                         },
                                                         enlargeCenterPage: true,
@@ -2483,8 +2500,8 @@ class _AddScreenState extends State<AddScreen> {
                                                             (index, c) {
                                                           print(index);
                                                           ganb = index == 0
-                                                              ? "جانب بشليك"
-                                                              : "جانب شق";
+                                                              ? "images/جانب بشليك.png"
+                                                              : "images/جانب شق.png";
                                                           print(ganb);
                                                         },
                                                         autoPlay: false,
@@ -2568,10 +2585,10 @@ class _AddScreenState extends State<AddScreen> {
                                                     onPageChanged: (index, c) {
                                                       print(index);
                                                       gyb = index == 0
-                                                          ? "جيب مربع"
+                                                          ? "images/جيب مربع.png"
                                                           : index == 1
-                                                              ? "جيب مربع مثلث"
-                                                              : "جيب مدور";
+                                                              ? "images/جيب مربع مثلث.png"
+                                                              : "images/جيب مدور.png";
                                                       print(gyb);
                                                     },
                                                     autoPlay: false,
@@ -2648,11 +2665,11 @@ class _AddScreenState extends State<AddScreen> {
                                                     onPageChanged: (index, c) {
                                                       print(index);
                                                       taqwera = index == 0
-                                                          ? "كلفة تامة بشليك"
+                                                          ? "images/كلفة تامة بشليك.png"
                                                           : index == 1
-                                                              ? "كلفة تامة نص ياقة"
+                                                              ? "images/كلفة تامة نص ياقة.png"
                                                               : index == 2
-                                                                  ? "جلابية قشرة"
+                                                                  ? "images/جلابية قشرة.png"
                                                                   : "اسطنبولي";
                                                       print(taqwera);
                                                     },
@@ -2734,10 +2751,10 @@ class _AddScreenState extends State<AddScreen> {
                                                           (index, c) {
                                                         print(index);
                                                         ya2a = index == 0
-                                                            ? "الياقة بدون زراير"
+                                                            ? "images/الياقة بدون زراير.png"
                                                             : index == 1
-                                                                ? "الياقة زرار واحد"
-                                                                : "الياقة 2 زرار";
+                                                                ? "images/الياقة زرار واحد.png"
+                                                                : "images/الياقة 2 زرار.png";
                                                         print(ya2a);
                                                       },
                                                       autoPlay: false,
@@ -2825,16 +2842,16 @@ class _AddScreenState extends State<AddScreen> {
                                                         width: 60,
                                                         child: TextField(
                                                           controller:
-                                                          field1Controller,
+                                                              field1Controller,
                                                           textAlign:
-                                                          TextAlign.center,
+                                                              TextAlign.center,
                                                           style: TextStyle(
                                                               fontSize: 20,
                                                               fontWeight:
-                                                              FontWeight
-                                                                  .bold),
+                                                                  FontWeight
+                                                                      .bold),
                                                           decoration:
-                                                          InputDecoration(
+                                                              InputDecoration(
                                                             border: InputBorder
                                                                 .none,
                                                           ),
@@ -2847,22 +2864,20 @@ class _AddScreenState extends State<AddScreen> {
                                                         width: 60,
                                                         child: TextField(
                                                           controller:
-                                                          field2Controller,
+                                                              field2Controller,
                                                           textAlign:
-                                                          TextAlign.center,
+                                                              TextAlign.center,
                                                           style: TextStyle(
                                                               fontSize: 20,
                                                               fontWeight:
-                                                              FontWeight
-                                                                  .bold),
+                                                                  FontWeight
+                                                                      .bold),
                                                           decoration:
-                                                          InputDecoration(
+                                                              InputDecoration(
                                                             border: InputBorder
                                                                 .none,
                                                           ),
                                                         ))),
-
-
                                                 Positioned(
                                                     top: 60,
                                                     left: 17,
@@ -2915,7 +2930,7 @@ class _AddScreenState extends State<AddScreen> {
                                           width: 300,
                                           decoration: BoxDecoration(
                                               borderRadius:
-                                              BorderRadius.circular(20),
+                                                  BorderRadius.circular(20),
                                               color: accentCanvasColor
                                                   .withOpacity(0.8)),
                                           child: Expanded(
@@ -2926,7 +2941,7 @@ class _AddScreenState extends State<AddScreen> {
                                                   child: Image.asset(
                                                       "images/كم-بلدي1.png"),
                                                   borderRadius:
-                                                  BorderRadius.circular(10),
+                                                      BorderRadius.circular(10),
                                                 ),
                                                 Positioned(
                                                     top: 75,
@@ -2936,16 +2951,16 @@ class _AddScreenState extends State<AddScreen> {
                                                         width: 60,
                                                         child: TextField(
                                                           controller:
-                                                          fieldKom1Controller,
+                                                              fieldKom1Controller,
                                                           textAlign:
-                                                          TextAlign.center,
+                                                              TextAlign.center,
                                                           style: TextStyle(
                                                               fontSize: 20,
                                                               fontWeight:
-                                                              FontWeight
-                                                                  .bold),
+                                                                  FontWeight
+                                                                      .bold),
                                                           decoration:
-                                                          InputDecoration(
+                                                              InputDecoration(
                                                             border: InputBorder
                                                                 .none,
                                                           ),
@@ -2958,21 +2973,20 @@ class _AddScreenState extends State<AddScreen> {
                                                         width: 60,
                                                         child: TextField(
                                                           controller:
-                                                          fieldKom2Controller,
+                                                              fieldKom2Controller,
                                                           textAlign:
-                                                          TextAlign.center,
+                                                              TextAlign.center,
                                                           style: TextStyle(
                                                               fontSize: 20,
                                                               fontWeight:
-                                                              FontWeight
-                                                                  .bold),
+                                                                  FontWeight
+                                                                      .bold),
                                                           decoration:
-                                                          InputDecoration(
+                                                              InputDecoration(
                                                             border: InputBorder
                                                                 .none,
                                                           ),
                                                         ))),
-
                                                 Positioned(
                                                     top: 75,
                                                     left: 15,
@@ -2981,16 +2995,16 @@ class _AddScreenState extends State<AddScreen> {
                                                         width: 60,
                                                         child: TextField(
                                                           controller:
-                                                          fieldKom3Controller,
+                                                              fieldKom3Controller,
                                                           textAlign:
-                                                          TextAlign.center,
+                                                              TextAlign.center,
                                                           style: TextStyle(
                                                               fontSize: 20,
                                                               fontWeight:
-                                                              FontWeight
-                                                                  .bold),
+                                                                  FontWeight
+                                                                      .bold),
                                                           decoration:
-                                                          InputDecoration(
+                                                              InputDecoration(
                                                             border: InputBorder
                                                                 .none,
                                                           ),
@@ -3003,16 +3017,16 @@ class _AddScreenState extends State<AddScreen> {
                                                         width: 60,
                                                         child: TextField(
                                                           controller:
-                                                          fieldKom4Controller,
+                                                              fieldKom4Controller,
                                                           textAlign:
-                                                          TextAlign.center,
+                                                              TextAlign.center,
                                                           style: TextStyle(
                                                               fontSize: 20,
                                                               fontWeight:
-                                                              FontWeight
-                                                                  .bold),
+                                                                  FontWeight
+                                                                      .bold),
                                                           decoration:
-                                                          InputDecoration(
+                                                              InputDecoration(
                                                             border: InputBorder
                                                                 .none,
                                                           ),
@@ -3021,7 +3035,6 @@ class _AddScreenState extends State<AddScreen> {
                                             ),
                                           ),
                                         ),
-
                                       ],
                                     )
                                     // : Wrap(
@@ -3262,11 +3275,22 @@ class _AddScreenState extends State<AddScreen> {
                                                           : "0")!);
                                               setState(() {
                                                 productsModel = ProductsModel(
-                                                  komSha3rawyLenght1:double.tryParse(field1Controller.text) ,
-                                                  komSha3rawyLenght2:double.tryParse(field2Controller.text) ,
-                                                  komSha3rawyLenght3:double.tryParse(field3Controller.text) ,
-                                                  komSha3rawyLenght4:double.tryParse(field4Controller.text) ,
-
+                                                  komSha3rawyLenght1:
+                                                      double.tryParse(
+                                                          field1Controller
+                                                              .text),
+                                                  komSha3rawyLenght2:
+                                                      double.tryParse(
+                                                          field2Controller
+                                                              .text),
+                                                  komSha3rawyLenght3:
+                                                      double.tryParse(
+                                                          field3Controller
+                                                              .text),
+                                                  komSha3rawyLenght4:
+                                                      double.tryParse(
+                                                          field4Controller
+                                                              .text),
                                                   name: nameController.text,
                                                   date: _selectedDate,
                                                   length: double.tryParse(
@@ -3349,6 +3373,8 @@ class _AddScreenState extends State<AddScreen> {
                                                   taqwera: taqwera,
                                                   yaqa: ya2a,
                                                   kom: kom,
+                                                  komBalady: "images/كم-بلدي1.png",
+                                                  komSha3rawy: "images/png.png",
                                                   additionalType1: _character ==
                                                           SingingCharacter
                                                               .afrangy

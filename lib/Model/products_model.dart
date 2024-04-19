@@ -43,6 +43,8 @@ class ProductsModel {
   String? ganb;
   String? taqwera;
   String? kom;
+  String? komBalady ;
+  String? komSha3rawy;
   String? createdAt;
   String? deliveryTime;
   String? type;
@@ -82,6 +84,8 @@ class ProductsModel {
       this.amountPaid,
       this.remainingAmount,
       this.date,
+        this.komBalady,
+        this.komSha3rawy,
       this.numDresses,
       this.length,
       this.chestLength,
@@ -121,6 +125,8 @@ class ProductsModel {
   ProductsModel.fromJson(Map<String, dynamic> json) {
     name = json['name'];
     phone = json['phone'];
+    komSha3rawy=json["kom_sha3rawy"];
+    komBalady=json["kom_balady"];
     sadrSize = json["sadr_size"];
     ganbSize = json["ganb_size"];
     yaqaSize = json["yaqa_size"];
@@ -185,6 +191,8 @@ class ProductsModel {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['name'] = this.name;
     data['sadr'] = this.sadr;
+    data["kom_balady"]=this.komBalady;
+    data["kom_sha3rawy"]=this.komSha3rawy;
     data['code'] = this.code;
     data["sadr_size"] = this.sadrSize;
     data["ganb_size"] = this.ganbSize;

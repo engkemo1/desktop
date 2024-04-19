@@ -166,13 +166,36 @@ class PdfInvoiceApi {
     final ttf = Font.ttf(data);
     final iconImage =
     (await rootBundle.load('images/crown.png')).buffer.asUint8List();
+    print(productsModel.sadr);
+    final kom =
+    (await rootBundle.load(productsModel.kom!.length==0?"images/crown.png":productsModel.kom.toString())).buffer.asUint8List();
+    final sadr =
+    (await rootBundle.load(productsModel.sadr!.length==0?"images/crown.png":productsModel.sadr.toString())).buffer.asUint8List();
+
+    final taqwera =
+    (await rootBundle.load(productsModel.taqwera!.length==0?"images/crown.png":productsModel.taqwera.toString())).buffer.asUint8List();
+    final glab =
+    (await rootBundle.load(productsModel.glab!.length==0?"images/crown.png":productsModel.glab.toString())).buffer.asUint8List();
+    final gyb =
+    (await rootBundle.load(productsModel.gayb!.length==0?"images/crown.png":productsModel.gayb.toString())).buffer.asUint8List();
+    final ganb =
+    (await rootBundle.load(productsModel.ganb!.length==0?"images/crown.png":productsModel.ganb.toString())).buffer.asUint8List();
+    final yaqa =
+    (await rootBundle.load(productsModel.yaqa!.length==0?"images/crown.png":productsModel.yaqa.toString())).buffer.asUint8List();
+    final komBalady =
+    (await rootBundle.load("images/كم-بلدي1.png")).buffer.asUint8List();
+    final komSh3rawy =
+    (await rootBundle.load("images/png.png")).buffer.asUint8List();
+
 
     final tableHeaders2 = [
-      'الساعه',
+      'عدد الاثواب',
+      'تاريخ الاستلام',
       'التاريخ',
       'التليفون',
       'العنوان',
       "الاسم",
+      "رقم الفاتورة"
     ];
     final tableHeaders3 = [
       'الكم',
@@ -197,8 +220,10 @@ class PdfInvoiceApi {
 
     final tableData2 = [
       [
+        productsModel.numDresses.toString(),
+
         DateFormat("yyyy-MM-dd").format(DateTime.parse(
-          productsModel.date.toString(),
+          productsModel.deliveryTime.toString(),
         )),
         DateFormat("yyyy-MM-dd").format(DateTime.parse(
           productsModel.date.toString(),
@@ -206,33 +231,74 @@ class PdfInvoiceApi {
         productsModel.phone,
         productsModel.address,
         productsModel.name,
+        productsModel.code
+
       ],
     ];
     final tableHeaders = [
-      'عدد الاثواب',
       'الطول',
       'وسع الصدر',
       'الرقبة',
       'وسع اليد',
-      'طول الكيك',
+      'طول الكبك',
       'المفصل',
+      "سقوط التقويرة",
+      "مقاس البدن",
+
     ];
 
     final tableData = [
       [
-        productsModel.numDresses.toString(),
         productsModel.length.toString(),
         productsModel.chestLength.toString(),
         productsModel.neck.toString(),
-        productsModel.handLength.toString(),
-        productsModel.kLength.toString(),
-        productsModel.mLength.toString()
+
+        Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+
+            children: [
+              Text(productsModel.handLength==null?"0": productsModel.handLength.toString(),),
+              Divider(),
+              Text(productsModel.hand2Length==null?"0":productsModel.hand2Length.toString()),
+
+            ]
+        ),
+        Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(productsModel.kLength==null?"0": productsModel.kLength.toString(),),
+              Divider(),
+              Text(productsModel.k2Length==null?"0":productsModel.k2Length.toString()),
+
+            ]
+        ),
+        productsModel.mLength==null?"0":  productsModel.mLength.toString(),
+        Column(
+          children: [
+            Text(productsModel.droppTaqwera1==null?"0":productsModel.droppTaqwera1.toString()),
+            Divider(),
+            Text(productsModel.droppTaqwera2==null?"0":productsModel.droppTaqwera2.toString()),
+            Divider(),
+            Text(productsModel.droppTaqwera3==null?"0":productsModel.droppTaqwera3.toString())
+          ]
+        ),
+        Column(
+            children: [
+              Text(productsModel.badnSize1==null?"0":productsModel.badnSize1.toString()),
+              Divider(),
+              Text(productsModel.badnSize2==null?"0":productsModel.badnSize2.toString()),
+              Divider(),
+              Text(productsModel.badnSize3==null?"0":productsModel.badnSize3.toString())
+            ]
+        ),
+
       ],
     ];
 
     pdf.addPage(
       pw.MultiPage(
-        pageFormat: PdfPageFormat.letter,
+        pageFormat: PdfPageFormat.a4,
+        margin: EdgeInsets.all(20),
         theme: ThemeData.withFont(
           base: ttf,
         ),
@@ -279,8 +345,8 @@ class PdfInvoiceApi {
               ],
             ),
             pw.SizedBox(height: 1 * PdfPageFormat.mm),
-            pw.Divider(),
-            pw.SizedBox(height: 40),
+            Divider(),
+            Divider(),
             pw.Directionality(
               textDirection: pw.TextDirection.rtl,
               child: pw.Table.fromTextArray(
@@ -291,11 +357,14 @@ class PdfInvoiceApi {
                 const pw.BoxDecoration(color: PdfColors.grey300),
                 cellHeight: 30.0,
                 cellAlignments: {
-                  0: pw.Alignment.centerLeft,
-                  1: pw.Alignment.centerRight,
-                  2: pw.Alignment.centerRight,
-                  3: pw.Alignment.centerRight,
-                  4: pw.Alignment.centerRight,
+                  0: pw.Alignment.center,
+                  1: pw.Alignment.center,
+                  2: pw.Alignment.center,
+                  3: pw.Alignment.center,
+                  4: pw.Alignment.center,
+                  5: pw.Alignment.center,
+                  6: pw.Alignment.center,
+
                 },
               ),
             ),
@@ -304,6 +373,18 @@ class PdfInvoiceApi {
             ///
             /// PDF Table Create
             ///
+            /// Divider(),
+            Divider(),
+
+            Row(children: [
+              Expanded(child:  Divider(),),
+
+              Text("  المقاسات  "),
+              Expanded(child:  Divider(),),
+
+
+            ]),
+            Divider(),
 
             pw.Directionality(
               textDirection: pw.TextDirection.rtl,
@@ -311,6 +392,8 @@ class PdfInvoiceApi {
                 headers: tableHeaders,
                 data: tableData,
                 border: null,
+                headerStyle: TextStyle(fontSize: 10),                cellStyle: TextStyle(fontSize: 10),
+
                 headerDecoration:
                 const pw.BoxDecoration(color: PdfColors.grey300),
                 cellHeight: 30.0,
@@ -323,33 +406,194 @@ class PdfInvoiceApi {
                   4: pw.Alignment.center,
                   5: pw.Alignment.center,
                   6: pw.Alignment.center,
-                },
-              ),
-            ),
-            pw.Directionality(
-              textDirection: pw.TextDirection.rtl,
-              child: pw.Table.fromTextArray(
-                headers: tableHeaders3,
-                data: tableData3,
-                border: null,
-                headerDecoration:
-                const pw.BoxDecoration(color: PdfColors.grey300),
-                cellHeight: 30.0,
-                headerAlignment: Alignment.center,
-                cellAlignments: {
-                  0: pw.Alignment.center,
-                  1: pw.Alignment.center,
-                  2: pw.Alignment.center,
-                  3: pw.Alignment.center,
-                  4: pw.Alignment.center,
-                  5: pw.Alignment.center,
-                  6: pw.Alignment.center,
+                  7: pw.Alignment.center,
+
 
                 },
               ),
             ),
-            pw.Divider(),
+Divider(),
+            Divider(),
 
+            Wrap(
+  children:
+    [
+
+      productsModel.kom!.length!=0?
+      Column(
+          children:
+          [
+
+            pw.Image(
+              pw.MemoryImage(kom),
+              height: 100,
+
+              width: 100,
+            ),      Text("المقاس : ${productsModel.komSize.toString()}"),
+
+          ]
+      ):SizedBox(),
+      productsModel.sadr!.length!=0?
+      Column(
+          children:
+          [
+
+            pw.Image(
+              pw.MemoryImage(sadr),
+              height: 100,
+
+              width: 100,
+            ),      Text("المقاس : ${productsModel.sadrSize.toString()}"),
+
+          ]
+      ):SizedBox(),
+      productsModel.taqwera!.length!=0?
+
+      Column(
+          children:
+          [
+
+            pw.Image(
+              pw.MemoryImage(taqwera),
+              height: 100,
+
+              width: 100,
+            ),      Text("المقاس : ${productsModel.taqweraSize.toString()}"),
+
+          ]
+            ):SizedBox(),
+      productsModel.yaqa!.length!=0?
+      Column(
+          children:
+          [
+
+            pw.Image(
+              pw.MemoryImage(yaqa),
+              height: 100,
+
+              width: 100,
+            ),      Text("المقاس : ${productsModel.yaqaSize.toString()}"),
+
+          ]
+      ):SizedBox(),
+      productsModel.ganb!.length!=0?
+
+    Column(
+      children:
+        [
+
+          pw.Image(
+            pw.MemoryImage(ganb),
+            height: 100,
+
+            width: 100,
+          ),      Text("المقاس : ${productsModel.ganbSize.toString()}"),
+
+        ]
+    ):SizedBox(),
+      productsModel.gayb!.length!=0?
+
+      Column(children:
+      [pw.Image(
+        pw.MemoryImage(gyb),
+        height: 100,
+
+        width: 100,
+      ),
+      Text("المقاس : ${productsModel.gaybSize.toString()}"),
+      ]):SizedBox(),
+
+
+      productsModel.glab!.length!=0?
+
+          Column(
+          children:
+          [
+
+          pw.Image(
+          pw.MemoryImage(glab),
+          height: 100,
+
+          width: 100,
+          ),      Text("المقاس : ${productsModel.glabSize.toString()}"),
+
+          ]
+          ):SizedBox(),
+      Stack(
+        children: [
+          ClipRRect(
+              child:   pw.Image(
+                pw.MemoryImage(komBalady),
+                height: 100,
+
+                width: 100,
+              ) ),
+          Positioned(
+            top: 55,
+            right: 15,
+            child: Text(productsModel.komSha3rawyLenght4==null?"0":productsModel.komSha3rawyLenght1.toString(),style: TextStyle(fontSize: 10)
+            ),),
+          Positioned(
+              top: 25,
+              right: 80,
+              child: SizedBox(
+                height: 50,
+                width: 60,
+                child: Text(productsModel.komSha3rawyLenght3==null?"0":productsModel.komSha3rawyLenght1.toString(),style: TextStyle(fontSize: 10)
+                ),)),
+          Positioned(
+            top: 25,
+            right: 8,
+            child: Text(productsModel.komSha3rawyLenght1==null?"0":productsModel.komSha3rawyLenght1.toString(),style: TextStyle(fontSize: 10)
+            ),),
+          Positioned(
+            top: 25,
+            left: 43,
+            child: Text(productsModel.komSha3rawyLenght3==null?"0":productsModel.komSha3rawyLenght1.toString(),style: TextStyle(fontSize: 10)
+            ),),
+        ],
+      ),
+      Stack(
+        children: [
+          ClipRRect(
+              child:   pw.Image(
+                pw.MemoryImage(komSh3rawy),
+                height: 100,
+
+                width: 100,
+              ) ),
+          Positioned(
+            top: 55,
+            right: 15,
+            child: Text(productsModel.komSha3rawyLenght4==null?"0":productsModel.komSha3rawyLenght1.toString(),style: TextStyle(fontSize: 10)
+            ),),
+          Positioned(
+              top: 20,
+              right: 80,
+              child: SizedBox(
+                height: 50,
+                width: 60,
+                child: Text(productsModel.komSha3rawyLenght3==null?"0":productsModel.komSha3rawyLenght1.toString(),style: TextStyle(fontSize: 10)
+                ),)),
+          Positioned(
+            top: 20,
+            right: 10,
+            child: Text(productsModel.komSha3rawyLenght1==null?"0":productsModel.komSha3rawyLenght1.toString(),style: TextStyle(fontSize: 10)
+            ),),
+          Positioned(
+            top: 20,
+            left: 43,
+            child: Text(productsModel.komSha3rawyLenght3==null?"0":productsModel.komSha3rawyLenght1.toString(),style: TextStyle(fontSize: 10)
+            ),),
+        ],
+      ),
+
+
+    ]
+),
+            Divider(),
+            Divider(),
+            SizedBox(height: 20),
             pw.Container(
               alignment: pw.Alignment.centerRight,
               child: pw.Row(
@@ -416,42 +660,6 @@ class PdfInvoiceApi {
               ),
             ),
           ];
-        },
-        footer: (context) {
-          return pw.Column(
-            mainAxisSize: pw.MainAxisSize.min,
-            children: [
-              pw.Divider(),
-              pw.SizedBox(height: 2 * PdfPageFormat.mm),
-              pw.Text(
-                'اولاد ابو سلطح',
-              ),
-              pw.SizedBox(height: 1 * PdfPageFormat.mm),
-              pw.Row(
-                mainAxisAlignment: pw.MainAxisAlignment.center,
-                children: [
-                  pw.Text("street-200street-00"),
-                  pw.Text(
-                    'Address: ',
-                    style: pw.TextStyle(fontWeight: pw.FontWeight.bold),
-                  ),
-                ],
-              ),
-              pw.SizedBox(height: 1 * PdfPageFormat.mm),
-              pw.Row(
-                mainAxisAlignment: pw.MainAxisAlignment.center,
-                children: [
-                  pw.Text(
-                    'admin@gmail.com',
-                  ),
-                  pw.Text(
-                    'Email: ',
-                    style: pw.TextStyle(fontWeight: pw.FontWeight.bold),
-                  ),
-                ],
-              ),
-            ],
-          );
         },
       ),
     );
