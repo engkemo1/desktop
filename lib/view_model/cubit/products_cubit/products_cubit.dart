@@ -56,6 +56,11 @@ class ProductCubit extends Cubit<ProductsMainState> {
       "kom_sha3rawy_lenght2":productsModel.komSha3rawyLenght2,
       "kom_sha3rawy_lenght1":productsModel.komSha3rawyLenght1,
       "neck": productsModel.neck,
+      "kom_balady_lenght1":productsModel.komBaladyLenght1,
+      "kom_balady_lenght2":productsModel.komBaladyLenght2,
+      "kom_balady_lenght3":productsModel.komBaladyLenght3,
+      "kom_balady_lenght4":productsModel.komBaladyLenght4,
+
       "phone": productsModel.phone,
       "prize": productsModel.prize,
       "Remaining_amount": productsModel.remainingAmount,

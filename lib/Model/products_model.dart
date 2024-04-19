@@ -36,6 +36,10 @@ class ProductsModel {
   var komSha3rawyLenght2;
   var komSha3rawyLenght3;
   var komSha3rawyLenght4;
+  var komBaladyLenght1;
+  var komBaladyLenght2;
+  var komBaladyLenght3;
+  var komBaladyLenght4;
 
   String? glab;
   String? yaqa;
@@ -82,7 +86,12 @@ class ProductsModel {
       this.isDelliverd,
       this.prize,
       this.amountPaid,
-      this.remainingAmount,
+        this.komBaladyLenght1,
+        this.komBaladyLenght2,
+        this.komBaladyLenght3,
+        this.komBaladyLenght4,
+
+        this.remainingAmount,
       this.date,
         this.komBalady,
         this.komSha3rawy,
@@ -128,6 +137,11 @@ class ProductsModel {
     komSha3rawy=json["kom_sha3rawy"];
     komBalady=json["kom_balady"];
     sadrSize = json["sadr_size"];
+    komBaladyLenght1=json["kom_balady_lenght1"];
+    komBaladyLenght2=json["kom_balady_lenght2"];
+    komBaladyLenght3=json["kom_balady_lenght3"];
+    komBaladyLenght4=json["kom_balady_lenght4"];
+
     ganbSize = json["ganb_size"];
     yaqaSize = json["yaqa_size"];
     komSize = json["kom_size"];
@@ -191,6 +205,11 @@ class ProductsModel {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['name'] = this.name;
     data['sadr'] = this.sadr;
+    data["kom_balady_lenght1"]=this.komBaladyLenght1;
+    data["kom_balady_lenght2"]=this.komBaladyLenght2;
+    data["kom_balady_lenght3"]=this.komBaladyLenght3;
+    data["kom_balady_lenght4"]=this.komBaladyLenght4;
+
     data["kom_balady"]=this.komBalady;
     data["kom_sha3rawy"]=this.komSha3rawy;
     data['code'] = this.code;

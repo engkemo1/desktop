@@ -370,7 +370,7 @@ class _AddScreenState extends State<AddScreen> {
                                         context,
                                         MaterialPageRoute(
                                             builder: (_) => MainScreen(
-                                                  index: 0,
+                                                  index: 1,
                                                 )));
                                   },
                                   child: HoverAnimatedContainer(
@@ -3279,6 +3279,7 @@ class _AddScreenState extends State<AddScreen> {
                                                       double.tryParse(
                                                           field1Controller
                                                               .text),
+
                                                   komSha3rawyLenght2:
                                                       double.tryParse(
                                                           field2Controller
@@ -3291,6 +3292,16 @@ class _AddScreenState extends State<AddScreen> {
                                                       double.tryParse(
                                                           field4Controller
                                                               .text),
+                                                  komBaladyLenght1:  double.tryParse(
+                                                      fieldKom1Controller.text
+                                                          ),
+                                                  komBaladyLenght2:  double.tryParse(
+                                                      fieldKom2Controller.text
+                                                  ),  komBaladyLenght3:  double.tryParse(
+                                                    fieldKom3Controller.text
+                                                ),  komBaladyLenght4:  double.tryParse(
+                                                    fieldKom4Controller.text
+                                                ),
                                                   name: nameController.text,
                                                   date: _selectedDate,
                                                   length: double.tryParse(

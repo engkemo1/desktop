@@ -1199,7 +1199,7 @@ class _AllDataScreenState extends State<AllDataScreen> {
                             context,
                             MaterialPageRoute(
                                 builder: (_) => MainScreen(
-                                      index: 0,
+                                      index: 2,
                                     )));
                       },
                       child: HoverAnimatedContainer(
