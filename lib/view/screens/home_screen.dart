@@ -34,7 +34,7 @@ class HomeScreen extends StatelessWidget {
           decoration: BoxDecoration(
               image: DecorationImage(
             image: AssetImage(
-              "images/login.jpg",
+              "images/background5.jpg",
             ),
             fit: BoxFit.cover,
           )),

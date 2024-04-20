@@ -2738,83 +2738,186 @@ class _AddScreenState extends State<AddScreen> {
                                                   BorderRadius.circular(20),
                                               color: accentCanvasColor
                                                   .withOpacity(0.8)),
-                                          child: Expanded(
-                                            flex: 4,
-                                            child: Column(
-                                              children: [
-                                                CarouselSlider(
-                                                    items: list2,
-                                                    carouselController:
-                                                        buttonCarouselController2,
-                                                    options: CarouselOptions(
-                                                      onPageChanged:
-                                                          (index, c) {
-                                                        print(index);
-                                                        ya2a = index == 0
-                                                            ? "images/الياقة بدون زراير.png"
-                                                            : index == 1
-                                                                ? "images/الياقة زرار واحد.png"
-                                                                : "images/الياقة 2 زرار.png";
-                                                        print(ya2a);
-                                                      },
-                                                      autoPlay: false,
-                                                      enlargeCenterPage: true,
-                                                      viewportFraction: 1,
-                                                      aspectRatio: 1.0,
-                                                      initialPage: 1,
-                                                    )),
-                                                Row(
-                                                  children: [
-                                                    IconButton(
-                                                      onPressed: () =>
-                                                          buttonCarouselController2
-                                                              .nextPage(
-                                                                  duration: Duration(
-                                                                      milliseconds:
-                                                                          1),
-                                                                  curve: Curves
-                                                                      .linear),
-                                                      icon: Icon(
-                                                        Icons.arrow_back,
-                                                        color: Colors.white,
-                                                        size: 30,
-                                                      ),
+                                          child: Column(
+                                            children: [
+                                              CarouselSlider(
+                                                  items: list2,
+                                                  carouselController:
+                                                      buttonCarouselController2,
+                                                  options: CarouselOptions(
+                                                    onPageChanged:
+                                                        (index, c) {
+                                                      print(index);
+                                                      ya2a = index == 0
+                                                          ? "images/الياقة بدون زراير.png"
+                                                          : index == 1
+                                                              ? "images/الياقة زرار واحد.png"
+                                                              : "images/الياقة 2 زرار.png";
+                                                      print(ya2a);
+                                                    },
+                                                    autoPlay: false,
+                                                    enlargeCenterPage: true,
+                                                    viewportFraction: 1,
+                                                    aspectRatio: 1.0,
+                                                    initialPage: 1,
+                                                  )),
+                                              Row(
+                                                children: [
+                                                  IconButton(
+                                                    onPressed: () =>
+                                                        buttonCarouselController2
+                                                            .nextPage(
+                                                                duration: Duration(
+                                                                    milliseconds:
+                                                                        1),
+                                                                curve: Curves
+                                                                    .linear),
+                                                    icon: Icon(
+                                                      Icons.arrow_back,
+                                                      color: Colors.white,
+                                                      size: 30,
                                                     ),
-                                                    Expanded(
-                                                      flex: 5,
-                                                      child: CustomTextField(
+                                                  ),
+                                                  Expanded(
+                                                    flex: 5,
+                                                    child: CustomTextField(
+                                                      controller:
+                                                          ya2aController,
+                                                      textInputType:
+                                                          TextInputType
+                                                              .number,
+                                                      prefix: Icon(
+                                                          Icons.format_size),
+                                                      hintText: "ادخل المقاس",
+                                                    ),
+                                                  ),
+                                                  IconButton(
+                                                    onPressed: () =>
+                                                        buttonCarouselController2
+                                                            .previousPage(
+                                                                duration: Duration(
+                                                                    milliseconds:
+                                                                        1),
+                                                                curve: Curves
+                                                                    .linear),
+                                                    icon: Icon(
+                                                      Icons.arrow_forward,
+                                                      color: Colors.white,
+                                                      size: 30,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                              SizedBox(
+                                                height: 5,
+                                              )
+                                            ],
+                                          ),
+                                        ),
+                                        Container(
+                                          width: 300,
+                                          decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(20),
+                                              color: accentCanvasColor
+                                                  .withOpacity(0.8)),
+                                          child: Stack(
+                                            children: [
+                                              ClipRRect(
+                                                child: Image.asset(
+                                                    "images/new.png"),
+                                                borderRadius:
+                                                    BorderRadius.circular(10),
+                                              ),
+                                              Positioned(
+                                                  top: 60,
+                                                  right: 13,
+                                                  child: SizedBox(
+                                                      height: 50,
+                                                      width: 60,
+                                                      child: TextField(
                                                         controller:
-                                                            ya2aController,
-                                                        textInputType:
-                                                            TextInputType
-                                                                .number,
-                                                        prefix: Icon(
-                                                            Icons.format_size),
-                                                        hintText: "ادخل المقاس",
-                                                      ),
-                                                    ),
-                                                    IconButton(
-                                                      onPressed: () =>
-                                                          buttonCarouselController2
-                                                              .previousPage(
-                                                                  duration: Duration(
-                                                                      milliseconds:
-                                                                          1),
-                                                                  curve: Curves
-                                                                      .linear),
-                                                      icon: Icon(
-                                                        Icons.arrow_forward,
-                                                        color: Colors.white,
-                                                        size: 30,
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                                SizedBox(
-                                                  height: 5,
-                                                )
-                                              ],
-                                            ),
+                                                            field1Controller,
+                                                        textAlign:
+                                                            TextAlign.center,
+                                                        style: TextStyle(
+                                                            fontSize: 20,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .bold),
+                                                        decoration:
+                                                            InputDecoration(
+                                                          border: InputBorder
+                                                              .none,
+                                                        ),
+                                                      ))),
+                                              Positioned(
+                                                  top: 60,
+                                                  right: 120,
+                                                  child: SizedBox(
+                                                      height: 50,
+                                                      width: 60,
+                                                      child: TextField(
+                                                        controller:
+                                                            field2Controller,
+                                                        textAlign:
+                                                            TextAlign.center,
+                                                        style: TextStyle(
+                                                            fontSize: 20,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .bold),
+                                                        decoration:
+                                                            InputDecoration(
+                                                          border: InputBorder
+                                                              .none,
+                                                        ),
+                                                      ))),
+                                              Positioned(
+                                                  top: 60,
+                                                  left: 17,
+                                                  child: SizedBox(
+                                                      height: 50,
+                                                      width: 60,
+                                                      child: TextField(
+                                                        controller:
+                                                            field3Controller,
+                                                        textAlign:
+                                                            TextAlign.center,
+                                                        style: TextStyle(
+                                                            fontSize: 20,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .bold),
+                                                        decoration:
+                                                            InputDecoration(
+                                                          border: InputBorder
+                                                              .none,
+                                                        ),
+                                                      ))),
+                                              Positioned(
+                                                  top: 165,
+                                                  right: 30,
+                                                  child: SizedBox(
+                                                      height: 50,
+                                                      width: 60,
+                                                      child: TextField(
+                                                        controller:
+                                                            field4Controller,
+                                                        textAlign:
+                                                            TextAlign.center,
+                                                        style: TextStyle(
+                                                            fontSize: 20,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .bold),
+                                                        decoration:
+                                                            InputDecoration(
+                                                          border: InputBorder
+                                                              .none,
+                                                        ),
+                                                      ))),
+                                            ],
                                           ),
                                         ),
                                         Container(
@@ -2824,215 +2927,103 @@ class _AddScreenState extends State<AddScreen> {
                                                   BorderRadius.circular(20),
                                               color: accentCanvasColor
                                                   .withOpacity(0.8)),
-                                          child: Expanded(
-                                            flex: 4,
-                                            child: Stack(
-                                              children: [
-                                                ClipRRect(
-                                                  child: Image.asset(
-                                                      "images/new.png"),
-                                                  borderRadius:
-                                                      BorderRadius.circular(10),
-                                                ),
-                                                Positioned(
-                                                    top: 60,
-                                                    right: 13,
-                                                    child: SizedBox(
-                                                        height: 50,
-                                                        width: 60,
-                                                        child: TextField(
-                                                          controller:
-                                                              field1Controller,
-                                                          textAlign:
-                                                              TextAlign.center,
-                                                          style: TextStyle(
-                                                              fontSize: 20,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .bold),
-                                                          decoration:
-                                                              InputDecoration(
-                                                            border: InputBorder
-                                                                .none,
-                                                          ),
-                                                        ))),
-                                                Positioned(
-                                                    top: 60,
-                                                    right: 120,
-                                                    child: SizedBox(
-                                                        height: 50,
-                                                        width: 60,
-                                                        child: TextField(
-                                                          controller:
-                                                              field2Controller,
-                                                          textAlign:
-                                                              TextAlign.center,
-                                                          style: TextStyle(
-                                                              fontSize: 20,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .bold),
-                                                          decoration:
-                                                              InputDecoration(
-                                                            border: InputBorder
-                                                                .none,
-                                                          ),
-                                                        ))),
-                                                Positioned(
-                                                    top: 60,
-                                                    left: 17,
-                                                    child: SizedBox(
-                                                        height: 50,
-                                                        width: 60,
-                                                        child: TextField(
-                                                          controller:
-                                                              field3Controller,
-                                                          textAlign:
-                                                              TextAlign.center,
-                                                          style: TextStyle(
-                                                              fontSize: 20,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .bold),
-                                                          decoration:
-                                                              InputDecoration(
-                                                            border: InputBorder
-                                                                .none,
-                                                          ),
-                                                        ))),
-                                                Positioned(
-                                                    top: 165,
-                                                    right: 30,
-                                                    child: SizedBox(
-                                                        height: 50,
-                                                        width: 60,
-                                                        child: TextField(
-                                                          controller:
-                                                              field4Controller,
-                                                          textAlign:
-                                                              TextAlign.center,
-                                                          style: TextStyle(
-                                                              fontSize: 20,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .bold),
-                                                          decoration:
-                                                              InputDecoration(
-                                                            border: InputBorder
-                                                                .none,
-                                                          ),
-                                                        ))),
-                                              ],
-                                            ),
-                                          ),
-                                        ),
-                                        Container(
-                                          width: 300,
-                                          decoration: BoxDecoration(
-                                              borderRadius:
-                                                  BorderRadius.circular(20),
-                                              color: accentCanvasColor
-                                                  .withOpacity(0.8)),
-                                          child: Expanded(
-                                            flex: 4,
-                                            child: Stack(
-                                              children: [
-                                                ClipRRect(
-                                                  child: Image.asset(
-                                                      "images/كم-بلدي1.png"),
-                                                  borderRadius:
-                                                      BorderRadius.circular(10),
-                                                ),
-                                                Positioned(
-                                                    top: 75,
-                                                    right: 8,
-                                                    child: SizedBox(
-                                                        height: 50,
-                                                        width: 60,
-                                                        child: TextField(
-                                                          controller:
-                                                              fieldKom1Controller,
-                                                          textAlign:
-                                                              TextAlign.center,
-                                                          style: TextStyle(
-                                                              fontSize: 20,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .bold),
-                                                          decoration:
-                                                              InputDecoration(
-                                                            border: InputBorder
-                                                                .none,
-                                                          ),
-                                                        ))),
-                                                Positioned(
-                                                    top: 75,
-                                                    right: 115,
-                                                    child: SizedBox(
-                                                        height: 50,
-                                                        width: 60,
-                                                        child: TextField(
-                                                          controller:
-                                                              fieldKom2Controller,
-                                                          textAlign:
-                                                              TextAlign.center,
-                                                          style: TextStyle(
-                                                              fontSize: 20,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .bold),
-                                                          decoration:
-                                                              InputDecoration(
-                                                            border: InputBorder
-                                                                .none,
-                                                          ),
-                                                        ))),
-                                                Positioned(
-                                                    top: 75,
-                                                    left: 15,
-                                                    child: SizedBox(
-                                                        height: 50,
-                                                        width: 60,
-                                                        child: TextField(
-                                                          controller:
-                                                              fieldKom3Controller,
-                                                          textAlign:
-                                                              TextAlign.center,
-                                                          style: TextStyle(
-                                                              fontSize: 20,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .bold),
-                                                          decoration:
-                                                              InputDecoration(
-                                                            border: InputBorder
-                                                                .none,
-                                                          ),
-                                                        ))),
-                                                Positioned(
-                                                    top: 165,
-                                                    right: 30,
-                                                    child: SizedBox(
-                                                        height: 50,
-                                                        width: 60,
-                                                        child: TextField(
-                                                          controller:
-                                                              fieldKom4Controller,
-                                                          textAlign:
-                                                              TextAlign.center,
-                                                          style: TextStyle(
-                                                              fontSize: 20,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .bold),
-                                                          decoration:
-                                                              InputDecoration(
-                                                            border: InputBorder
-                                                                .none,
-                                                          ),
-                                                        ))),
-                                              ],
-                                            ),
+                                          child: Stack(
+                                            children: [
+                                              ClipRRect(
+                                                child: Image.asset(
+                                                    "images/كم-بلدي1.png"),
+                                                borderRadius:
+                                                    BorderRadius.circular(10),
+                                              ),
+                                              Positioned(
+                                                  top: 75,
+                                                  right: 8,
+                                                  child: SizedBox(
+                                                      height: 50,
+                                                      width: 60,
+                                                      child: TextField(
+                                                        controller:
+                                                            fieldKom1Controller,
+                                                        textAlign:
+                                                            TextAlign.center,
+                                                        style: TextStyle(
+                                                            fontSize: 20,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .bold),
+                                                        decoration:
+                                                            InputDecoration(
+                                                          border: InputBorder
+                                                              .none,
+                                                        ),
+                                                      ))),
+                                              Positioned(
+                                                  top: 75,
+                                                  right: 115,
+                                                  child: SizedBox(
+                                                      height: 50,
+                                                      width: 60,
+                                                      child: TextField(
+                                                        controller:
+                                                            fieldKom2Controller,
+                                                        textAlign:
+                                                            TextAlign.center,
+                                                        style: TextStyle(
+                                                            fontSize: 20,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .bold),
+                                                        decoration:
+                                                            InputDecoration(
+                                                          border: InputBorder
+                                                              .none,
+                                                        ),
+                                                      ))),
+                                              Positioned(
+                                                  top: 75,
+                                                  left: 15,
+                                                  child: SizedBox(
+                                                      height: 50,
+                                                      width: 60,
+                                                      child: TextField(
+                                                        controller:
+                                                            fieldKom3Controller,
+                                                        textAlign:
+                                                            TextAlign.center,
+                                                        style: TextStyle(
+                                                            fontSize: 20,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .bold),
+                                                        decoration:
+                                                            InputDecoration(
+                                                          border: InputBorder
+                                                              .none,
+                                                        ),
+                                                      ))),
+                                              Positioned(
+                                                  top: 165,
+                                                  right: 30,
+                                                  child: SizedBox(
+                                                      height: 50,
+                                                      width: 60,
+                                                      child: TextField(
+                                                        controller:
+                                                            fieldKom4Controller,
+                                                        textAlign:
+                                                            TextAlign.center,
+                                                        style: TextStyle(
+                                                            fontSize: 20,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .bold),
+                                                        decoration:
+                                                            InputDecoration(
+                                                          border: InputBorder
+                                                              .none,
+                                                        ),
+                                                      ))),
+                                            ],
                                           ),
                                         ),
                                       ],
