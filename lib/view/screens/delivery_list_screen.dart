@@ -5,7 +5,6 @@ import 'package:desktop_app/view/screens/pdf_invoice/file_handeler.dart';
 import 'package:desktop_app/view/screens/pdf_invoice/pdf.dart';
 import 'package:desktop_app/view_model/cubit/products_cubit/add_state.dart';
 import 'package:desktop_app/view_model/cubit/products_cubit/products_cubit.dart';
-import 'package:empty_widget/empty_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
@@ -16,6 +15,7 @@ import 'package:pdf/pdf.dart';
 import 'package:printing/printing.dart';
 
 import '../../Model/products_model.dart';
+import '../empty_widget.dart';
 import '../widgets/customTextField.dart';
 import 'add_screen/add_screen.dart';
 import 'home_screen.dart';
@@ -137,7 +137,7 @@ print(productList);
                           InkWell(
                             onTap: () {
                               Navigator.push(context,
-                                  MaterialPageRoute(builder: (_) => AddScreen()));
+                                  MaterialPageRoute(builder: (_) => AddInvoiceScreen()));
                             },
                             child: HoverAnimatedContainer(
                               hoverWidth: 140,
@@ -239,8 +239,7 @@ print(productList);
                       alignment: Alignment.center,
                       child: EmptyWidget(
                         // Image from project assets
-                        image: null,
-                        packageImage: PackageImage.Image_3,
+                        image:"images/rb_1188.png",
                         title: 'لايوجد فواتير',
                         subTitle: 'لايوجد فواتير قيد التسليم بعد',
                         titleTextStyle: TextStyle(
@@ -427,8 +426,7 @@ print(productList);
                                   alignment: Alignment.center,
                                   child: EmptyWidget(
                       // Image from project assets
-                      image: null,
-                      packageImage: PackageImage.Image_3,
+                                    image:"images/rb_1188.png",
                       title: 'لايوجد فواتير',
                       subTitle: 'لايوجد فواتير قيد التسليم بعد',
                       titleTextStyle: TextStyle(
@@ -765,8 +763,8 @@ print(productList);
                       : SizedBox(
                     height: 300,
                     child: EmptyWidget(
-                      packageImage: PackageImage.Image_2,
-                      title: "لا يوجد فواتير",
+                      image:"images/rb_1188.png",
+                      title: "لا يوجد فواتير", subTitle: '',
                     ),
                   )
                       : DataTable(
@@ -942,7 +940,7 @@ Image.asset(                        "images/delivered.png",height: 25,
                       InkWell(
                         onTap: () {
                           Navigator.push(context,
-                              MaterialPageRoute(builder: (_) => AddScreen()));
+                              MaterialPageRoute(builder: (_) => AddInvoiceScreen()));
                         },
                         child: HoverAnimatedContainer(
                           hoverWidth: 100,
@@ -1211,8 +1209,8 @@ print(isSub);
                         ):SizedBox(
                   height: 300,
                   child: EmptyWidget(
-                    packageImage: PackageImage.Image_2,
-                    title: "لا يوجد فواتير",
+                    image:"images/rb_1188.png",
+                    title: "لا يوجد فواتير", subTitle: '',
                   ),
                 ):ListView.builder(
                     itemBuilder: (context, index) {

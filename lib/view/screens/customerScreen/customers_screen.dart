@@ -1,23 +1,18 @@
 import 'dart:ui' as ui;
-import 'package:collection/collection.dart';
 import 'package:desktop_app/constants.dart';
 import 'package:desktop_app/view/screens/add_screen/add_screen.dart';
 import 'package:desktop_app/view/screens/home_screen.dart';
-import 'package:desktop_app/view/screens/pdf_invoice/file_handeler.dart';
-import 'package:desktop_app/view/screens/pdf_invoice/pdf.dart';
+
 import 'package:desktop_app/view_model/cubit/customer_cubit/customers_cubit.dart';
-import 'package:desktop_app/view_model/cubit/products_cubit/add_state.dart';
-import 'package:desktop_app/view_model/cubit/products_cubit/products_cubit.dart';
-import 'package:empty_widget/empty_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:hovering/hovering.dart';
-import 'package:intl/intl.dart';
 import 'package:toast/toast.dart';
 
 import '../../../Model/customer_model.dart';
 import '../../../view_model/cubit/customer_cubit/customer_state.dart';
+import '../../empty_widget.dart';
 import '../../widgets/customTextField.dart';
 import '../main_screen.dart';
 
@@ -105,8 +100,7 @@ class _CustomerScreenState extends State<CustomerScreen> {
                       alignment: Alignment.center,
                       child: EmptyWidget(
                         // Image from project assets
-                        image: null,
-                        packageImage: PackageImage.Image_3,
+                        image:"images/rb_1188.png",
                         title: 'No Customers',
                         subTitle: 'No  Customers available yet',
                         titleTextStyle: TextStyle(
@@ -196,7 +190,7 @@ class _CustomerScreenState extends State<CustomerScreen> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (_) => AddScreen(
+                                builder: (_) => AddInvoiceScreen(
 
                                     )));
                       },
@@ -1091,8 +1085,8 @@ class _CustomerScreenState extends State<CustomerScreen> {
                       : SizedBox(
                           height: 300,
                           child: EmptyWidget(
-                            packageImage: PackageImage.Image_2,
-                            title: "لا يوجد فواتير",
+                            image:"images/rb_1188.png",
+                            title: "لا يوجد فواتير", subTitle: '',
                           ),
                         )
                   : ListView.builder(
@@ -2096,8 +2090,8 @@ class _CustomerScreenState extends State<CustomerScreen> {
                     : SizedBox(
                         height: 300,
                         child: EmptyWidget(
-                          packageImage: PackageImage.Image_2,
-                          title: "لا يوجد فواتير",
+                          image:"images/rb_1188.png",
+                          title: "لا يوجد فواتير", subTitle: '',
                         ),
                       )
                 : DataTable(

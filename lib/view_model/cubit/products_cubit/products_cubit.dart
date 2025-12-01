@@ -126,6 +126,30 @@ class ProductCubit extends Cubit<ProductsMainState> {
       throw errorMessage;
     }
   }
+  Future updateByDeleteThenAdd(BuildContext context, ProductsModel newProduct) async {
+    ToastContext().init(context);
+    emit(AddProductsLoadingState());
+
+    try {
+      print("Deleted old product: ${newProduct.sId}");
+
+      // 1) حذف المنتج القديم
+      await Dio().delete("${baseUrl}products/${newProduct.sId}");
+      print("Deleted old product: ${newProduct.sId}");
+
+      // 2) إضافة المنتج الجديد
+      await postProduct(context, newProduct);
+
+      Toast.show("تم تحديث الفاتورة بنجاح",
+          duration: Toast.lengthLong, gravity: Toast.bottom);
+
+      emit(AddProductsSuccessState());
+    } catch (e) {
+      emit(AddProductsErrorState(e));
+      rethrow;
+    }
+  }
+
   Future updateProduct(BuildContext context, ProductsModel productsModel) async {
     print(productsModel.sId);
     print(productsModel.isDelliverd);

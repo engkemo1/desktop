@@ -148,8 +148,7 @@ class CustomersCubit extends Cubit<CustomersMainState> {
       });
     } on DioError catch (e) {
       print(e.response!.data);
-      Toast.show(e.response!.data['message'],
-          duration: Toast.lengthLong, gravity: Toast.bottom);
+
 
       final errorMessage = DioExceptions.fromDioError(e).toString();
       emit(GetCustomersErrorState(e));

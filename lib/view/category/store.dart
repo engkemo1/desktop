@@ -5,11 +5,11 @@ import 'package:desktop_app/view/category/add_category.dart';
 import 'package:desktop_app/view/screens/home_screen.dart';
 import 'package:desktop_app/view_model/cubit/products_cubit/add_state.dart';
 import 'package:desktop_app/view_model/cubit/products_cubit/products_cubit.dart';
-import 'package:empty_widget/empty_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:hovering/hovering.dart';
+import '../empty_widget.dart';
 import '../screens/main_screen.dart';
 import '../widgets/customTextField.dart';
 
@@ -81,8 +81,7 @@ class _StoreState extends State<Store> {
               alignment: Alignment.center,
               child: EmptyWidget(
                 // Image from project assets
-                image: null,
-                packageImage: PackageImage.Image_3,
+                image:"images/rb_1188.png",
                 title: 'لا يوجد اصناف',
                 subTitle: 'No  Customers available yet',
                 titleTextStyle: TextStyle(
@@ -292,8 +291,10 @@ class _StoreState extends State<Store> {
                     : SizedBox(
                   height: 300,
                   child: EmptyWidget(
-                    packageImage: PackageImage.Image_2,
-                    title: "لا يوجد فواتير",
+                    image:"images/rb_1188.png",
+
+
+                    title: "لا يوجد فواتير", subTitle: '',
                   ),
                 )
                     : DataTable(
@@ -701,8 +702,8 @@ class _StoreState extends State<Store> {
         ):SizedBox(
           height: 300,
           child: EmptyWidget(
-            packageImage: PackageImage.Image_2,
-            title: "لا يوجد فواتير",
+            image:"images/rb_1188.png",
+            title: "لا يوجد فواتير", subTitle: '',
           ),
         )
             :  ListView.builder(

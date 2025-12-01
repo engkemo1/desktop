@@ -6,7 +6,7 @@ import 'package:sidebarx/sidebarx.dart';
 
 import '../widgets/side_bar.dart';
 import 'add_screen/add_screen.dart';
-import 'all_data_screen.dart';
+import 'invoices_screen/all_data_screen.dart';
 import 'customerScreen/add_customer.dart';
 import 'home_screen.dart';
 class MainScreen extends StatefulWidget {
@@ -94,7 +94,7 @@ class _ScreensExample extends StatelessWidget {
             return AllDataScreen() ;
 
           case 2:
-         return   AddScreen();
+         return   AddInvoiceScreen();
           case 3:
             return   AddCustomer();
           case 4:

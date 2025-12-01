@@ -2,7 +2,6 @@ import 'dart:math';
 import 'dart:ui' as ui;
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:collection/collection.dart';
-import 'package:desktop_app/view/screens/all_data_screen.dart';
 import 'package:desktop_app/view/screens/home_screen.dart';
 import 'package:desktop_app/view_model/cubit/customer_cubit/customers_cubit.dart';
 import 'package:desktop_app/view_model/cubit/products_cubit/add_state.dart';
@@ -16,7 +15,6 @@ import 'package:hovering/hovering.dart';
 import 'package:intl/intl.dart';
 import 'package:pdf/pdf.dart';
 import 'package:printing/printing.dart';
-import 'package:selectable_container/selectable_container.dart';
 import 'package:toast/toast.dart';
 import '../../../Model/category_model.dart';
 import '../../../Model/customer_model.dart';
@@ -24,26 +22,27 @@ import '../../../Model/products_model.dart';
 import '../../../constants.dart';
 import '../../../random.dart';
 import '../../widgets/customTextField.dart';
+import '../invoices_screen/all_data_screen.dart';
 import '../main_screen.dart';
 import '../pdf_invoice/pdf.dart';
 
 enum SingingCharacter { balady, afrangy }
 
-class AddScreen extends StatefulWidget {
-  const AddScreen({super.key});
+class AddInvoiceScreen extends StatefulWidget {
+  const AddInvoiceScreen({super.key});
 
   @override
-  State<AddScreen> createState() => _AddScreenState();
+  State<AddInvoiceScreen> createState() => _AddInvoiceScreenState();
 }
 
-class _AddScreenState extends State<AddScreen> {
-  CarouselController buttonCarouselController1 = CarouselController();
-  CarouselController buttonCarouselController2 = CarouselController();
-  CarouselController buttonCarouselController3 = CarouselController();
-  CarouselController buttonCarouselController4 = CarouselController();
-  CarouselController buttonCarouselController5 = CarouselController();
-  CarouselController buttonCarouselController6 = CarouselController();
-  CarouselController buttonCarouselController7 = CarouselController();
+class _AddInvoiceScreenState extends State<AddInvoiceScreen> {
+  CarouselSliderController  buttonCarouselController1 = CarouselSliderController ();
+  CarouselSliderController  buttonCarouselController2 = CarouselSliderController ();
+  CarouselSliderController  buttonCarouselController3 = CarouselSliderController ();
+  CarouselSliderController  buttonCarouselController4 = CarouselSliderController ();
+  CarouselSliderController  buttonCarouselController5 = CarouselSliderController ();
+  CarouselSliderController  buttonCarouselController6 = CarouselSliderController ();
+  CarouselSliderController  buttonCarouselController7 = CarouselSliderController ();
   TextEditingController _dateDeliveryController = TextEditingController();
 
   TextEditingController _dateController = TextEditingController();
@@ -512,10 +511,17 @@ class _AddScreenState extends State<AddScreen> {
                                           .toList(),
 
                                       onChanged: (val) {
-                                        Customer? c = customerModel
-                                            .firstWhereOrNull((element) =>
-                                                element.userName == val.name);
+                                        Customer? c;
 
+                                        if (val is String) {
+                                          c = customerModel.firstWhereOrNull(
+                                                (element) => element.userName == val,
+                                          );
+                                        } else if (val is DropDownValueModel) {
+                                          c = customerModel.firstWhereOrNull(
+                                                (element) => element.userName == val.name,
+                                          );
+                                        }
                                         setState(() {
                                           nameController.text =
                                               val.name.toString();
@@ -1582,7 +1588,7 @@ class _AddScreenState extends State<AddScreen> {
                                       enable: false,
                                       controller: quantityTypeController,
                                       textInputType: TextInputType.number,
-                                      hintText: 'ادخل النوع',
+                                      hintText: 'ادخل ',
                                       isFormField: true,
                                     ),
                                   ],
