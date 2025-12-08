@@ -262,13 +262,25 @@ class _EditProductScreenState extends State<EditProductScreen> {
                         double.tryParse(cubit.amountPaidController.text) ?? 0.0;
                     double remaining = total - paid;
                     double overpay = paid - total;
+                    DateTime parseCustomDate(String input) {
+                      try {
+                        final parts = input.split('/');
+                        final day = int.parse(parts[0]);
+                        final month = int.parse(parts[1]);
+                        final year = int.parse(parts[2]);
+                        return DateTime(year, month, day);
+                      } catch (e) {
+                        return DateTime.now();
+                      }
+                    }
 
                     // بناء الـ ProductsModel
                     final product = ProductsModel(
                       sId: widget.product.sId,
                       name: cubit.nameController.text,
-                      date: cubit.dateController.text,
-                      deliveryTime: cubit.dateDeliveryController.text,
+                      date: parseCustomDate(cubit.dateController.text).toIso8601String(),
+                      deliveryTime: parseCustomDate(cubit.dateDeliveryController.text).toIso8601String(),
+
                       length: double.tryParse(cubit.lengthController.text),
                       ketfLength:
                           double.tryParse(cubit.ketfLengthController.text),
@@ -312,14 +324,14 @@ class _EditProductScreenState extends State<EditProductScreen> {
                       glab: cubit.glabPath,
                       komBalady: "images/كم-بلدي1.png",
                       komSha3rawy: "images/png.png",
-                      komBaladyLenght1:cubit.fieldKom1Controller.text ,
-                      komBaladyLenght2:cubit.fieldKom2Controller.text ,
-                      komBaladyLenght3:cubit.fieldKom3Controller.text ,
-                      komBaladyLenght4:cubit.fieldKom4Controller.text ,
-                      komSha3rawyLenght1:cubit.field1Controller.text ,
-                      komSha3rawyLenght2:cubit.field2Controller.text ,
-                      komSha3rawyLenght3:cubit.field3Controller.text ,
-                      komSha3rawyLenght4:cubit.field4Controller.text ,
+                      komBaladyLenght1: cubit.fieldKom1Controller.text ?? "",
+                      komBaladyLenght2: cubit.fieldKom2Controller.text ?? "",
+                      komBaladyLenght3: cubit.fieldKom3Controller.text ?? "",
+                      komBaladyLenght4: cubit.fieldKom4Controller.text ?? "",
+                      komSha3rawyLenght1: cubit.field1Controller.text ?? "",
+                      komSha3rawyLenght2: cubit.field2Controller.text ?? "",
+                      komSha3rawyLenght3: cubit.field3Controller.text ?? "",
+                      komSha3rawyLenght4: cubit.field4Controller.text ?? "",
                       image: "ds",
                       // ممكن تعدل حسب الصورة
                       address: cubit.addressController.text,
